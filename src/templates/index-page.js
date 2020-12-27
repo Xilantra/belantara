@@ -102,7 +102,7 @@ export const IndexPageTemplate = ({
                   <WorkRoll />
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/work">
-                      Read more
+                      See all works
                     </Link>
                   </div>
                 </div>

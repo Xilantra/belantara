@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+// import getShareImage from '@jlengstorf/get-share-image';
 
 export const BlogPostTemplate = ({
   content,
@@ -15,6 +16,17 @@ export const BlogPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content
+
+  // const socialImage = getShareImage({
+  //   title: blogPost.title,
+  //   tagline: blogPost.tags.map(tag => `#${tag}`).join(' '),
+  //   cloudName: 'xilantra',
+  //   imagePublicID: 'lwj/blog-post-card',
+  //   titleFont: 'lwj-title.otf',
+  //   titleExtraConfig: '_line_spacing_-10',
+  //   taglineFont: 'lwj-tagline.otf',
+  //   textColor: '232129',
+  // });
 
   return (
     <section className="section">
