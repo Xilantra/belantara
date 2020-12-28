@@ -5,6 +5,18 @@ import Navbar from '../components/Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+// import getShareImage from '@jlengstorf/get-share-image';
+
+// const socialImage = getShareImage({
+//   title: title,
+//   tagline: blogPost.tags.map(tag => `#${tag}`).join(' '),
+//   cloudName: 'xilantra',
+//   imagePublicID: 'xilantra/blog-post-card',
+//   titleFont: 'lwj-title.otf',
+//   titleExtraConfig: '_line_spacing_-10',
+//   taglineFont: 'lwj-tagline.otf',
+//   textColor: '232129',
+// });
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
@@ -14,6 +26,7 @@ const TemplateWrapper = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        {/* <meta name="image" content={socialImage} /> */}
 
         <link
           rel="apple-touch-icon"
@@ -47,6 +60,18 @@ const TemplateWrapper = ({ children }) => {
           property="og:image"
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
+
+         {/* OpenGraph tags */}
+         {/* <meta property="og:url" content={`https://belantara.netlify.app${blogPost.slug}`} /> */}
+        <meta property="og:type" content="article" />
+        {/* <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} /> */}
+        {/* <meta property="og:image" content={socialImage} /> */}
+
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@xilantra" />
+        <meta name="twitter:creator" content="@xilantra" />
       </Helmet>
       <Navbar />
       <div>{children}</div>
