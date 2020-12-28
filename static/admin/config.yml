@@ -66,11 +66,11 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
-      - file: "src/pages/stash/index.md"
-        label: "Stash"
-        name: "stash"
+      - file: "src/pages/stack/index.md"
+        label: "Stack"
+        name: "stack"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "stash-page"}
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "stack-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/products/index.md"
