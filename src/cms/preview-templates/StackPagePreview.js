@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StashPageTemplate } from '../../templates/stash-page'
+import { StackPageTemplate } from '../../templates/stack-page'
 
 const StackPagePreview = ({ entry, widgetFor }) => (
-  <StashPageTemplate
+  <StackPageTemplate
     title={entry.getIn(['data', 'title'])}
     content={widgetFor('body')}
   />
