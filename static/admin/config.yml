@@ -87,3 +87,95 @@ collections:
           - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
           - {label: Full_image, name: full_image, widget: image}
           - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+  - name: settings
+    label: Settings
+    files:
+      - name: general
+        label: General
+        file: "src/util/site.json"
+        fields:
+          - label: meta description for SEO
+            name: meta
+            widget: object
+            fields:
+              - widget: string
+                name: title
+                label: Site Title
+                required: true
+              - widget: string
+                name: titleTemplate
+                label: Title Template
+                default: "%s"
+                hint: "Page title like what you see on the tabs. %s is referring to the page title, then you can extend additional default title. For example, %s | Your Website or Your Website - %s. The rendered result will be: About Page | Madey's Website"
+                required: true
+              - widget: string
+                name: siteUrl
+                label: Website URL
+                required: true
+              - widget: text
+                name: description
+                label: Description
+                default: ''
+                required: false
+                hint: "Tell a bit about yourself or the website. This is important for SEO."
+              - widget: image
+                name: image
+                label: image (square)
+                default: '/img/logo.svg'
+                hint: "It will detect your face and auto-crop it to center if you didn't upload in the correct ratio"
+              - widget: image
+                name: iconimage
+                label: favicon
+        
+          - label: social media
+            name: socmed
+            widget: object
+            required: false
+            fields:
+              - widget: string
+                name: facebookUrl
+                label: Facebook URL
+                default: "facebook.com/yourusername"
+              - widget: string
+                name: twitterUsername
+                label: Twitter Username
+                default: "@yourusername"
+              - widget: string
+                name: igUsername
+                label: Instagram Username
+                default: "@yourusername"
+              - widget: string
+                name: ytUsername
+                label: Youtube Username
+                default: "@yourusername"
+              - widget: string
+                name: drbUsername
+                label: Dribbble Username
+                default: "@yourusername"
+              - widget: string
+                name: daUsername
+                label: DeviantArt Username
+                default: "@yourusername"
+              - widget: string
+                name: ttUsername
+                label: TikTok Username
+                default: "@yourusername"
+              - widget: string
+                name: pinUsername
+                label: Pinterest Username
+                default: "@yourusername"
+              - widget: string
+                name: gitUsername
+                label: Github Username
+                default: "@yourusername"
+              - widget: string
+                name: liUsername
+                label: LinkedIn Username
+                default: "@yourusername"
+              
+                
+          - label: "Google Analytics"
+            name: ga
+            widget: string
+            hint: "Add you tracking ID, for example UA-XXXXXXXXX-X"
+
