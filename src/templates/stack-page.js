@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const StashPageTemplate = ({ title, content, contentComponent }) => {
+export const StackPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
 
   return (
@@ -25,18 +25,18 @@ export const StashPageTemplate = ({ title, content, contentComponent }) => {
   )
 }
 
-StashPageTemplate.propTypes = {
+StackPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
 }
 
-const StashPage = ({ data }) => {
+const StackPage = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
     <Layout>
-      <StashPageTemplate
+      <StackPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
@@ -45,14 +45,14 @@ const StashPage = ({ data }) => {
   )
 }
 
-StashPage.propTypes = {
+StackPage.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default StashPage
+export default StackPage
 
-export const StashPageQuery = graphql`
-  query StashPage($id: String!) {
+export const StackPageQuery = graphql`
+  query StackPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
