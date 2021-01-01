@@ -130,48 +130,57 @@ collections:
           - label: social media
             name: socmed
             widget: object
-            required: false
             fields:
               - widget: string
                 name: facebookUrl
                 label: Facebook URL
                 default: "facebook.com/yourusername"
+                required: false
               - widget: string
                 name: twitterUsername
                 label: Twitter Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: igUsername
                 label: Instagram Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: ytUsername
                 label: Youtube Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: drbUsername
                 label: Dribbble Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: daUsername
                 label: DeviantArt Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: ttUsername
                 label: TikTok Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: pinUsername
                 label: Pinterest Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: gitUsername
                 label: Github Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               - widget: string
                 name: liUsername
                 label: LinkedIn Username
-                default: "@yourusername"
+                default: "yourusername"
+                required: false
               
                 
           - label: "Google Analytics"
