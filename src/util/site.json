@@ -5,11 +5,13 @@
     "description": "Website percuma yang laju gila untuk portfolio dan blog anda dengan hanya satu klik sahaja. Dibangunkan oleh Afiq Xilantra",
     "siteUrl": "https://belantara.netlify.app",
     "image": "/img/logo.svg",
-    "iconimage": "/img/favicon-32x32.png"
+    "iconimage": "/img/favicon-32x32.png",
+    "bgColor": "#af7f0eb",
+    "themeColor": "#aa2466c",
+    "twitterUsername": "xilantra"
   },
   "socmed": {
     "gitUsername": "xilantra",
-    "twitterUsername": "xilantra",
     "facebookUrl": "facebook.com/xilantra",
     "drbUsername": "afiq",
     "pinUsername": "afiq",

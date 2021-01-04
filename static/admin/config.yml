@@ -126,6 +126,19 @@ collections:
               - widget: image
                 name: iconimage
                 label: favicon
+              - widget: string
+                name: bgColor
+                label: Background Color
+                required: true
+              - widget: string
+                name: themeColor
+                label: Theme Color
+                required: true
+              - widget: string
+                name: twitterUsername
+                label: Twitter Username
+                default: "yourusername"
+                required: false
         
           - label: social media
             name: socmed
@@ -135,11 +148,6 @@ collections:
                 name: facebookUrl
                 label: Facebook URL
                 default: "facebook.com/yourusername"
-                required: false
-              - widget: string
-                name: twitterUsername
-                label: Twitter Username
-                default: "yourusername"
                 required: false
               - widget: string
                 name: igUsername
