@@ -1,25 +1,25 @@
 {
-  "meta": {
-    "iconimage": "/img/favicon-32x32.png",
-    "siteUrl": "https://belantara.netlify.app",
-    "twitterUsername": "xilantra",
-    "titleTemplate": "%s",
-    "title": "Belantara",
-    "themeColor": "#ff0b0b",
-    "image": "/img/logo.svg",
-    "description": "Website yang laju gila untuk portfolio dan blog anda dengan hanya satu klik sahaja. Dibangunkan oleh Afiq Xilantra",
-    "bgColor": "#622222"
-  },
-  "socmed": {
-    "gitUsername": "xilantra",
-    "facebookUrl": "facebook.com/xilantra",
-    "drbUsername": "afiq",
-    "pinUsername": "afiq",
-    "ytUsername": "xilantra",
-    "daUsername": "xilantra",
-    "liUsername": "xilantra",
-    "igUsername": "xilantra",
-    "ttUsername": ""
-  },
-  "ga": "UA-XXXXXXXXX-X"
-}
+    "meta": {
+      "title": "Belantara",
+      "titleTemplate": "%s",
+      "description": "Website percuma yang laju gila untuk portfolio dan blog anda dengan hanya satu klik sahaja. Dibangunkan oleh Afiq Xilantra",
+      "siteUrl": "https://belantara.netlify.app",
+      "image": "/img/logo.svg",
+      "iconimage": "/img/favicon-32x32.png",
+      "bgColor": "#af7f0eb",
+      "themeColor": "#aa2466c",
+      "twitterUsername": "xilantra"
+    },
+    "socmed": {
+      "gitUsername": "xilantra",
+      "facebookUrl": "facebook.com/xilantra",
+      "drbUsername": "afiq",
+      "pinUsername": "afiq",
+      "ytUsername": "xilantra",
+      "daUsername": "xilantra",
+      "liUsername": "xilantra",
+      "igUsername": "xilantra",
+      "ttUsername": "xilantra"
+    },
+    "ga": "UA-XXXXXXXXX-X"
+  }

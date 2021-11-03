@@ -1,11 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import { Helmet } from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import React from "react";
+import PropTypes from "prop-types";
+import { kebabCase } from "lodash";
+import { Helmet } from "react-helmet";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/Layout";
+import Content, { HTMLContent } from "../components/Content";
 
+// eslint-disable-next-line
 export const WorkPostTemplate = ({
   content,
   contentComponent,
@@ -14,11 +15,11 @@ export const WorkPostTemplate = ({
   title,
   helmet,
 }) => {
-  const PostContent = contentComponent || Content
+  const PostContent = contentComponent || Content;
 
   return (
     <section className="section">
-      {helmet || ''}
+      {helmet || ""}
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
@@ -43,8 +44,8 @@ export const WorkPostTemplate = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 WorkPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
@@ -52,10 +53,10 @@ WorkPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
-}
+};
 
 const WorkPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post } = data;
 
   return (
     <Layout>
@@ -76,16 +77,16 @@ const WorkPost = ({ data }) => {
         title={post.frontmatter.title}
       />
     </Layout>
-  )
-}
+  );
+};
 
 WorkPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
-}
+};
 
-export default WorkPost
+export default WorkPost;
 
 export const pageQuery = graphql`
   query WorkPostByID($id: String!) {
@@ -100,4 +101,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

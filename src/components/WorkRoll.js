@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
-class WorkRoll extends React.Component {
+class WorkRollTemplate extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
@@ -25,6 +25,12 @@ class WorkRoll extends React.Component {
                         imageInfo={{
                           image: post.frontmatter.featuredimage,
                           alt: `featured image thumbnail for post ${post.frontmatter.title}`,
+                          width:
+                            post.frontmatter.featuredimage.childImageSharp
+                              .gatsbyImageData.width,
+                          height:
+                            post.frontmatter.featuredimage.childImageSharp
+                              .gatsbyImageData.height,
                         }}
                       />
                     </div>
@@ -66,30 +72,36 @@ WorkRoll.propTypes = {
   }),
 }
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query WorkRollQuery {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "work-post" } } }
-        ) {
-          edges {
-            node {
-              excerpt(pruneLength: 400)
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                templateKey
-                date(formatString: "MMMM DD, YYYY")
-                featuredpost
-                featuredimage {
-                  childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
-                      ...GatsbyImageSharpFluid
+
+export default function WorkRoll() {
+  return (
+    <StaticQuery
+      query={graphql`
+        query WorkRollQuery {
+          allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+          ) {
+            edges {
+              node {
+                excerpt(pruneLength: 400)
+                id
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                  templateKey
+                  date(formatString: "MMMM DD, YYYY")
+                  featuredpost
+                  featuredimage {
+                    childImageSharp {
+                      gatsbyImageData(
+                        width: 120
+                        quality: 100
+                        layout: CONSTRAINED
+                      )
+
                     }
                   }
                 }
@@ -97,8 +109,8 @@ export default () => (
             }
           }
         }
-      }
-    `}
-    render={(data, count) => <WorkRoll data={data} count={count} />}
-  />
-)
+      `}
+      render={(data, count) => <WorkRollTemplate data={data} count={count} />}
+    />
+  );
+}
