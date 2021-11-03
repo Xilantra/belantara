@@ -1,7 +1,7 @@
 {
   "name": "belantara",
   "description": "Gatsby V4 and Netlify CMS for Designers",
-  "version": "0.2",
+  "version": "0.2.2",
   "author": "Afiq Xilantra",
   "dependencies": {
     "bulma": "^0.9.0",
