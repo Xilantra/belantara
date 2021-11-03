@@ -17,6 +17,7 @@ export const StackPageTemplate = ({ title, content, contentComponent }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
+              <span>Text</span>
               <PageContent className="content" content={content} />
             </div>
           </div>
