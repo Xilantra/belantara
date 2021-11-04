@@ -1,9 +1,9 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: Belantara
 image: /img/home-jumbotron.jpg
 heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+subheading: Luangkan sedikit masa untuk meningkatkan diri sendiri di internet
 mainpitch:
   title: Why Kaldi
   description: >
