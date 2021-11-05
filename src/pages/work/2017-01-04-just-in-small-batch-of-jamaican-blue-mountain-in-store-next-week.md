@@ -1,10 +1,10 @@
 ---
 templateKey: 'work-post'
-title: 'Test: small batch of Jamaican Blue Mountain in store next week'
+title: 'Test Work: small batch of Jamaican Blue Mountain in store next week'
 date: 2017-01-04T15:04:10.000Z
 featuredpost: true
 description: >-
-  We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
+  Test Work: We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
   Mountain coffee beans in our store next week.
 tags:
   - jamaica

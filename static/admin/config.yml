@@ -17,16 +17,16 @@ collections:
     label: "Work"
     folder: "src/pages/work"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "blog-post",
+          default: "work-post",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "date" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
@@ -37,7 +37,8 @@ collections:
     label: "Blog"
     folder: "src/pages/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
+    # slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {
           label: "Template Key",
@@ -46,7 +47,7 @@ collections:
           default: "blog-post",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "date" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
@@ -67,80 +68,25 @@ collections:
               default: "index-page",
             }
           - { label: Title, name: title, widget: string }
-          - { label: Image, name: image, widget: image }
-          - { label: Heading, name: heading, widget: string }
           - { label: Subheading, name: subheading, widget: string }
+          - { label: Image, name: image, widget: image }
           - {
-              label: Mainpitch,
+              label: Featured Image,
               name: mainpitch,
               widget: object,
               fields:
                 [
                   { label: Title, name: title, widget: string },
                   { label: Description, name: description, widget: text },
-                ],
+                  { label: Main Image, name: image, widget: object, fields: 
+                    [
+                      {label: Image, name: image, widget: image },
+                      {label: Alt, name: alt, widget: string }
+                    ]
+                  }
+                ]
             }
-          - { label: Description, name: description, widget: string }
-          - {
-              label: Intro,
-              name: intro,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Blurbs,
-                    name: blurbs,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Text, name: text, widget: text },
-                      ],
-                  },
-                ],
-            }
-          - {
-              label: Main,
-              name: main,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Image1,
-                    name: image1,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image2,
-                    name: image2,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image3,
-                    name: image3,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                ],
-            }
+          
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"
@@ -153,6 +99,7 @@ collections:
             }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+          
       - file: "src/pages/stack/index.md"
         label: "Stack"
         name: "stack"
@@ -190,8 +137,8 @@ collections:
               - {
                 label: Title Template,
                 name: titleTemplate,
-                default: "%s",
-                hint: "Page title like what you see on the tabs. %s is referring to the page title, then you can extend additional default title. For example, %s | Your Website or Your Website - %s. The rendered result will be: About Page | Madey's Website",
+                default: "%s | Replace Here",
+                hint: "%s is referring to the current page title. For example, %s | Your Website (Blog | Diatara Belantara) or Your Website - %s (Laman Belantara - Blog).",
                 widget: string,
                 required: true
                 }
@@ -199,12 +146,13 @@ collections:
                 label: Website URL,
                 name: siteUrl,
                 widget: string,
+                default: https://example.com,
                 required: true
                 }
               - {
                 label: Description,
                 name: description,
-                default: 'Tell a bit about yourself or the website. This is important for SEO.',
+                default: 'Sebuah templat laman web + CMS percuma untuk para pereka dan pengkarya. Hanya memerlukan satu klik sahaja untuk disediakan.',
                 hint: "Tell a bit about yourself or the website. This is important for SEO.",
                 widget: text,
                 required: true
@@ -212,7 +160,7 @@ collections:
               - {
                 label: Logo/Image (square),
                 name: image,
-                hint: "It will detect your face and auto-crop it to center if you didn't upload in the correct ratio",
+                hint: "Your image or logo.",
                 default: '/img/logo.svg',
                 widget: image,
                 required: true
@@ -220,11 +168,18 @@ collections:
               - {
                 label: Favicon,
                 name: iconimage,
+                default: '/img/logo.svg',
                 widget: image,
                 required: true
                 }
               - { label: Background Color, name: bgColor, widget: color, enableAlpha: true, required: true }
               - { label: Theme Color, name: themeColor, widget: color, enableAlpha: true, required: true }
+        
+          - label: Social Media
+            name: socmed
+            widget: object
+            fields:
+              - {label: Facebook URL, name: facebookUrl, default: "facebook.com/yourusername", widget: string, required: false}
               - {
                 widget: string,
                 name: twitterUsername,
@@ -232,12 +187,6 @@ collections:
                 default: "yourusername",
                 required: false
                 }
-        
-          - label: Social Media
-            name: socmed
-            widget: object
-            fields:
-              - {label: Facebook URL, name: facebookUrl, default: "facebook.com/yourusername", widget: string, required: false}
               - {
                 label: Instagram Username,
                 name: igUsername,
@@ -297,6 +246,7 @@ collections:
               label: "Google Analytics",
               name: "ga",
               widget: string,
-              hint: "Add you tracking ID, for example UA-XXXXXXXXX-X"
+              hint: "Add you tracking ID, for example UA-XXXXXXXXX-X",
+              required: false
             }
 

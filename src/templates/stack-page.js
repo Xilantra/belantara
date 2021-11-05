@@ -10,7 +10,6 @@ import FullWidthImage from "../components/FullWidthImage";
 export const StackPageTemplate = ({
   image,
   title,
-  fullImage,
   stackList
 }) => {
   const heroImage = getImage(image) || image;

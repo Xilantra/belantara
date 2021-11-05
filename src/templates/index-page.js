@@ -6,16 +6,15 @@ import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import BlogRoll from "../components/BlogRoll";
 import WorkRoll from "../components/WorkRoll";
+import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import FullWidthImage from "../components/FullWidthImage";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
   image,
   title,
-  heading,
   subheading,
   mainpitch,
-  description,
 }) => {
   const heroImage = getImage(image) || image;
 
@@ -30,25 +29,19 @@ export const IndexPageTemplate = ({
                 <div className="content">
                   <div className="content">
                     <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
+                      <h2 className="title">{mainpitch.title}</h2>
                     </div>
                     <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
+                      <p className="subtitle">{mainpitch.description}</p>
                     </div>
-                  </div>
-                  <div className="columns">
-                    <div className="column is-12">
-                      <h3 className="has-text-weight-semibold is-size-2">
-                        {heading}
-                      </h3>
-                      <p>{description}</p>
+                    <div className="tile is-parent">
+                      <article className="tile is-child">
+                        <PreviewCompatibleImage imageInfo={mainpitch.image} />
+                      </article>
                     </div>
                   </div>
                   
                   <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Latest Work
-                    </h3>
                     <WorkRoll />
                     <div className="column is-12 has-text-centered">
                       <Link className="btn" to="/work">
@@ -80,9 +73,8 @@ export const IndexPageTemplate = ({
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  heading: PropTypes.string,
   subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
+  mainpitch: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   description: PropTypes.string,
 };
 
@@ -94,7 +86,6 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
-        heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
@@ -123,13 +114,19 @@ export const pageQuery = graphql`
             gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
-        heading
         subheading
         mainpitch {
           title
           description
+          image {
+            alt
+            image {
+              childImageSharp {
+                gatsbyImageData(quality: 72, layout: FULL_WIDTH)
+              }
+            }
+          }
         }
-        description
       }
     }
   }

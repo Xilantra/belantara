@@ -6,10 +6,10 @@ image: /img/jumbotron.jpg
 stackList:
   - name: MindaPura
     description: Visual + kata & falsafah. Untuk peningkatan diri (self improvement), bersama.
-    url: https://mindapura.com
+    url: https://mindapura.com/
     image: /img/coffee.png
   - name: ReggaeNusanatara
     description: Musik irama reggae nusantara.
-    url: https://reggaenusanatara.com
+    url: https://reggaenusantara.com/
     image: /img/coffee-gear.png
 ---

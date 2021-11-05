@@ -7,10 +7,10 @@
       "image": "/img/logo.svg",
       "iconimage": "/img/favicon-32x32.png",
       "bgColor": "#af7f0eb",
-      "themeColor": "#aa2466c",
-      "twitterUsername": "xilantra"
+      "themeColor": "#aa2466c"
     },
     "socmed": {
+      "twitterUsername": "xilantra",
       "gitUsername": "xilantra",
       "facebookUrl": "facebook.com/xilantra",
       "drbUsername": "afiq",
