@@ -5,7 +5,7 @@ import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 const FeatureGrid = ({ gridItems }) => (
   <ul className="columns is-multiline">
     {gridItems.map((item) => (
-      <li key={item.name} className="column is-12">
+      <li key={item.name} id={item.name.replace(/\s/g, "")} className="column is-12">
           <a 
             href={item.url} 
             target="_blank"

@@ -2,15 +2,13 @@
     "meta": {
       "title": "Belantara",
       "titleTemplate": "%s",
-      "description": "Website percuma yang laju gila untuk portfolio dan blog anda dengan hanya satu klik sahaja. Dibangunkan oleh Afiq Xilantra",
+      "description": "Templat laman web percuma dan laju gila berserta CMS dengan 1 klik sahaja. Menggunakan GatsbyJS, Github, Netlify dan Netlify CMS.",
       "siteUrl": "https://belantara.netlify.app",
       "image": "/img/logo.svg",
       "iconimage": "/img/favicon-32x32.png",
       "bgColor": "#af7f0eb",
-      "themeColor": "#aa2466c"
-    },
-    "socmed": {
-      "twitterUsername": "xilantra",
+      "themeColor": "#aa2466c",
+      "twitterUsername": "@xilantra",
       "gitUsername": "xilantra",
       "facebookUrl": "facebook.com/xilantra",
       "drbUsername": "afiq",
@@ -19,7 +17,8 @@
       "daUsername": "xilantra",
       "liUsername": "xilantra",
       "igUsername": "xilantra",
-      "ttUsername": "xilantra"
-    },
-    "ga": "UA-XXXXXXXXX-X"
+      "ttUsername": "xilantra",
+      "ga": "UA-XXXXXXXXX-X"
+    }
+    
   }

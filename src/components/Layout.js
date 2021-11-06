@@ -19,7 +19,7 @@ import { withPrefix } from "gatsby";
 // });
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata();
+  const { title, description, twitterUsername } = useSiteMetadata();
   return (
     <div>
       <Helmet>
@@ -65,13 +65,13 @@ const TemplateWrapper = ({ children }) => {
         {/* OpenGraph tags */}
         {/* <meta property="og:url" content={`https://belantara.netlify.app${blogPost.slug}`} /> */}
         <meta property="og:type" content="article" />
-        {/* <meta property="og:description" content={description} /> */}
+        <meta property="og:description" content={description} />
         {/* <meta property="og:image" content={socialImage} /> */}
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@xilantra" />
-        <meta name="twitter:creator" content="@xilantra" />
+        <meta name="twitter:site" content={twitterUsername} />
+        <meta name="twitter:creator" content={twitterUsername} />
       </Helmet>
       <Navbar />
       <div>{children}</div>

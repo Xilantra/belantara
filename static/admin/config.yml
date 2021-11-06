@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: dev
   local_backend: true
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
@@ -174,19 +174,22 @@ collections:
                 }
               - { label: Background Color, name: bgColor, widget: color, enableAlpha: true, required: true }
               - { label: Theme Color, name: themeColor, widget: color, enableAlpha: true, required: true }
-        
-          - label: Social Media
-            name: socmed
-            widget: object
-            fields:
-              - {label: Facebook URL, name: facebookUrl, default: "facebook.com/yourusername", widget: string, required: false}
               - {
                 widget: string,
                 name: twitterUsername,
                 label: Twitter Username,
-                default: "yourusername",
+                default: "@username",
                 required: false
                 }
+              - {
+                label: Github Username,
+                name: gitUsername,
+                default: "yourusername",
+                widget: string,
+                required: false
+                }
+              - {label: Facebook URL, name: facebookUrl, default: "facebook.com/yourusername", widget: string, required: false}
+              
               - {
                 label: Instagram Username,
                 name: igUsername,
@@ -227,13 +230,7 @@ collections:
                 widget: string,
                 required: false
                 }
-              - {
-                label: Github Username,
-                name: gitUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
+              
               - {
                 label: LinkedIn Username,
                 name: liUsername,
@@ -241,12 +238,13 @@ collections:
                 widget: string,
                 required: false
                 }
+              - {
+                label: "Google Analytics",
+                name: "ga",
+                widget: string,
+                hint: "Add you tracking ID, for example UA-XXXXXXXXX-X",
+                required: false
+              }
               
-          - {
-              label: "Google Analytics",
-              name: "ga",
-              widget: string,
-              hint: "Add you tracking ID, for example UA-XXXXXXXXX-X",
-              required: false
-            }
+          
 

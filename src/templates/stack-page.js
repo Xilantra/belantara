@@ -35,7 +35,7 @@ export const StackPageTemplate = ({
 StackPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  stackList: PropTypes.array,
+  stackList: PropTypes.array.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 const StackPage = ({ data }) => {
