@@ -30,11 +30,6 @@ const Footer = class extends React.Component {
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
                       <Link className="navbar-item" to="/work">
                         Work
                       </Link>
@@ -67,7 +62,7 @@ const Footer = class extends React.Component {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Admin
+                        Login
                       </a>
                     </li>
                   </ul>

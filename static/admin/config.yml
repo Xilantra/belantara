@@ -70,22 +70,22 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Subheading, name: subheading, widget: string }
           - { label: Image, name: image, widget: image }
-          - {
-              label: Featured Image,
-              name: mainpitch,
-              widget: object,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  { label: Description, name: description, widget: text },
-                  { label: Main Image, name: image, widget: object, fields: 
-                    [
-                      {label: Image, name: image, widget: image },
-                      {label: Alt, name: alt, widget: string }
-                    ]
-                  }
-                ]
-            }
+          # - {
+          #     label: Featured Image,
+          #     name: mainpitch,
+          #     widget: object,
+          #     fields:
+          #       [
+          #         { label: Title, name: title, widget: string },
+          #         { label: Description, name: description, widget: text },
+          #         { label: Main Image, name: image, widget: object, fields: 
+          #           [
+          #             {label: Image, name: image, widget: image },
+          #             {label: Alt, name: alt, widget: string }
+          #           ]
+          #         }
+          #       ]
+          #   }
           
       - file: "src/pages/about/index.md"
         label: "About"

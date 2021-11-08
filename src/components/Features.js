@@ -5,7 +5,7 @@ import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 const FeatureGrid = ({ gridItems }) => (
   <ul className="columns is-multiline">
     {gridItems.map((item) => (
-      <li key={item.name} id={item.name.replace(/\s/g, "")} className="column is-12">
+      <li key={item.name} id={item.name} className="column is-12">
           <a 
             href={item.url} 
             target="_blank"
@@ -29,11 +29,16 @@ const FeatureGrid = ({ gridItems }) => (
   </ul>
 );
 
+// const anchorID = item.name;
+// const trimAnchor = anchorID.replace(/ /g, '');
+
 FeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-      text: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      url: PropTypes.string,
     })
   ),
 };

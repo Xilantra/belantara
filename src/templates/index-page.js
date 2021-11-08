@@ -6,7 +6,7 @@ import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import BlogRoll from "../components/BlogRoll";
 import WorkRoll from "../components/WorkRoll";
-import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
+// import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import FullWidthImage from "../components/FullWidthImage";
 
 // eslint-disable-next-line
@@ -14,7 +14,7 @@ export const IndexPageTemplate = ({
   image,
   title,
   subheading,
-  mainpitch,
+  // mainpitch,
 }) => {
   const heroImage = getImage(image) || image;
 
@@ -27,7 +27,7 @@ export const IndexPageTemplate = ({
             <div className="columns">
               <div className="column is-10 is-offset-1">
                 <div className="content">
-                  <div className="content">
+                  {/* <div className="content">
                     <div className="tile">
                       <h2 className="title">{mainpitch.title}</h2>
                     </div>
@@ -39,9 +39,12 @@ export const IndexPageTemplate = ({
                         <PreviewCompatibleImage imageInfo={mainpitch.image} />
                       </article>
                     </div>
-                  </div>
+                  </div> */}
                   
                   <div className="column is-12">
+                    <h3 className="has-text-weight-semibold is-size-2">
+                        Work
+                      </h3>
                     <WorkRoll />
                     <div className="column is-12 has-text-centered">
                       <Link className="btn" to="/work">
@@ -74,7 +77,7 @@ IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   subheading: PropTypes.string,
-  mainpitch: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  // mainpitch: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   description: PropTypes.string,
 };
 
@@ -87,7 +90,7 @@ const IndexPage = ({ data }) => {
         image={frontmatter.image}
         title={frontmatter.title}
         subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
+        // mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
       />
     </Layout>
@@ -115,19 +118,21 @@ export const pageQuery = graphql`
           }
         }
         subheading
-        mainpitch {
-          title
-          description
-          image {
-            alt
-            image {
-              childImageSharp {
-                gatsbyImageData(quality: 72, layout: FULL_WIDTH)
-              }
-            }
-          }
-        }
+        
       }
     }
   }
 `;
+
+// mainpitch {
+//   title
+//   description
+//   image {
+//     alt
+//     image {
+//       childImageSharp {
+//         gatsbyImageData(quality: 72, layout: FULL_WIDTH)
+//       }
+//     }
+//   }
+// }
