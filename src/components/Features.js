@@ -1,11 +1,12 @@
 import * as React from "react";
+import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
 const FeatureGrid = ({ gridItems }) => (
   <ul className="columns is-multiline">
     {gridItems.map((item) => (
-      <li key={item.name} id={item.name} className="column is-12">
+      <li key={item.name} id={`${kebabCase(item.name)}`} className="column is-12">
           <a 
             href={item.url} 
             target="_blank"
@@ -28,9 +29,6 @@ const FeatureGrid = ({ gridItems }) => (
     ))}
   </ul>
 );
-
-// const anchorID = item.name;
-// const trimAnchor = anchorID.replace(/ /g, '');
 
 FeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(

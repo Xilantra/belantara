@@ -98,6 +98,7 @@ collections:
               default: "about-page",
             }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
           - { label: "Body", name: "body", widget: "markdown" }
           
       - file: "src/pages/stack/index.md"
@@ -111,6 +112,7 @@ collections:
               default: "stack-page",
             }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
           - { label: Image, name: image, widget: image }
           - label: "List"
             name: "stackList"
@@ -129,19 +131,11 @@ collections:
         label: "General"
         file: "src/util/site.json"
         fields:
-          - label: "Meta Description For SEO"
+          - label: "Meta Section"
             name: "meta"
             widget: object
             fields:
               - {label: Site Title, name: title, widget: string, required: true}
-              - {
-                label: Title Template,
-                name: titleTemplate,
-                default: "%s | Replace Here",
-                hint: "%s is referring to the current page title. For example, %s | Your Website (Blog | Diatara Belantara) or Your Website - %s (Laman Belantara - Blog).",
-                widget: string,
-                required: true
-                }
               - {
                 label: Website URL,
                 name: siteUrl,
@@ -152,7 +146,7 @@ collections:
               - {
                 label: Description,
                 name: description,
-                default: 'Sebuah templat laman web + CMS percuma untuk para pereka dan pengkarya. Hanya memerlukan satu klik sahaja untuk disediakan.',
+                default: 'Sebuah laman web peribadi Nama Anda. Designer, programmer, astronaut, unicorn. Berasal dari Kuala Lumpur, Malaysia',
                 hint: "Tell a bit about yourself or the website. This is important for SEO.",
                 widget: text,
                 required: true
@@ -160,7 +154,7 @@ collections:
               - {
                 label: Logo/Image (square),
                 name: image,
-                hint: "Your image or logo.",
+                hint: "Your image or logo in square shape.",
                 default: '/img/logo.svg',
                 widget: image,
                 required: true
@@ -172,8 +166,18 @@ collections:
                 widget: image,
                 required: true
                 }
-              - { label: Background Color, name: bgColor, widget: color, enableAlpha: true, required: true }
-              - { label: Theme Color, name: themeColor, widget: color, enableAlpha: true, required: true }
+              - { label: Light Mode, name: lightMode, widget: object, hint: Has to be in light colour!, fields: 
+                    [
+                      { label: Background Color for Light Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
+                      { label: Theme Color for Light Mode, name: themeColor, widget: color, enableAlpha: true, required: true }
+                    ]
+                  }
+              - { label: Dark Mode, name: darkMode, widget: object, hint: Has to be in dark colour!, fields: 
+                    [
+                      { label: Background Color for Dark Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
+                      { label: Theme Color for Dark Mode, name: themeColor, widget: color, enableAlpha: true, required: true }
+                    ]
+                  }
               - {
                 widget: string,
                 name: twitterUsername,
