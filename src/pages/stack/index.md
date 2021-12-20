@@ -2,7 +2,7 @@
 templateKey: stack-page
 path: /stack
 title: Stack
-description: My favourite tools and software
+description: List of my favourite tools and software
 image: /img/jumbotron.jpg
 stackList:
   - name: MindaPura
