@@ -123,6 +123,28 @@ collections:
               - {label: Description, name: description, widget: string}
               - {label: URL, name: url, widget: string}
               - {label: "Icon/Image", name: "image", widget: image, default: "/img/stackDefault.svg" }
+
+      - file: "src/pages/links/index.md"
+        label: "Links"
+        name: "links"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "links-page",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: Image, name: image, widget: image }
+          - label: "Link"
+            name: "linkList"
+            minimize_collapsed: true
+            widget: "list"
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: URL, name: url, widget: string}
+              - {label: "Icon/Image", name: "image", widget: image, default: "/img/linkDefault.svg" }
               
   - name: "settings"
     label: "Settings"
