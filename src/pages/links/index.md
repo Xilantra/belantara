@@ -1,7 +1,8 @@
 ---
-templateKey: 'links-page'
+templateKey: links-page
 path: /links
 title: Links
+description: Mainly used in my Instagram page
 image: /img/jumbotron.jpg
 linkList:
   - name: MindaPura's Instagram
@@ -13,4 +14,7 @@ linkList:
   - name: Test
     url: https://test.com/
     image: /img/linkDefault.svg
+  - image: /img/linkDefault.svg
+    name: Another Test
+    url: anothertest.com
 ---
