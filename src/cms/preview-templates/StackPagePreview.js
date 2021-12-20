@@ -10,6 +10,7 @@ const StackPagePreview = ({ entry, getAsset }) => {
       <StackPageTemplate
         image={getAsset(data.image)}
         title={data.title}
+        subheading={data.subheading}
         stackList={data.stackList || {}}
       />
     )

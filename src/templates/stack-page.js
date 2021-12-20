@@ -10,13 +10,14 @@ import FullWidthImage from "../components/FullWidthImage";
 export const StackPageTemplate = ({
   image,
   title,
+  subheading,
   stackList
 }) => {
   const heroImage = getImage(image) || image;
 
   return (
     <div className="content">
-      <FullWidthImage img={heroImage} title={title} />
+      <FullWidthImage img={heroImage} title={title} subheading={subheading}/>
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
@@ -35,6 +36,7 @@ export const StackPageTemplate = ({
 StackPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
+  subheading: PropTypes.string,
   stackList: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.array]),
 };
 
@@ -45,6 +47,7 @@ const StackPage = ({ data }) => {
     <Layout>
       <StackPageTemplate
         title={frontmatter.title}
+        subheading={frontmatter.subheading}
         image={frontmatter.image}
         stackList={frontmatter.stackList}
       />
@@ -67,6 +70,7 @@ export const StackPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
+        subheading
         image {
           childImageSharp {
             gatsbyImageData(quality: 100, layout: FULL_WIDTH)

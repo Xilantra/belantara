@@ -10,6 +10,7 @@ const LinksPagePreview = ({ entry, getAsset }) => {
       <LinksPageTemplate
         image={getAsset(data.image)}
         title={data.title}
+        subheading={data.subheading}
         linkList={data.linkList || {}}
       />
     )

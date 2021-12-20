@@ -112,7 +112,7 @@ collections:
               default: "stack-page",
             }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Subheading", name: "subheading", widget: "text" }
           - { label: Image, name: image, widget: image }
           - label: "List"
             name: "stackList"
@@ -135,7 +135,7 @@ collections:
               default: "links-page",
             }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Subheading", name: "subheading", widget: "text" }
           - { label: Image, name: image, widget: image }
           - label: "Link"
             name: "linkList"
