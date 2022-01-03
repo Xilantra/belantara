@@ -1,5 +1,5 @@
 ---
-templateKey: 'links-page'
+templateKey: links-page
 path: /links
 title: Links
 subheading: Mainly used in my Instagram page
