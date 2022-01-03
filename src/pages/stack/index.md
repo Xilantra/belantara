@@ -14,7 +14,7 @@ stackList:
     description: Musik irama reggae nusantara.
     url: https://reggaenusantara.com/
     image: /img/coffee-gear.png
-  - image: /img/stackDefault.svg
+  - image: /img/safari-pinned-tab.svg
     description: Tesstttt
     url: https://test.com
     name: Test
