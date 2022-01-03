@@ -73,7 +73,7 @@ export const LinksPageQuery = graphql`
         subheading
         image {
           childImageSharp {
-            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
           }
         }
         linkList {
@@ -81,7 +81,7 @@ export const LinksPageQuery = graphql`
           url
           image {
             childImageSharp {
-              gatsbyImageData(width: 240, quality: 64, layout: CONSTRAINED)
+              gatsbyImageData(width: 48, quality: 88, placeholder: BLURRED, layout: CONSTRAINED)
             }
           }
           

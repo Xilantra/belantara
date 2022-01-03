@@ -1,5 +1,5 @@
 ---
-templateKey: links-page
+templateKey: 'links-page'
 path: /links
 title: Links
 subheading: Mainly used in my Instagram page
@@ -13,8 +13,5 @@ linkList:
     image: /img/coffee-gear.png
   - name: Test
     url: https://test.com/
-    image: /img/linkDefault.svg
-  - image: /img/linkDefault.svg
-    name: Another Test
-    url: anothertest.com
+    image: /img/link.png
 ---

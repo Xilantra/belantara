@@ -73,7 +73,7 @@ export const StackPageQuery = graphql`
         subheading
         image {
           childImageSharp {
-            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
           }
         }
         stackList {
@@ -82,7 +82,7 @@ export const StackPageQuery = graphql`
           url
           image {
             childImageSharp {
-              gatsbyImageData(width: 240, quality: 64, layout: CONSTRAINED)
+              gatsbyImageData(width: 240, quality: 64, placeholder: BLURRED, layout: CONSTRAINED)
             }
           }
           

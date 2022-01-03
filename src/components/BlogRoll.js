@@ -99,6 +99,7 @@ export default function BlogRoll() {
                       gatsbyImageData(
                         width: 120
                         quality: 100
+                        placeholder: BLURRED
                         layout: CONSTRAINED
                       )
 
