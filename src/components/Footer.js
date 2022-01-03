@@ -1,14 +1,20 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
+import useSiteMetadata from "./SiteMetadata";
 import logo from "../img/logo.svg";
 import facebook from "../img/social/facebook.svg";
 import instagram from "../img/social/instagram.svg";
 import twitter from "../img/social/twitter.svg";
 import vimeo from "../img/social/vimeo.svg";
 
-const Footer = class extends React.Component {
-  render() {
+// const Footer = class extends React.Component {}
+const Footer = () => {
+  const { 
+    facebookUrl,
+    twitterUsername,
+    igUsername
+   } = useSiteMetadata();
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
@@ -74,29 +80,29 @@ const Footer = class extends React.Component {
                 </section>
               </div>
               <div className="column is-4 social">
-                <a title="facebook" href="https://facebook.com">
+                <a title="facebook" href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
                   <img
                     src={facebook}
                     alt="Facebook"
                     style={{ width: "1em", height: "1em" }}
                   />
                 </a>
-                <a title="twitter" href="https://twitter.com">
+                <a title="twitter" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
                   <img
                     className="fas fa-lg"
                     src={twitter}
-                    alt="Twitter"
+                    alt={twitterUsername}
                     style={{ width: "1em", height: "1em" }}
                   />
                 </a>
-                <a title="instagram" href="https://instagram.com">
+                <a title="instagram" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                   <img
                     src={instagram}
                     alt="Instagram"
                     style={{ width: "1em", height: "1em" }}
                   />
                 </a>
-                <a title="vimeo" href="https://vimeo.com">
+                <a title="vimeo" href="https://vimeo.com" target="_blank" rel="noopener noreferrer">
                   <img
                     src={vimeo}
                     alt="Vimeo"
@@ -109,7 +115,6 @@ const Footer = class extends React.Component {
         </div>
       </footer>
     );
-  }
 };
 
 export default Footer;

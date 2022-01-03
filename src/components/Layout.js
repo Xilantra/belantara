@@ -19,7 +19,14 @@ import { withPrefix } from "gatsby";
 // });
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description, twitterUsername } = useSiteMetadata();
+  const { 
+    title,
+    lightMode,
+    darkMode,
+    description,
+    iconimage,
+    twitterUsername
+   } = useSiteMetadata();
   return (
     <div>
       <Helmet>
@@ -37,7 +44,8 @@ const TemplateWrapper = ({ children }) => {
         <link
           rel="icon"
           type="image/png"
-          href={`${withPrefix("/")}img/favicon-32x32.png`}
+          href={iconimage}
+          // href={`${withPrefix("/")}img/favicon-32x32.png`}
           sizes="32x32"
         />
         <link
@@ -52,8 +60,8 @@ const TemplateWrapper = ({ children }) => {
           href={`${withPrefix("/")}img/safari-pinned-tab.svg`}
           color="#ff4400"
         />
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(248, 191, 58)" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="rgb(248, 191, 58)" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content={lightMode.themeColor} />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)"  content={darkMode.themeColor} />
 
 
         <meta property="og:type" content="business.business" />

@@ -7,8 +7,19 @@ const useSiteMetadata = () => {
         site {
           siteMetadata {
             title
+            lightMode  {
+              bgColor
+              themeColor
+            }
+            darkMode {
+              bgColor
+              themeColor
+            }
             description
+            iconimage
+            facebookUrl
             twitterUsername
+            igUsername
           }
         }
       }

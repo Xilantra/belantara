@@ -6,22 +6,22 @@
       "image": "/img/logo.svg",
       "iconimage": "/img/favicon-32x32.png",
       "lightMode": {
-        "bgColor": "#af7f0eb",
-        "themeColor": "rgb(248, 191, 58)"
+        "bgColor": "#F7F0EB",
+        "themeColor": "#F6B472"
       },
       "darkMode": {
-        "bgColor": "#af7f0eb",
-        "themeColor": "rgb(248, 191, 58)"
+        "bgColor": "#180204",
+        "themeColor": "#1A4555"
       },
-      "twitterUsername": "@xilantra",
-      "gitUsername": "xilantra",
       "facebookUrl": "facebook.com/xilantra",
+      "twitterUsername": "xilantra",
+      "igUsername": "xilantra",
+      "gitUsername": "xilantra",
       "drbUsername": "afiq",
       "pinUsername": "afiq",
       "ytUsername": "xilantra",
       "daUsername": "xilantra",
       "liUsername": "xilantra",
-      "igUsername": "xilantra",
       "ttUsername": "xilantra",
       "ga": "UA-XXXXXXXXX-X"
     }
