@@ -1,4 +1,4 @@
-const settings = require("./src/util/site.json")
+const settings = require("./src/util/meta.json")
 
 module.exports = {
   siteMetadata: settings.meta,

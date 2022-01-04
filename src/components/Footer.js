@@ -2,20 +2,19 @@ import * as React from "react";
 import { Link } from "gatsby";
 
 import useSiteMetadata from "./SiteMetadata";
+import AccountList from "./socialMedia";
 // import { BeakerIcon } from '@heroicons/react/solid'
 
-import logo from "../img/logo.svg";
+// import logo from "../img/logo.svg";
 import facebook from "../img/social/facebook.svg";
 import instagram from "../img/social/instagram.svg";
 import twitter from "../img/social/twitter.svg";
-import vimeo from "../img/social/vimeo.svg";
 
 // const Footer = class extends React.Component {}
 const Footer = () => {
   const { 
-    facebookUsername,
-    twitterUsername,
-    igUsername
+    logo,
+    socMed
    } = useSiteMetadata();
     return (
       <footer className="footer has-background-black has-text-white-ter">
@@ -82,36 +81,18 @@ const Footer = () => {
                 </section>
               </div>
               <div className="column is-4 social">
-              {/* <BeakerIcon/> */}
-                <a title="facebook" href={`https://facebook.com/${facebookUsername}`} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="twitter" href={`https://twitter.com/${twitterUsername}`} target="_blank" rel="noopener noreferrer">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt={twitterUsername}
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="instagram" href={`https://instagram.com/${igUsername}`} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={instagram}
-                    alt="Instagram"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="vimeo" href="https://vimeo.com" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={vimeo}
-                    alt="Vimeo"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
+                <ul>
+                {/* <BeakerIcon/> */}
+                  <AccountList usrName={socMed.facebookUsername} accountUrl={`https://facebook.com/${socMed.facebookUsername}`} iconName={facebook} />
+
+                  <AccountList usrName={socMed.twitterUsername} accountUrl={`https://twitter.com/${socMed.twitterUsername}`} iconName={twitter} />
+
+                  <AccountList usrName={socMed.instagramUsername} accountUrl={`https://instagram.com/${socMed.instagramUsername}`} iconName={instagram} />
+
+                  <AccountList usrName={socMed.twitterUsername} accountUrl={`https://linkedin.com/in/${socMed.linkedinUsername}`} iconName={twitter} />
+
+                  <AccountList usrName={socMed.twitterUsername} accountUrl={`https://github.com/${socMed.githubUsername}`} iconName={twitter} />
+                </ul>
               </div>
             </div>
           </div>

@@ -24,8 +24,8 @@ const TemplateWrapper = ({ children }) => {
     lightMode,
     darkMode,
     description,
-    iconimage,
-    twitterUsername
+    iconImage,
+    socMed
    } = useSiteMetadata();
   return (
     <div>
@@ -44,7 +44,7 @@ const TemplateWrapper = ({ children }) => {
         <link
           rel="icon"
           type="image/png"
-          href={iconimage}
+          href={iconImage}
           // href={`${withPrefix("/")}img/favicon-32x32.png`}
           sizes="32x32"
         />
@@ -80,8 +80,8 @@ const TemplateWrapper = ({ children }) => {
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={`@${twitterUsername}`} />
-        <meta name="twitter:creator" content={`@${twitterUsername}`} />
+        <meta name="twitter:site" content={`@${socMed.twitterUsername}`} />
+        <meta name="twitter:creator" content={`@${socMed.twitterUsername}`} />
       </Helmet>
       <Navbar />
       <div>{children}</div>

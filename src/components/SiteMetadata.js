@@ -15,11 +15,17 @@ const useSiteMetadata = () => {
               bgColor
               themeColor
             }
+            logo
             description
-            iconimage
-            facebookUsername
-            twitterUsername
-            igUsername
+            iconImage
+            googleAnalytics
+            socMed {
+              facebookUsername
+              twitterUsername
+              instagramUsername
+              linkedinUsername
+              githubUsername
+            }
           }
         }
       }

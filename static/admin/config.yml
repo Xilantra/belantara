@@ -151,7 +151,7 @@ collections:
     files:
       - name: "general"
         label: "General"
-        file: "src/util/site.json"
+        file: "src/util/meta.json"
         fields:
           - label: "Meta Section"
             name: "meta"
@@ -175,15 +175,15 @@ collections:
                 }
               - {
                 label: Logo/Image (square),
-                name: image,
-                hint: "Your image or logo in square shape.",
+                name: logo,
+                hint: "Your image or logo in a square shape.",
                 default: '/img/logo.svg',
                 widget: image,
                 required: true
                 }
               - {
                 label: Favicon,
-                name: iconimage,
+                name: iconImage,
                 default: '/img/logo.svg',
                 widget: image,
                 required: true
@@ -191,82 +191,32 @@ collections:
               - { label: Light Mode, name: lightMode, widget: object, hint: Has to be in light colour!, fields: 
                     [
                       { label: Background Color for Light Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
-                      { label: Theme Color for Light Mode, name: themeColor, widget: color, enableAlpha: true, required: true }
+                      { label: Theme Color for Light Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
                     ]
                   }
               - { label: Dark Mode, name: darkMode, widget: object, hint: Has to be in dark colour!, fields: 
                     [
                       { label: Background Color for Dark Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
-                      { label: Theme Color for Dark Mode, name: themeColor, widget: color, enableAlpha: true, required: true }
+                      { label: Theme Color for Dark Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
                     ]
                   }
-              - {
-                widget: string,
-                name: twitterUsername,
-                label: Twitter Username,
-                default: "@username",
-                required: false
-                }
-              - {
-                label: Github Username,
-                name: gitUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
-              - {label: Facebook Username, name: facebookUsername, default: "yourusername", widget: string, required: false}
-              
-              - {
-                label: Instagram Username,
-                name: igUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
-              - {
-                label: Youtube Username,
-                name: ytUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
-              - {
-                label: Dribbble Username,
-                name: drbUsername,
-                default: "yourusername",
-                widget: string,
-                required: false}
-              - {
-                label: DeviantArt Username,
-                name: daUsername,
-                default: "yourusername",
-                widget: string,
-                required: false}
-              - {
-                label: TikTok Username,
-                name: ttUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
-              - {
-                label: Pinterest Username,
-                name: pinUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
-              
-              - {
-                label: LinkedIn Username,
-                name: liUsername,
-                default: "yourusername",
-                widget: string,
-                required: false
-                }
+              - { label: Social Media, name: socMed, widget: object,
+                  fields: 
+                    [
+                      - {label: Facebook Username, name: facebookUsername, widget: string, required: false}
+                      - {label: Twitter Username, name: twitterUsername, widget: string, required: false}
+                      - {label: Instagram Username, name: instagramUsername, widget: string, required: false}
+                      - {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false}
+                      - {label: Github Username, name: githubUsername, widget: string, required: false}
+                      - {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false}
+                      - {label: Youtube Username, name: youtubeUsername, widget: string, required: false}
+                      - {label: Pinterest Username, name: pinterestUsername, widget: string, required: false}
+                      
+                    ]
+                  },              
               - {
                 label: "Google Analytics",
-                name: "ga",
+                name: "googleAnalytics",
                 widget: string,
                 hint: "Add you tracking ID, for example UA-XXXXXXXXX-X",
                 required: false

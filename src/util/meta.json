@@ -1,0 +1,29 @@
+{
+    "meta": {
+      "title": "Belantara",
+      "description": "Free GatsbyJS and Netlify CMS template for designers. Powered by GatsbyJS, Github, Netlify and Netlify CMS.",
+      "siteUrl": "https://belantara.netlify.app",
+      "logo": "/img/logo.svg",
+      "iconImage": "/img/favicon-32x32.png",
+      "lightMode": {
+        "bgColor": "#F7F0EB",
+        "themeColor": "#F6B472"
+      },
+      "darkMode": {
+        "bgColor": "#180204",
+        "themeColor": "#1A4555"
+      },
+      "socMed": {
+        "facebookUsername": "xilantra",
+        "twitterUsername": "xilantra",
+        "instagramUsername": "xilantra",
+        "linkedinUsername": "xilantra",
+        "githubUsername": "xilantra",
+        "dribbbleUsername": "afiq",
+        "youtubeUsername": "xilantra",
+        "pinterestUsername": "afiq"
+      },
+      "googleAnalytics": "UA-XXXXXXXXX-X"
+    }
+    
+  }
