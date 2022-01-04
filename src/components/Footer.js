@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 
 import useSiteMetadata from "./SiteMetadata";
-import AccountList from "./socialMedia";
+import AccountList from "./SocialMedia";
 // import { BeakerIcon } from '@heroicons/react/solid'
 
 // import logo from "../img/logo.svg";
@@ -14,6 +14,12 @@ import twitter from "../img/social/twitter.svg";
 const Footer = () => {
   const { 
     logo,
+    aboutPage,
+    workPage,
+    blogPage,
+    stackPage,
+    linksPage,
+    contactPage,
     socMed
    } = useSiteMetadata();
     return (
@@ -33,22 +39,22 @@ const Footer = () => {
                   <ul className="menu-list">
                     <li>
                       <Link className="navbar-item" to="/about">
-                        About
+                        {aboutPage.title}
                       </Link>
                     </li>
                     <li>
                       <Link className="navbar-item" to="/work">
-                        Work
+                        {workPage.title}
                       </Link>
                     </li>
                     <li>
                       <Link className="navbar-item" to="/blog">
-                        Blog
+                        {blogPage.title}
                       </Link>
                     </li>
                     <li>
                       <Link className="navbar-item" to="/links">
-                        Links
+                        {linksPage.title}
                       </Link>
                     </li>
                   </ul>
@@ -59,12 +65,12 @@ const Footer = () => {
                   <ul className="menu-list">
                     <li>
                       <Link className="navbar-item" to="/stack">
-                        Stack
+                        {stackPage.title}
                       </Link>
                     </li>
                     <li>
                       <Link className="navbar-item" to="/contact">
-                        Contact
+                        {contactPage.title}
                       </Link>
                     </li>
                     <li>
@@ -83,15 +89,15 @@ const Footer = () => {
               <div className="column is-4 social">
                 <ul>
                 {/* <BeakerIcon/> */}
-                  <AccountList usrName={socMed.facebookUsername} accountUrl={`https://facebook.com/${socMed.facebookUsername}`} iconName={facebook} />
+                  <AccountList userName={socMed.facebookUsername} accountUrl={`https://facebook.com/${socMed.facebookUsername}`} iconName={facebook} />
 
-                  <AccountList usrName={socMed.twitterUsername} accountUrl={`https://twitter.com/${socMed.twitterUsername}`} iconName={twitter} />
+                  <AccountList userName={socMed.twitterUsername} accountUrl={`https://twitter.com/${socMed.twitterUsername}`} iconName={twitter} />
 
-                  <AccountList usrName={socMed.instagramUsername} accountUrl={`https://instagram.com/${socMed.instagramUsername}`} iconName={instagram} />
+                  <AccountList userName={socMed.instagramUsername} accountUrl={`https://instagram.com/${socMed.instagramUsername}`} iconName={instagram} />
 
-                  <AccountList usrName={socMed.twitterUsername} accountUrl={`https://linkedin.com/in/${socMed.linkedinUsername}`} iconName={twitter} />
+                  <AccountList userName={socMed.twitterUsername} accountUrl={`https://linkedin.com/in/${socMed.linkedinUsername}`} iconName={twitter} />
 
-                  <AccountList usrName={socMed.twitterUsername} accountUrl={`https://github.com/${socMed.githubUsername}`} iconName={twitter} />
+                  <AccountList userName={socMed.twitterUsername} accountUrl={`https://github.com/${socMed.githubUsername}`} iconName={twitter} />
                 </ul>
               </div>
             </div>

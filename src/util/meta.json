@@ -13,6 +13,30 @@
         "bgColor": "#180204",
         "themeColor": "#1A4555"
       },
+      "aboutPage": {
+        "title": "About",
+        "photo": "/img/jumbotron.jpg"
+      },
+      "workPage": {
+        "title": "Work",
+        "photo": "/img/jumbotron.jpg"
+      },
+      "blogPage": {
+        "title": "Blog",
+        "photo": "/img/jumbotron.jpg"
+      },
+      "stackPage": {
+        "title": "Stack",
+        "photo": "/img/jumbotron.jpg"
+      },
+      "linksPage": {
+        "title": "Links",
+        "photo": "/img/jumbotron.jpg"
+      },
+      "contactPage": {
+        "title": "Contact",
+        "photo": "/img/jumbotron.jpg"
+      },
       "socMed": {
         "facebookUsername": "xilantra",
         "twitterUsername": "xilantra",

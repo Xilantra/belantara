@@ -18,6 +18,30 @@ const useSiteMetadata = () => {
             logo
             description
             iconImage
+            aboutPage {
+              title
+              photo
+            }
+            workPage {
+              title
+              photo
+            }
+            blogPage {
+              title
+              photo
+            }
+            stackPage {
+              title
+              photo
+            }
+            linksPage {
+              title
+              photo
+            }
+            contactPage {
+              title
+              photo
+            }
             googleAnalytics
             socMed {
               facebookUsername

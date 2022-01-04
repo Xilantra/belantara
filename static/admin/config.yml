@@ -188,32 +188,66 @@ collections:
                 widget: image,
                 required: true
                 }
-              - { label: Light Mode, name: lightMode, widget: object, hint: Has to be in light colour!, fields: 
-                    [
-                      { label: Background Color for Light Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
-                      { label: Theme Color for Light Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
-                    ]
-                  }
-              - { label: Dark Mode, name: darkMode, widget: object, hint: Has to be in dark colour!, fields: 
-                    [
-                      { label: Background Color for Dark Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
-                      { label: Theme Color for Dark Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
-                    ]
-                  }
-              - { label: Social Media, name: socMed, widget: object,
-                  fields: 
-                    [
-                      - {label: Facebook Username, name: facebookUsername, widget: string, required: false}
-                      - {label: Twitter Username, name: twitterUsername, widget: string, required: false}
-                      - {label: Instagram Username, name: instagramUsername, widget: string, required: false}
-                      - {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false}
-                      - {label: Github Username, name: githubUsername, widget: string, required: false}
-                      - {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false}
-                      - {label: Youtube Username, name: youtubeUsername, widget: string, required: false}
-                      - {label: Pinterest Username, name: pinterestUsername, widget: string, required: false}
-                      
-                    ]
-                  },              
+              - { label: Theme For Light Mode, name: lightMode, widget: object, hint: Has to be in light colour!, fields: 
+                  [
+                    { label: Background Color for Light Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
+                    { label: Theme Color for Light Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
+                  ]
+                }
+              - { label: Theme For Dark Mode, name: darkMode, widget: object, hint: Has to be in dark colour!, fields: 
+                  [
+                    { label: Background Color for Dark Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
+                    { label: Theme Color for Dark Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
+                  ]
+                }
+              - { label: About Page, name: aboutPage, widget: object, hint: Settings for hero section and the navigation, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                }
+              - { label: Work Page, name: workPage, widget: object, hint: Settings for hero section and the navigation, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                }
+              - { label: Blog Page, name: blogPage, widget: object, hint: Settings for hero section and the navigation, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                }
+              - { label: Stack Page, name: stackPage, widget: object, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                }
+              - { label: Links Page, name: linksPage, widget: object, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                }
+              - { label: Contact Page, name: contactPage, widget: object, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                }
+              - { label: Social Media, name: socMed, widget: object, hint: Social media accounts, fields: 
+                  [
+                    {label: Facebook Username, name: facebookUsername, widget: string, required: false},
+                    {label: Twitter Username, name: twitterUsername, widget: string, required: false},
+                    {label: Instagram Username, name: instagramUsername, widget: string, required: false},
+                    {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false},
+                    {label: Github Username, name: githubUsername, widget: string, required: false},
+                    {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false},
+                    {label: Youtube Username, name: youtubeUsername, widget: string, required: false},
+                    {label: Pinterest Username, name: pinterestUsername, widget: string, required: false}
+                  ]
+                }
               - {
                 label: "Google Analytics",
                 name: "googleAnalytics",
