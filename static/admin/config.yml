@@ -169,7 +169,7 @@ collections:
                 label: Description,
                 name: description,
                 default: 'Sebuah laman web peribadi Nama Anda. Designer, programmer, astronaut, unicorn. Berasal dari Kuala Lumpur, Malaysia',
-                hint: "Tell a bit about yourself or the website. This is important for SEO.",
+                hint: "Tell a bit about yourself or the website. This is important for SEO. Keep it under 160 characters.",
                 widget: text,
                 required: true
                 }
@@ -214,7 +214,7 @@ collections:
                 widget: string,
                 required: false
                 }
-              - {label: Facebook URL, name: facebookUrl, default: "facebook.com/yourusername", widget: string, required: false}
+              - {label: Facebook Username, name: facebookUsername, default: "yourusername", widget: string, required: false}
               
               - {
                 label: Instagram Username,

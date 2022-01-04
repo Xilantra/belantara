@@ -17,7 +17,7 @@ const useSiteMetadata = () => {
             }
             description
             iconimage
-            facebookUrl
+            facebookUsername
             twitterUsername
             igUsername
           }

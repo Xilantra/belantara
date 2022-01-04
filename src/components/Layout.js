@@ -80,8 +80,8 @@ const TemplateWrapper = ({ children }) => {
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={twitterUsername} />
-        <meta name="twitter:creator" content={twitterUsername} />
+        <meta name="twitter:site" content={`@${twitterUsername}`} />
+        <meta name="twitter:creator" content={`@${twitterUsername}`} />
       </Helmet>
       <Navbar />
       <div>{children}</div>
