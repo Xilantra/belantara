@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: dev
   local_backend: true
-  publish_mode: editorial_workflow
-  logo_url: https://dev--belantara.netlify.app/img/logo.svg
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"
@@ -11,15 +9,37 @@ backend:
     uploadMedia: "[skip ci] Upload “{{path}}”"
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
+# site_url: https://example.com
+publish_mode: editorial_workflow
+logo_url: /img/logo.svg
 media_folder: static/img
 public_folder: /img
 
 collections:
   - name: "work"
     label: "Work"
+    description: >
+      The description is a great place for tone setting, high level information, and editing
+      guidelines that are specific to a collection.
     folder: "src/pages/work"
     create: true
     slug: "{{slug}}"
+    view_filters:
+      # - label: Posts With Index
+      #   field: title
+      #   pattern: 'This is post #'
+      # - label: Posts Without Index
+      #   field: title
+      #   pattern: front matter post
+      - label: Drafts
+        field: draft
+        pattern: true
+    view_groups:
+      - label: Year
+        field: date
+        pattern: \d{4}
+      - label: Drafts
+        field: draft
     fields:
       - {
           label: "Template Key",
@@ -28,7 +48,7 @@ collections:
           default: "work-post",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "date" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
@@ -37,10 +57,29 @@ collections:
 
   - name: "blog"
     label: "Blog"
+    description: >
+      The description is a great place for tone setting, high level information, and editing
+      guidelines that are specific to a collection.
     folder: "src/pages/blog"
     create: true
     slug: "{{slug}}"
     # slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    view_filters:
+      # - label: Posts With Index
+      #   field: title
+      #   pattern: 'This is post #'
+      # - label: Posts Without Index
+      #   field: title
+      #   pattern: front matter post
+      - label: Drafts
+        field: draft
+        pattern: true
+    view_groups:
+      - label: Year
+        field: date
+        pattern: \d{4}
+      - label: Drafts
+        field: draft
     fields:
       - {
           label: "Template Key",
@@ -49,9 +88,8 @@ collections:
           default: "blog-post",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "date" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "SEO Description", name: "description", widget: "text" }
-      - { label: "Draft", name: "draft", widget: "boolean", required: false, default: true}
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -59,6 +97,10 @@ collections:
 
   - name: "pages"
     label: "Pages"
+    delete: false
+    description: >
+      The description is a great place for tone setting, high level information, and editing
+      guidelines that are specific to a collection.
     files:
       - file: "src/pages/index.md"
         label: "Landing Page"
@@ -140,7 +182,8 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "text" }
           - { label: Image, name: image, widget: image }
-          - label: "Link"
+          - label: "Links"
+            label_singular: 'Link'
             name: "linkList"
             minimize_collapsed: true
             widget: "list"
@@ -151,6 +194,10 @@ collections:
               
   - name: "settings"
     label: "Settings"
+    delete: false
+    description: >
+      The description is a great place for tone setting, high level information, and editing
+      guidelines that are specific to a collection.
     files:
       - label: "General"
         name: "general"
@@ -165,13 +212,14 @@ collections:
                 {
                   label: Site Title, 
                   name: title, 
-                  widget: string, 
+                  widget: string,
                   required: true
                   },
                 {
                   label: Website URL,
                   name: siteUrl,
                   widget: string,
+                  pattern: ['.{10,}', "Should have more than 10 characters"],
                   default: https://example.com,
                   required: true
                   },
@@ -272,8 +320,20 @@ collections:
                 {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false},
                 {label: Github Username, name: githubUsername, widget: string, required: false},
                 {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false},
+                {label: Email, name: email, widget: string, required: false},
               ]
             }
+      - name: 'personal'
+        label: 'Personal Links'
+        file: 'src/util/personal-links.json'
+        fields:
+          - name: personalLinks
+            label: Personal Links
+            label_singular: 'Personal Link'
+            widget: list
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string'}
+              - { label: 'URL', name: 'url', widget: 'string', default: 'https://', hint: Don't forget to include the https:// }
               
           
 
