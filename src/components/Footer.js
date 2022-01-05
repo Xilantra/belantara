@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
 
+import PageList from "./PageList";
 import useSiteMetadata from "./SiteMetadata";
 import AccountList from "./SocialMedia";
 // import { BeakerIcon } from '@heroicons/react/solid'
@@ -11,22 +12,16 @@ import instagram from "../img/social/instagram.svg";
 import twitter from "../img/social/twitter.svg";
 
 // const Footer = class extends React.Component {}
-const Footer = () => {
+const Footer = (footerBar) => {
   const { 
-    logo,
-    aboutPage,
-    workPage,
-    blogPage,
-    stackPage,
-    linksPage,
-    contactPage,
+    meta,
     socMed
    } = useSiteMetadata();
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
           <img
-            src={logo}
+            src={meta.logo}
             alt="Kaldi"
             style={{ width: "14em", height: "10em" }}
           />
@@ -37,55 +32,11 @@ const Footer = () => {
               <div className="column is-4">
                 <section className="menu">
                   <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        {aboutPage.title}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/work">
-                        {workPage.title}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        {blogPage.title}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/links">
-                        {linksPage.title}
-                      </Link>
-                    </li>
+                    <PageList footerBar={footerBar} className="test"/>
                   </ul>
                 </section>
               </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/stack">
-                        {stackPage.title}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        {contactPage.title}
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Login
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
+              
               <div className="column is-4 social">
                 <ul>
                 {/* <BeakerIcon/> */}

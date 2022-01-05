@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "gatsby";
+import PageList from "./PageList";
 import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
+
+function PageListWrapper(navBar) {
+ 
+  return (
+    <PageList navBar={navBar} className="navbar-item" />
+  );
+}
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -62,23 +70,9 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/work">
-                Work
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/stack">
-                Stack
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-            </div>
+            <ul className="navbar-start has-text-centered">
+                <PageListWrapper />
+            </ul>
             <div className="navbar-end has-text-centered">
               <a
                 className="navbar-item"

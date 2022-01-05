@@ -1,7 +1,7 @@
 const settings = require("./src/util/meta.json")
 
 module.exports = {
-  siteMetadata: settings.meta,
+  siteMetadata: settings,
   plugins: [
     "gatsby-plugin-react-helmet",
     {

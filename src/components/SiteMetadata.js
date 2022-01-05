@@ -6,49 +6,57 @@ const useSiteMetadata = () => {
       query SITE_METADATA_QUERY {
         site {
           siteMetadata {
-            title
-            lightMode  {
-              bgColor
-              themeColor
-            }
-            darkMode {
-              bgColor
-              themeColor
-            }
-            logo
-            description
-            iconImage
-            aboutPage {
+            meta {
               title
-              photo
+              siteUrl
+              description
+              logo
+              iconImage
+              googleAnalytics
             }
-            workPage {
-              title
-              photo
+            theme {
+              background {
+                light
+                dark
+              }
+              themeColor {
+                light
+                dark
+              }
             }
-            blogPage {
-              title
-              photo
+            page {
+              about {
+                title
+                photo
+              }
+              work {
+                title
+                photo
+              }
+              blog {
+                title
+                photo
+              }
+              stack {
+                title
+                photo
+              }
+              links {
+                title
+                photo
+              }
+              contact {
+                title
+                photo
+              }
             }
-            stackPage {
-              title
-              photo
-            }
-            linksPage {
-              title
-              photo
-            }
-            contactPage {
-              title
-              photo
-            }
-            googleAnalytics
             socMed {
               facebookUsername
               twitterUsername
               instagramUsername
               linkedinUsername
               githubUsername
+              dribbbleUsername
             }
           }
         }

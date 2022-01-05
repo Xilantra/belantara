@@ -20,19 +20,16 @@ import { withPrefix } from "gatsby";
 
 const TemplateWrapper = ({ children }) => {
   const { 
-    title,
-    lightMode,
-    darkMode,
-    description,
-    iconImage,
+    meta,
+    theme,
     socMed
    } = useSiteMetadata();
   return (
     <div>
       <Helmet>
         <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
         {/* <meta name="image" content={socialImage} /> */}
         
 
@@ -44,7 +41,7 @@ const TemplateWrapper = ({ children }) => {
         <link
           rel="icon"
           type="image/png"
-          href={iconImage}
+          href={meta.iconImage}
           // href={`${withPrefix("/")}img/favicon-32x32.png`}
           sizes="32x32"
         />
@@ -60,12 +57,12 @@ const TemplateWrapper = ({ children }) => {
           href={`${withPrefix("/")}img/safari-pinned-tab.svg`}
           color="#ff4400"
         />
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content={lightMode.themeColor} />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)"  content={darkMode.themeColor} />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content={theme.themeColor.light} />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)"  content={theme.themeColor.dark} />
 
 
         <meta property="og:type" content="business.business" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={meta.title} />
         <meta property="og:url" content="/" />
         <meta
           property="og:image"
@@ -75,7 +72,7 @@ const TemplateWrapper = ({ children }) => {
         {/* OpenGraph tags */}
         {/* <meta property="og:url" content={`https://belantara.netlify.app${blogPost.slug}`} /> */}
         <meta property="og:type" content="article" />
-        <meta property="og:description" content={description} />
+        <meta property="og:description" content={meta.description} />
         {/* <meta property="og:image" content={socialImage} /> */}
 
         {/* Twitter Card tags */}

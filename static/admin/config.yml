@@ -2,6 +2,8 @@ backend:
   name: git-gateway
   branch: dev
   local_backend: true
+  publish_mode: editorial_workflow
+  logo_url: https://dev--belantara.netlify.app/img/logo.svg
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"
@@ -48,7 +50,8 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "date" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "SEO Description", name: "description", widget: "text" }
+      - { label: "Draft", name: "draft", widget: "boolean", required: false, default: true}
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -149,112 +152,128 @@ collections:
   - name: "settings"
     label: "Settings"
     files:
-      - name: "general"
-        label: "General"
+      - label: "General"
+        name: "general"
         file: "src/util/meta.json"
         fields:
-          - label: "Meta Section"
-            name: "meta"
-            widget: object
-            fields:
-              - {label: Site Title, name: title, widget: string, required: true}
-              - {
-                label: Website URL,
-                name: siteUrl,
-                widget: string,
-                default: https://example.com,
-                required: true
+          - { label: "Meta Section (Mainly for SEO)",
+              name: "meta",
+              widget: object,
+              collapsed: true,
+              fields:
+              [
+                {
+                  label: Site Title, 
+                  name: title, 
+                  widget: string, 
+                  required: true
+                  },
+                {
+                  label: Website URL,
+                  name: siteUrl,
+                  widget: string,
+                  default: https://example.com,
+                  required: true
+                  },
+                {
+                  label: Description,
+                  name: description,
+                  default: 'My personal website. Artist, engineer, astronaut, unicorn. From Kuala Lumpur, Malaysia',
+                  hint: "Tell a bit about yourself or the website. This is important for SEO. Keep it under 160 characters.",
+                  widget: text,
+                  required: true
+                  },
+                {
+                  label: Logo/Image (square),
+                  name: logo,
+                  hint: "Your image or logo in a square shape.",
+                  default: '/img/logo.svg',
+                  widget: image,
+                  required: true
+                  },
+                {
+                  label: Favicon,
+                  name: iconImage,
+                  default: '/img/logo.svg',
+                  widget: image,
+                  required: true
+                  },
+                {
+                  label: "Google Analytics",
+                  name: "googleAnalytics",
+                  default: "UA-XXXXX-X",
+                  widget: string,
+                  hint: "Add you tracking ID, for example UA-XXXXX-X",
+                  required: false
                 }
-              - {
-                label: Description,
-                name: description,
-                default: 'Sebuah laman web peribadi Nama Anda. Designer, programmer, astronaut, unicorn. Berasal dari Kuala Lumpur, Malaysia',
-                hint: "Tell a bit about yourself or the website. This is important for SEO. Keep it under 160 characters.",
-                widget: text,
-                required: true
-                }
-              - {
-                label: Logo/Image (square),
-                name: logo,
-                hint: "Your image or logo in a square shape.",
-                default: '/img/logo.svg',
-                widget: image,
-                required: true
-                }
-              - {
-                label: Favicon,
-                name: iconImage,
-                default: '/img/logo.svg',
-                widget: image,
-                required: true
-                }
-              - { label: Theme For Light Mode, name: lightMode, widget: object, hint: Has to be in light colour!, fields: 
+              ]
+            }
+          - { label: Theme, name: theme, widget: object, collapsed: true, hint: Settings for theme, fields: 
+              [
+                { label: Background Color, name: background, widget: object, fields: 
                   [
-                    { label: Background Color for Light Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
-                    { label: Theme Color for Light Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
+                    { label: Light Mode, name: light, default: "#F7F0EB", widget: color, enableAlpha: true, required: true },
+                    { label: Dark Mode, name: dark, default: "#180204", widget: color, enableAlpha: true, required: true }
+                  ]
+                },
+                { label: Theme Color, name: themeColor, widget: object, hint: Details https://css-tricks.com/meta-theme-color-and-trickery/, fields: 
+                  [
+                    { label: Light Mode, name: light, default: "#F6B472", widget: color, required: true },
+                    { label: Dark Mode, name: dark, default: "#1A4555", widget: color, required: true }
                   ]
                 }
-              - { label: Theme For Dark Mode, name: darkMode, widget: object, hint: Has to be in dark colour!, fields: 
-                  [
-                    { label: Background Color for Dark Mode, name: bgColor, widget: color, enableAlpha: true, required: true },
-                    { label: Theme Color for Dark Mode, name: themeColor, widget: color, enableAlpha: true, hint: Avoid MacOS window control buttons color. (Red/Yellow/Green), required: true }
-                  ]
-                }
-              - { label: About Page, name: aboutPage, widget: object, hint: Settings for hero section and the navigation, fields: 
-                  [
-                    {label: Title, name: title, default: About, widget: string, required: true},
-                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
-                  ]
-                }
-              - { label: Work Page, name: workPage, widget: object, hint: Settings for hero section and the navigation, fields: 
-                  [
-                    {label: Title, name: title, default: About, widget: string, required: true},
-                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
-                  ]
-                }
-              - { label: Blog Page, name: blogPage, widget: object, hint: Settings for hero section and the navigation, fields: 
-                  [
-                    {label: Title, name: title, default: About, widget: string, required: true},
-                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
-                  ]
-                }
-              - { label: Stack Page, name: stackPage, widget: object, fields: 
-                  [
-                    {label: Title, name: title, default: About, widget: string, required: true},
-                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
-                  ]
-                }
-              - { label: Links Page, name: linksPage, widget: object, fields: 
-                  [
-                    {label: Title, name: title, default: About, widget: string, required: true},
-                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
-                  ]
-                }
-              - { label: Contact Page, name: contactPage, widget: object, fields: 
+              ]
+            }
+          - { label: Page Settings, name: page, widget: object, collapsed: true, hint: Settings for hero section and the navigation, fields: 
+              [
+                { label: About Page, name: about, widget: object, collapsed: true, fields: 
                   [
                     {label: Title, name: title, default: About, widget: string, required: true},
                     {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
                   ]
-                }
-              - { label: Social Media, name: socMed, widget: object, hint: Social media accounts, fields: 
+                },
+                { label: Work Page, name: work, widget: object, collapsed: true, fields: 
                   [
-                    {label: Facebook Username, name: facebookUsername, widget: string, required: false},
-                    {label: Twitter Username, name: twitterUsername, widget: string, required: false},
-                    {label: Instagram Username, name: instagramUsername, widget: string, required: false},
-                    {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false},
-                    {label: Github Username, name: githubUsername, widget: string, required: false},
-                    {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false},
-                    {label: Youtube Username, name: youtubeUsername, widget: string, required: false},
-                    {label: Pinterest Username, name: pinterestUsername, widget: string, required: false}
+                    {label: Title, name: title, default: Work, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                },
+                { label: Blog Page, name: blog, widget: object, collapsed: true, fields: 
+                  [
+                    {label: Title, name: title, default: Blog, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                },
+                { label: Stack Page, name: stack, widget: object, collapsed: true, fields: 
+                  [
+                    {label: Title, name: title, default: Stack, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                },
+                { label: Links Page, name: links, widget: object, collapsed: true, fields: 
+                  [
+                    {label: Title, name: title, default: Links, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                },
+                { label: Contact Page, name: contact, widget: object, collapsed: true, fields: 
+                  [
+                    {label: Title, name: title, default: Contact, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
                   ]
                 }
-              - {
-                label: "Google Analytics",
-                name: "googleAnalytics",
-                widget: string,
-                hint: "Add you tracking ID, for example UA-XXXXXXXXX-X",
-                required: false
-              }
+              ]
+            }
+          - { label: Social Media, name: socMed, widget: object, collapsed: true, hint: Social media accounts, fields: 
+              [
+                {label: Facebook Username, name: facebookUsername, widget: string, required: false},
+                {label: Twitter Username, name: twitterUsername, widget: string, required: false},
+                {label: Instagram Username, name: instagramUsername, widget: string, required: false},
+                {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false},
+                {label: Github Username, name: githubUsername, widget: string, required: false},
+                {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false},
+              ]
+            }
               
           
 

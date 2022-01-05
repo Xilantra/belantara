@@ -1,53 +1,54 @@
 {
     "meta": {
       "title": "Belantara",
-      "description": "Free GatsbyJS and Netlify CMS template for designers. Powered by GatsbyJS, Github, Netlify and Netlify CMS.",
       "siteUrl": "https://belantara.netlify.app",
+      "description": "Free GatsbyJS and Netlify CMS template for designers. Powered by GatsbyJS, Github, Netlify and Netlify CMS.",
       "logo": "/img/logo.svg",
       "iconImage": "/img/favicon-32x32.png",
-      "lightMode": {
-        "bgColor": "#F7F0EB",
-        "themeColor": "#F6B472"
+      "googleAnalytics": "UA-XXXXX-X"
+    },
+    "theme": {
+      "background": {
+        "light": "#F7F0EB",
+        "dark": "#180204"
       },
-      "darkMode": {
-        "bgColor": "#180204",
-        "themeColor": "#1A4555"
-      },
-      "aboutPage": {
+      "themeColor": {
+        "light": "#F6B472",
+        "dark": "#1A4555"
+      }    
+    },
+    "page": {
+      "about": {
         "title": "About",
         "photo": "/img/jumbotron.jpg"
       },
-      "workPage": {
+      "work": {
         "title": "Work",
         "photo": "/img/jumbotron.jpg"
       },
-      "blogPage": {
+      "blog": {
         "title": "Blog",
         "photo": "/img/jumbotron.jpg"
       },
-      "stackPage": {
+      "stack": {
         "title": "Stack",
         "photo": "/img/jumbotron.jpg"
       },
-      "linksPage": {
+      "links": {
         "title": "Links",
         "photo": "/img/jumbotron.jpg"
       },
-      "contactPage": {
+      "contact": {
         "title": "Contact",
         "photo": "/img/jumbotron.jpg"
-      },
-      "socMed": {
-        "facebookUsername": "xilantra",
-        "twitterUsername": "xilantra",
-        "instagramUsername": "xilantra",
-        "linkedinUsername": "xilantra",
-        "githubUsername": "xilantra",
-        "dribbbleUsername": "afiq",
-        "youtubeUsername": "xilantra",
-        "pinterestUsername": "afiq"
-      },
-      "googleAnalytics": "UA-XXXXXXXXX-X"
+      }
+    },
+    "socMed": {
+      "facebookUsername": "xilantra",
+      "twitterUsername": "xilantra",
+      "instagramUsername": "xilantra",
+      "linkedinUsername": "xilantra",
+      "githubUsername": "xilantra",
+      "dribbbleUsername": "afiq"
     }
-    
   }
