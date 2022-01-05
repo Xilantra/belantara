@@ -3,7 +3,8 @@ import * as React from "react";
 
 import PageList from "./PageList";
 import useSiteMetadata from "./SiteMetadata";
-import AccountList from "./SocialMedia";
+import PersonalLinks from "./PersonalLinks";
+// import AccountList from "./SocialMedia";
 // import { BeakerIcon } from '@heroicons/react/solid'
 
 // import logo from "../img/logo.svg";
@@ -37,18 +38,9 @@ const Footer = (footerBar) => {
                 </section>
               </div>
               
-              <div className="column is-4 social">
-                <ul>
-                {/* <BeakerIcon/> */}
-                  <AccountList userName={socMed.facebookUsername} accountUrl={`https://facebook.com/${socMed.facebookUsername}`} iconName={facebook} />
-
-                  <AccountList userName={socMed.twitterUsername} accountUrl={`https://twitter.com/${socMed.twitterUsername}`} iconName={twitter} />
-
-                  <AccountList userName={socMed.instagramUsername} accountUrl={`https://instagram.com/${socMed.instagramUsername}`} iconName={instagram} />
-
-                  <AccountList userName={socMed.twitterUsername} accountUrl={`https://linkedin.com/in/${socMed.linkedinUsername}`} iconName={twitter} />
-
-                  <AccountList userName={socMed.twitterUsername} accountUrl={`https://github.com/${socMed.githubUsername}`} iconName={twitter} />
+              <div className="column is-4 navbar-start">
+                <ul className="navbar-menu">
+                  <PersonalLinks />
                 </ul>
               </div>
             </div>

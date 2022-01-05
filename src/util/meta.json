@@ -5,6 +5,7 @@
       "description": "Free GatsbyJS and Netlify CMS template for designers. Powered by GatsbyJS, Github, Netlify and Netlify CMS.",
       "logo": "/img/logo.svg",
       "iconImage": "/img/favicon-32x32.png",
+      "twitterUsername": "xilantra",
       "googleAnalytics": "UA-XXXXX-X"
     },
     "theme": {
@@ -42,13 +43,5 @@
         "title": "Contact",
         "photo": "/img/jumbotron.jpg"
       }
-    },
-    "socMed": {
-      "facebookUsername": "xilantra",
-      "twitterUsername": "xilantra",
-      "instagramUsername": "xilantra",
-      "linkedinUsername": "xilantra",
-      "githubUsername": "xilantra",
-      "dribbbleUsername": "afiq"
     }
   }

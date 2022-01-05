@@ -247,6 +247,12 @@ collections:
                   required: true
                   },
                 {
+                  label: Twitter Username,
+                  name: twitterUsername,
+                  widget: string,
+                  default: 'twitter',
+                  required: true},
+                {
                   label: "Google Analytics",
                   name: "googleAnalytics",
                   default: "UA-XXXXX-X",
@@ -312,17 +318,7 @@ collections:
                 }
               ]
             }
-          - { label: Social Media, name: socMed, widget: object, collapsed: true, hint: Social media accounts, fields: 
-              [
-                {label: Facebook Username, name: facebookUsername, widget: string, required: false},
-                {label: Twitter Username, name: twitterUsername, widget: string, required: false},
-                {label: Instagram Username, name: instagramUsername, widget: string, required: false},
-                {label: LinkedIn Username, name: linkedinUsername, widget: string, required: false},
-                {label: Github Username, name: githubUsername, widget: string, required: false},
-                {label: Dribbble Username, name: dribbbleUsername, widget: string, required: false},
-                {label: Email, name: email, widget: string, required: false},
-              ]
-            }
+          
       - name: 'personal'
         label: 'Personal Links'
         file: 'src/util/personal-links.json'

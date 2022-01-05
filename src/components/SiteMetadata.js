@@ -12,6 +12,7 @@ const useSiteMetadata = () => {
               description
               logo
               iconImage
+              twitterUsername
               googleAnalytics
             }
             theme {
@@ -49,14 +50,6 @@ const useSiteMetadata = () => {
                 title
                 photo
               }
-            }
-            socMed {
-              facebookUsername
-              twitterUsername
-              instagramUsername
-              linkedinUsername
-              githubUsername
-              dribbbleUsername
             }
           }
         }

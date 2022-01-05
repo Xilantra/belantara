@@ -21,8 +21,7 @@ import { withPrefix } from "gatsby";
 const TemplateWrapper = ({ children }) => {
   const { 
     meta,
-    theme,
-    socMed
+    theme
    } = useSiteMetadata();
   return (
     <div>
@@ -77,8 +76,8 @@ const TemplateWrapper = ({ children }) => {
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={`@${socMed.twitterUsername}`} />
-        <meta name="twitter:creator" content={`@${socMed.twitterUsername}`} />
+        <meta name="twitter:site" content={`@${meta.twitterUsername}`} />
+        <meta name="twitter:creator" content={`@${meta.twitterUsername}`} />
       </Helmet>
       <Navbar />
       <div>{children}</div>
