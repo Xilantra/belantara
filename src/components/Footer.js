@@ -2,13 +2,27 @@ import * as React from "react";
 import { Link } from "gatsby";
 
 import useSiteMetadata from "./SiteMetadata";
-import AccountList from "./SocialMedia";
+// import AccountList from "./SocialMedia";
 // import { BeakerIcon } from '@heroicons/react/solid'
 
 // import logo from "../img/logo.svg";
 import facebook from "../img/social/facebook.svg";
 import instagram from "../img/social/instagram.svg";
 import twitter from "../img/social/twitter.svg";
+
+function AccountList({ userName, accountUrl, iconName }) {
+  return (
+      <li className="column is-12">
+          <a title={userName} href={accountUrl} target="_blank" rel="noopener noreferrer">
+              <img
+                  src={iconName}
+                  alt={userName}
+                  style={{ width: "1em", height: "1em" }}
+              />
+          </a>
+      </li>
+  );
+}
 
 // const Footer = class extends React.Component {}
 const Footer = () => {
