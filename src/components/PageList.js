@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import useSiteMetadata from "./SiteMetadata";
 
+
 export default function PageList(props) {
   const {
     navBar,
@@ -14,7 +15,7 @@ export default function PageList(props) {
     page
    } = useSiteMetadata();
 
-    if (navBar) {
+    if (!!navBar) {
         return (
             <React.Fragment>
                 <li className={className}>
@@ -23,43 +24,48 @@ export default function PageList(props) {
                     </Link>
                 </li>
                 <li className={className}>
-                    <Link className="navbar-item" to="/blog">
-                        {page.blog.title}
+                    <Link className="navbar-item" to="/notes">
+                        {page.notes.title}
                     </Link>
                 </li>
                 <li className={className}>
-                    <Link className="navbar-item" to="/stack">
-                        {page.stack.title}
+                    <Link className="navbar-item" to="/about">
+                        {page.about.title}
                     </Link>
                 </li>
             </React.Fragment>
         );
-    } else if (footerBar) {
+    } else if (!!footerBar) {
         return (
             <React.Fragment>
+                <li className={className}>
+                    <Link className="navbar-item" to="/work">
+                        {page.work.title}
+                    </Link>
+                </li>
+                <li className={className}>
+                    <Link className="navbar-item" to="/notes">
+                        {page.notes.title}
+                    </Link>
+                </li>
                 <li className={className}>
                     <Link className="navbar-item" to="/about">
                         {page.about.title}
                     </Link>
                 </li>
                 <li className={className}>
-                    <Link className="navbar-item" to="/work">
-                        {page.work.title}
+                    <Link className="navbar-item" to="/stack">
+                        {page.stack.title}
                     </Link>
                 </li>
                 <li className={className}>
-                    <Link className="navbar-item" to="/blog">
-                        {page.blog.title}
+                    <Link className="navbar-item" to="/tags">
+                        Tags
                     </Link>
                 </li>
                 <li className={className}>
                     <Link className="navbar-item" to="/links">
                         {page.links.title}
-                    </Link>
-                </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/stack">
-                        {page.stack.title}
                     </Link>
                 </li>
                 <li className={className}>

@@ -27,8 +27,8 @@
         "title": "Work",
         "photo": "/img/jumbotron.jpg"
       },
-      "blog": {
-        "title": "Blog",
+      "notes": {
+        "title": "Notes",
         "photo": "/img/jumbotron.jpg"
       },
       "stack": {

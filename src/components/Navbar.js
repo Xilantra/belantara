@@ -4,13 +4,7 @@ import PageList from "./PageList";
 import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
 
-function PageListWrapper(navBar) {
  
-  return (
-    <PageList navBar={navBar} className="navbar-item" />
-  );
-}
-
 const Navbar = class extends React.Component {
   constructor(props) {
     super(props);
@@ -71,7 +65,7 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <ul className="navbar-start has-text-centered">
-                <PageListWrapper />
+              <PageList navBar={true} className="navbar-item" />
             </ul>
             <div className="navbar-end has-text-centered">
               <a

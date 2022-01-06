@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import BlogRoll from "../components/BlogRoll";
+import NotesRoll from "../components/NotesRoll";
 import WorkRoll from "../components/WorkRoll";
 // import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import FullWidthImage from "../components/FullWidthImage";
@@ -56,9 +56,9 @@ export const IndexPageTemplate = ({
                     <h3 className="has-text-weight-semibold is-size-2">
                       Latest stories
                     </h3>
-                    <BlogRoll />
+                    <NotesRoll />
                     <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/blog">
+                      <Link className="btn" to="/notes">
                         Read more
                       </Link>
                     </div>

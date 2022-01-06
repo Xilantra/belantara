@@ -34,7 +34,7 @@ const useSiteMetadata = () => {
                 title
                 photo
               }
-              blog {
+              notes {
                 title
                 photo
               }

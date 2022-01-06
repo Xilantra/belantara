@@ -4,7 +4,7 @@ import CMS from 'netlify-cms-app'
 
 import AboutPagePreview from './preview-templates/AboutPagePreview'
 import WorkPostPreview from './preview-templates/WorkPostPreview'
-import BlogPostPreview from './preview-templates/BlogPostPreview'
+import NotePostPreview from './preview-templates/NotePostPreview'
 import StackPagePreview from './preview-templates/StackPagePreview'
 import LinksPagePreview from './preview-templates/LinksPagePreview'
 import IndexPagePreview from './preview-templates/IndexPagePreview'
@@ -17,4 +17,4 @@ CMS.registerPreviewTemplate('about', AboutPagePreview)
 CMS.registerPreviewTemplate('stack', StackPagePreview)
 CMS.registerPreviewTemplate('links', LinksPagePreview)
 CMS.registerPreviewTemplate('work', WorkPostPreview)
-CMS.registerPreviewTemplate('blog', BlogPostPreview)
+CMS.registerPreviewTemplate('note', NotePostPreview)

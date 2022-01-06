@@ -55,12 +55,12 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
 
-  - name: "blog"
-    label: "Blog"
+  - name: "notes"
+    label: "Notes"
     description: >
       The description is a great place for tone setting, high level information, and editing
       guidelines that are specific to a collection.
-    folder: "src/pages/blog"
+    folder: "src/pages/notes"
     create: true
     slug: "{{slug}}"
     # slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -85,7 +85,7 @@ collections:
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "blog-post",
+          default: "note-post",
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -194,6 +194,8 @@ collections:
               
   - name: "settings"
     label: "Settings"
+    editor:
+      preview: false
     delete: false
     description: >
       The description is a great place for tone setting, high level information, and editing
@@ -251,7 +253,8 @@ collections:
                   name: twitterUsername,
                   widget: string,
                   default: 'twitter',
-                  required: true},
+                  required: true
+                  },
                 {
                   label: "Google Analytics",
                   name: "googleAnalytics",
@@ -270,7 +273,7 @@ collections:
                     { label: Dark Mode, name: dark, default: "#180204", widget: color, enableAlpha: true, required: true }
                   ]
                 },
-                { label: Theme Color, name: themeColor, widget: object, hint: Details https://css-tricks.com/meta-theme-color-and-trickery/, fields: 
+                { label: Theme Color, name: themeColor, widget: object, hint: Please avoid MacOS window control buttons color. (Red/Yellow/Green). Details at https://css-tricks.com/meta-theme-color-and-trickery/, fields: 
                   [
                     { label: Light Mode, name: light, default: "#F6B472", widget: color, required: true },
                     { label: Dark Mode, name: dark, default: "#1A4555", widget: color, required: true }
@@ -278,7 +281,7 @@ collections:
                 }
               ]
             }
-          - { label: Page Settings, name: page, widget: object, collapsed: true, hint: Settings for hero section and the navigation, fields: 
+          - { label: Page Settings, name: page, widget: object, collapsed: true, hint: Settings for hero section and the navigation. Please note that you can change the page name but not the page link., fields: 
               [
                 { label: About Page, name: about, widget: object, collapsed: true, fields: 
                   [
@@ -292,9 +295,9 @@ collections:
                     {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
                   ]
                 },
-                { label: Blog Page, name: blog, widget: object, collapsed: true, fields: 
+                { label: Notes Page, name: notes, widget: object, collapsed: true, fields: 
                   [
-                    {label: Title, name: title, default: Blog, widget: string, required: true},
+                    {label: Title, name: title, default: Notes, widget: string, required: true},
                     {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
                   ]
                 },

@@ -9,7 +9,7 @@ import { withPrefix } from "gatsby";
 
 // const socialImage = getShareImage({
 //   title: title,
-//   tagline: blogPost.tags.map(tag => `#${tag}`).join(' '),
+//   tagline: notePost.tags.map(tag => `#${tag}`).join(' '),
 //   cloudName: 'xilantra',
 //   imagePublicID: 'xilantra/blog-post-card',
 //   titleFont: 'lwj-title.otf',
@@ -69,7 +69,7 @@ const TemplateWrapper = ({ children }) => {
         />
 
         {/* OpenGraph tags */}
-        {/* <meta property="og:url" content={`https://belantara.netlify.app${blogPost.slug}`} /> */}
+        {/* <meta property="og:url" content={`https://belantara.netlify.app${notePost.slug}`} /> */}
         <meta property="og:type" content="article" />
         <meta property="og:description" content={meta.description} />
         {/* <meta property="og:image" content={socialImage} /> */}

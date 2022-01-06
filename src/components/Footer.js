@@ -4,19 +4,17 @@ import * as React from "react";
 import PageList from "./PageList";
 import useSiteMetadata from "./SiteMetadata";
 import PersonalLinks from "./PersonalLinks";
-// import AccountList from "./SocialMedia";
 // import { BeakerIcon } from '@heroicons/react/solid'
 
 // import logo from "../img/logo.svg";
-import facebook from "../img/social/facebook.svg";
-import instagram from "../img/social/instagram.svg";
-import twitter from "../img/social/twitter.svg";
+// import facebook from "../img/social/facebook.svg";
+// import instagram from "../img/social/instagram.svg";
+// import twitter from "../img/social/twitter.svg";
 
 // const Footer = class extends React.Component {}
-const Footer = (footerBar) => {
+const Footer = () => {
   const { 
-    meta,
-    socMed
+    meta
    } = useSiteMetadata();
     return (
       <footer className="footer has-background-black has-text-white-ter">
@@ -33,7 +31,7 @@ const Footer = (footerBar) => {
               <div className="column is-4">
                 <section className="menu">
                   <ul className="menu-list">
-                    <PageList footerBar={footerBar} className="test"/>
+                    <PageList footerBar={true} className="test"/>
                   </ul>
                 </section>
               </div>
