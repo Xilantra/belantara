@@ -1,22 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import LinkList from "../components/Links";
 import FullWidthImage from "../components/FullWidthImage";
+import useSiteMetadata from "../components/SiteMetadata";
 
 // eslint-disable-next-line
 export const LinksPageTemplate = ({
   image,
   title,
   subheading,
-  linkList
+  linkList,
+  helmet,
 }) => {
   const heroImage = getImage(image) || image;
 
   return (
     <div className="content">
+      {helmet || ""}
       <FullWidthImage img={heroImage} title={title} subheading={subheading}/>
       <section className="section section--gradient">
         <div className="container">
@@ -43,6 +47,11 @@ LinksPageTemplate.propTypes = {
 const LinksPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
+  const {
+    meta,
+    page
+   } = useSiteMetadata();
+
   return (
     <Layout>
       <LinksPageTemplate
@@ -50,6 +59,15 @@ const LinksPage = ({ data }) => {
         subheading={frontmatter.subheading}
         image={frontmatter.image}
         linkList={frontmatter.linkList}
+        helmet={
+          <Helmet titleTemplate={`${page.links.title} | ${meta.title}`}>
+            <title>{`${frontmatter.title}`}</title>
+            <meta
+              name="description"
+              content={`${frontmatter.description}`}
+            />
+          </Helmet>
+        }
       />
     </Layout>
   );
@@ -71,6 +89,7 @@ export const LinksPageQuery = graphql`
       frontmatter {
         title
         subheading
+        description
         image {
           childImageSharp {
             gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)

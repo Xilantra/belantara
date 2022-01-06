@@ -1,22 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import Features from "../components/Features";
 import FullWidthImage from "../components/FullWidthImage";
+import useSiteMetadata from "../components/SiteMetadata";
 
 // eslint-disable-next-line
 export const StackPageTemplate = ({
   image,
   title,
   subheading,
-  stackList
+  stackList,
+  helmet,
 }) => {
   const heroImage = getImage(image) || image;
 
   return (
     <div className="content">
+      {helmet || ""}
       <FullWidthImage img={heroImage} title={title} subheading={subheading}/>
       <section className="section section--gradient">
         <div className="container">
@@ -43,6 +47,11 @@ StackPageTemplate.propTypes = {
 const StackPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
+  const {
+    meta,
+    page
+   } = useSiteMetadata();
+
   return (
     <Layout>
       <StackPageTemplate
@@ -50,6 +59,15 @@ const StackPage = ({ data }) => {
         subheading={frontmatter.subheading}
         image={frontmatter.image}
         stackList={frontmatter.stackList}
+        helmet={
+          <Helmet titleTemplate={`${page.stack.title} | ${meta.title}`}>
+            <title>{`${frontmatter.title}`}</title>
+            <meta
+              name="description"
+              content={`${frontmatter.description}`}
+            />
+          </Helmet>
+        }
       />
     </Layout>
   );
@@ -71,6 +89,7 @@ export const StackPageQuery = graphql`
       frontmatter {
         title
         subheading
+        description
         image {
           childImageSharp {
             gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)

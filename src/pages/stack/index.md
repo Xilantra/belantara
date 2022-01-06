@@ -3,6 +3,7 @@ templateKey: 'stack-page'
 path: /stack
 title: Stack
 subheading: My favourite tools and software
+description: A collection of my Stack. Some of the tools and software I use. This page is inspired by Brian Lovin.
 image: /img/jumbotron.jpg
 stackList:
   - name: MindaPura
