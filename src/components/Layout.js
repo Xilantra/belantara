@@ -18,7 +18,7 @@ import { withPrefix } from "gatsby";
 //   textColor: '232129',
 // });
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, title, description }) => {
   const { 
     meta,
     theme
@@ -27,8 +27,8 @@ const TemplateWrapper = ({ children }) => {
     <div>
       <Helmet>
         <html lang="en" />
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.description} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
         {/* <meta name="image" content={socialImage} /> */}
         
 
@@ -61,7 +61,7 @@ const TemplateWrapper = ({ children }) => {
 
 
         <meta property="og:type" content="business.business" />
-        <meta property="og:title" content={meta.title} />
+        <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
         <meta
           property="og:image"
@@ -71,7 +71,7 @@ const TemplateWrapper = ({ children }) => {
         {/* OpenGraph tags */}
         {/* <meta property="og:url" content={`https://belantara.netlify.app${notePost.slug}`} /> */}
         <meta property="og:type" content="article" />
-        <meta property="og:description" content={meta.description} />
+        <meta property="og:description" content={description} />
         {/* <meta property="og:image" content={socialImage} /> */}
 
         {/* Twitter Card tags */}

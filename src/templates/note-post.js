@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
+import useSiteMetadata from "../components/SiteMetadata";
 
 // eslint-disable-next-line
 export const NotePostTemplate = ({
@@ -58,6 +59,10 @@ NotePostTemplate.propTypes = {
 const NotePost = ({ data }) => {
   const { markdownRemark: post } = data;
 
+  const {
+    meta
+   } = useSiteMetadata();
+   
   return (
     <Layout>
       <NotePostTemplate
@@ -65,7 +70,7 @@ const NotePost = ({ data }) => {
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
-          <Helmet titleTemplate="%s">
+          <Helmet titleTemplate={`%s | ${meta.title}`}>
             <title>{`${post.frontmatter.title}`}</title>
             <meta
               name="description"
