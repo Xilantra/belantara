@@ -328,21 +328,22 @@ collections:
         label: 'Personal Links'
         file: 'src/util/personal-links.json'
         fields:
-          - { label: Social Media, name: socMed, widget: object, collapsed: true, hint: "Simple links only show three social media links with icons. If you want to have more links, please use the Personal Links section below.", fields: 
+          - { label: Social Media, name: socialMedia, widget: object, collapsed: true, hint: "Simple links only show three social media links with icons. If you want to have more links, please use the Personal Links section below.", fields: 
               [
                 {label: Facebook Username, name: facebookUsername, widget: string},
                 {label: Twitter Username, name: twitterUsername, widget: string},
                 {label: Instagram Username, name: instagramUsername, widget: string},
                 {label: Email, name: email, widget: string},
+                {label: "Simple Links", name: "custom", widget: "boolean", hint: Enable this if you want to use Personal Links below, default: false, required: false}
               ]
             }
-          - { label: "Simple Links", name: "simple", widget: "boolean", hint: Enable this if you want to use custom link below, default: false }
-          - { label: Personal Links, name: personalLinks, widget: list, label_singular: 'Personal Link', hint: "Personal links are links that are not in the navigation bar. They are usually links to social media, or to other websites. No icons.", fields:
+          - { label: Personal Links, name: personalLinks, widget: list, label_singular: 'Personal Link', hint: "Personal Links are links that are not in the navigation bar. They are usually links to social media, or to other websites. No icons.", fields:
               [
                 { label: 'Title', name: 'title', widget: 'string'},
                 { label: 'URL', name: 'url', widget: 'string', default: 'https://', hint: Don't forget to include the https:// }
               ]
             }
+
               
           
 

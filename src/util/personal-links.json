@@ -1,4 +1,11 @@
 {
+  "socialMedia": {
+    "facebookUsername": "xilantra",
+    "twitterUsername": "xilantra",
+    "instagramUsername": "xilantra",
+    "email": "hi@afiq.me",
+    "custom": true
+  },
   "personalLinks": [
     {
       "url": "https://facebook.com/xilantra",
@@ -24,12 +31,5 @@
       "url": "mailto: hi@example.com",
       "title": "Email"
     }
-  ],
-  "socMed": {
-    "facebookUsername": "xilantra",
-    "twitterUsername": "xilantra",
-    "instagramUsername": "xilantra",
-    "email": "hi@afiq.me"
-  },
-  "simple": false
+  ]
 }

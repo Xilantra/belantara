@@ -1,29 +1,14 @@
 import * as React from "react";
-// import { Link } from "gatsby";
-
+import Logo from "./Logo";
 import PageList from "./PageList";
-import useSiteMetadata from "./SiteMetadata";
 import PersonalLinks from "./PersonalLinks";
-// import { BeakerIcon } from '@heroicons/react/solid'
 
-// import logo from "../img/logo.svg";
-// import facebook from "../img/social/facebook.svg";
-// import instagram from "../img/social/instagram.svg";
-// import twitter from "../img/social/twitter.svg";
-
-// const Footer = class extends React.Component {}
-const Footer = () => {
-  const { 
-    meta
-   } = useSiteMetadata();
+const Footer = class extends React.Component {
+  render() {
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
-          <img
-            src={meta.logo}
-            alt="Kaldi"
-            style={{ width: "14em", height: "10em" }}
-          />
+          <Logo footBar={true} />
         </div>
         <div className="content has-text-centered has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">
@@ -36,7 +21,7 @@ const Footer = () => {
                 </section>
               </div>
               
-              <div className="column is-4 navbar-start">
+              <div className="column is-4 navbar-end">
                 <ul className="navbar-menu">
                   <PersonalLinks />
                 </ul>
@@ -46,6 +31,7 @@ const Footer = () => {
         </div>
       </footer>
     );
+  }
 };
 
 export default Footer;
