@@ -143,7 +143,7 @@ collections:
               default: "about-page",
             }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
+          - { label: "SEO Description", name: "description", widget: "text" }
           - { label: "Body", name: "body", widget: "markdown" }
           
       - file: "src/pages/stack/index.md"
@@ -158,6 +158,7 @@ collections:
             }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "text" }
+          - { label: "SEO Description", name: "description", default: "A collection of my Stack. I use most of it.", widget: "text" }
           - { label: Image, name: image, widget: image }
           - label: "List"
             name: "stackList"
@@ -181,6 +182,7 @@ collections:
             }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "text" }
+          - { label: "SEO Description", name: "description", default: "A collection of my links. Mainly used for Instagram. Something like Linktree.", widget: "text" }
           - { label: Image, name: image, widget: image }
           - label: "Links"
             label_singular: 'Link'
@@ -326,13 +328,21 @@ collections:
         label: 'Personal Links'
         file: 'src/util/personal-links.json'
         fields:
-          - name: personalLinks
-            label: Personal Links
-            label_singular: 'Personal Link'
-            widget: list
-            fields:
-              - { label: 'Title', name: 'title', widget: 'string'}
-              - { label: 'URL', name: 'url', widget: 'string', default: 'https://', hint: Don't forget to include the https:// }
+          - { label: Social Media, name: socMed, widget: object, collapsed: true, hint: "Simple links only show three social media links with icons. If you want to have more links, please use the Personal Links section below.", fields: 
+              [
+                {label: Facebook Username, name: facebookUsername, widget: string},
+                {label: Twitter Username, name: twitterUsername, widget: string},
+                {label: Instagram Username, name: instagramUsername, widget: string},
+                {label: Email, name: email, widget: string},
+              ]
+            }
+          - { label: "Simple Links", name: "simple", widget: "boolean", hint: Enable this if you want to use custom link below, default: false }
+          - { label: Personal Links, name: personalLinks, widget: list, label_singular: 'Personal Link', hint: "Personal links are links that are not in the navigation bar. They are usually links to social media, or to other websites. No icons.", fields:
+              [
+                { label: 'Title', name: 'title', widget: 'string'},
+                { label: 'URL', name: 'url', widget: 'string', default: 'https://', hint: Don't forget to include the https:// }
+              ]
+            }
               
           
 
