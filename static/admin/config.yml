@@ -92,6 +92,7 @@ collections:
       - { label: "SEO Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
+      - { label: 'Select', name: 'select', widget: 'select', options: ['Seedlings', 'Budding', 'Evergreen'] }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
 
@@ -103,7 +104,7 @@ collections:
       guidelines that are specific to a collection.
     files:
       - file: "src/pages/index.md"
-        label: "Landing Page"
+        label: "🏡 Home"
         name: "index"
         fields:
           - {
@@ -132,8 +133,24 @@ collections:
           #       ]
           #   }
           
+      - file: "src/pages/now/index.md"
+        label: "⏳ Now"
+        name: "now"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "now-page",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "SEO Description", name: "description", widget: "text" }
+          - { label: "Featured Image", name: "featuredimage", widget: image }
+          - { label: "Last edited", name: "date", widget: "datetime" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          
       - file: "src/pages/about/index.md"
-        label: "About"
+        label: "😁 About"
         name: "about"
         fields:
           - {
@@ -144,10 +161,11 @@ collections:
             }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "SEO Description", name: "description", widget: "text" }
+          - { label: "Featured Image", name: "featuredimage", widget: image }
           - { label: "Body", name: "body", widget: "markdown" }
           
       - file: "src/pages/stack/index.md"
-        label: "Stack"
+        label: "🥞 Stack"
         name: "stack"
         fields:
           - {
@@ -159,7 +177,7 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "text" }
           - { label: "SEO Description", name: "description", default: "A collection of my Stack. I use most of it.", widget: "text" }
-          - { label: Image, name: image, widget: image }
+          - { label: "Featured Image", name: "featuredimage", widget: image }
           - label: "List"
             name: "stackList"
             minimize_collapsed: true
@@ -171,7 +189,7 @@ collections:
               - {label: "Icon/Image", name: "image", widget: image, default: "/img/collection.png" }
 
       - file: "src/pages/links/index.md"
-        label: "Links"
+        label: "🔗 Links"
         name: "links"
         fields:
           - {
@@ -183,7 +201,7 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "text" }
           - { label: "SEO Description", name: "description", default: "A collection of my links. Mainly used for Instagram. Something like Linktree.", widget: "text" }
-          - { label: Image, name: image, widget: image }
+          - { label: "Featured Image", name: "featuredimage", widget: image }
           - label: "Links"
             label_singular: 'Link'
             name: "linkList"
@@ -194,8 +212,8 @@ collections:
               - {label: URL, name: url, widget: string}
               - {label: "Icon/Image", name: "image", widget: image, default: "/img/link.png" }
               
-  - name: "settings"
-    label: "Settings"
+  - label: "Settings"
+    name: "settings"
     editor:
       preview: false
     delete: false
@@ -203,7 +221,7 @@ collections:
       The description is a great place for tone setting, high level information, and editing
       guidelines that are specific to a collection.
     files:
-      - label: "General"
+      - label: "🗃 General"
         name: "general"
         file: "src/util/meta.json"
         fields:
@@ -285,6 +303,12 @@ collections:
             }
           - { label: Page Settings, name: page, widget: object, collapsed: true, hint: Settings for hero section and the navigation. Please note that you can change the page name but not the page link., fields: 
               [
+                { label: Now Page, name: now, widget: object, collapsed: true, fields: 
+                  [
+                    {label: Title, name: title, default: About, widget: string, required: true},
+                    {label: Cover Photo, name: photo, default: '/img/jumbotron.jpg', widget: image, required: true}
+                  ]
+                },
                 { label: About Page, name: about, widget: object, collapsed: true, fields: 
                   [
                     {label: Title, name: title, default: About, widget: string, required: true},
@@ -324,8 +348,8 @@ collections:
               ]
             }
           
-      - name: 'personal'
-        label: 'Personal Links'
+      - label: '📇 Personal Links'
+        name: 'personal'
         file: 'src/util/personal-links.json'
         fields:
           - { label: Social Media, name: socialMedia, widget: object, collapsed: true, hint: "Simple links only show three social media links with icons. If you want to have more links, please use the Personal Links section below.", fields: 
@@ -333,8 +357,20 @@ collections:
                 {label: Facebook Username, name: facebookUsername, widget: string},
                 {label: Twitter Username, name: twitterUsername, widget: string},
                 {label: Instagram Username, name: instagramUsername, widget: string},
+                {label: Pinterest Username, name: pinterestUsername, widget: string},
+                {label: Tiktok Username, name: tiktokUsername, widget: string},
+                {label: Dribbble Username, name: dribbbleUsername, widget: string},
+                {label: DeviantArt Username, name: deviantartUsername, widget: string},
+                {label: Behance Username, name: behanceUsername, widget: string},
+                {label: Youtube Username, name: youtubeUsername, widget: string},
+                {label: Linkedin Username, name: linkedinUsername, widget: string},
+                {label: Medium Username, name: mediumUsername, widget: string},
+                {label: Matter Username, name: getmatterUsername, widget: string},
+                {label: Github Username, name: githubUsername, widget: string},
+                {label: Codepen Username, name: codepenUsername, widget: string},
+                {label: Buy Me a Coffee Username, name: buymeacoffeeUsername, widget: string},
                 {label: Email, name: email, widget: string},
-                {label: "Simple Links", name: "custom", widget: "boolean", hint: Enable this if you want to use Personal Links below, default: false, required: false}
+                {label: "Enter Link Yourself", name: "custom", widget: "boolean", hint: Enable this if you want to use the Personal Links below, default: false, required: false}
               ]
             }
           - { label: Personal Links, name: personalLinks, widget: list, label_singular: 'Personal Link', hint: "Personal Links are links that are not in the navigation bar. They are usually links to social media, or to other websites. No icons.", fields:

@@ -19,6 +19,11 @@ export default function PageList(props) {
         return (
             <React.Fragment>
                 <li className={className}>
+                    <Link className="navbar-item" to="/now">
+                        {page.now.title}
+                    </Link>
+                </li>
+                <li className={className}>
                     <Link className="navbar-item" to="/work">
                         {page.work.title}
                     </Link>
@@ -28,16 +33,16 @@ export default function PageList(props) {
                         {page.notes.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/about">
-                        {page.about.title}
-                    </Link>
-                </li>
             </React.Fragment>
         );
     } else if (!!footerBar) {
         return (
             <React.Fragment>
+                <li className={className}>
+                    <Link className="navbar-item" to="/now">
+                        {page.now.title}
+                    </Link>
+                </li>
                 <li className={className}>
                     <Link className="navbar-item" to="/work">
                         {page.work.title}

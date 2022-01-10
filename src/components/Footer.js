@@ -21,7 +21,7 @@ const Footer = class extends React.Component {
                 </section>
               </div>
               
-              <div className="column is-4 navbar-end">
+              <div className="column is-4 navbar-start">
                 <ul className="navbar-menu">
                   <PersonalLinks />
                 </ul>

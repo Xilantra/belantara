@@ -26,6 +26,10 @@ const useSiteMetadata = () => {
               }
             }
             page {
+              now {
+                title
+                photo
+              }
               about {
                 title
                 photo

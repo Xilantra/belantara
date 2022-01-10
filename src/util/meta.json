@@ -19,6 +19,10 @@
       }    
     },
     "page": {
+      "now": {
+        "title": "Now",
+        "photo": "/img/jumbotron.jpg"
+      },
       "about": {
         "title": "About",
         "photo": "/img/jumbotron.jpg"
