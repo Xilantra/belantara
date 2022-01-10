@@ -1,8 +1,12 @@
 ---
-templateKey: 'now-page'
+templateKey: now-page
 path: /now
 title: What I'm Doing Now
-description: Belantara adalah sebuah templat laman web percuma yang laju gila berserta CMS dengan 1 klik sahaja. Ia menggunakan GatsbyJS, Github, Netlify dan Netlify CMS. Macam buat website Wordpress, tapi percuma.
+description: Belantara adalah sebuah templat laman web percuma yang laju gila
+  berserta CMS dengan 1 klik sahaja. Ia menggunakan GatsbyJS, Github, Netlify
+  dan Netlify CMS. Macam buat website Wordpress, tapi percuma.
+featuredimage: /img/chemex.jpg
+date: 2022-01-10T17:16:58.826Z
 ---
 ### Apa ni?
 Inspired by [Derek Sivers](https://sive.rs/) [Now](https://nownownow.com/about) page.
