@@ -1,8 +1,11 @@
 ---
-templateKey: 'about-page'
+templateKey: about-page
 path: /about
 title: Tentang Belantara
-description: Belantara adalah sebuah templat laman web percuma yang laju gila berserta CMS dengan 1 klik sahaja. Ia menggunakan GatsbyJS, Github, Netlify dan Netlify CMS. Macam buat website Wordpress, tapi percuma.
+description: Belantara adalah sebuah templat laman web percuma yang laju gila
+  berserta CMS dengan 1 klik sahaja. Ia menggunakan GatsbyJS, Github, Netlify
+  dan Netlify CMS. Macam buat website Wordpress, tapi percuma.
+featuredimage: /img/products-grid3.jpg
 ---
 ### Apa ni?
 Belantara adalah sebuah templat laman web percuma yang laju gila berserta CMS dengan 1 klik sahaja. Ia menggunakan GatsbyJS, Github, Netlify dan Netlify CMS. Macam buat website Wordpress, tapi percuma. 
