@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
 // eslint-disable-next-line
-export const NowPageTemplate = ({ title, description, content, contentComponent, helmet, }) => {
+export const NowPageTemplate = ({ title, featuredimage, description, content, contentComponent, helmet, }) => {
   const PageContent = contentComponent || Content;
 
   return (

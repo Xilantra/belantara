@@ -57,7 +57,7 @@ const LinksPage = ({ data }) => {
       <LinksPageTemplate
         title={frontmatter.title}
         subheading={frontmatter.subheading}
-        image={frontmatter.image}
+        image={frontmatter.featuredimage}
         linkList={frontmatter.linkList}
         helmet={
           <Helmet titleTemplate={`${page.links.title} | ${meta.title}`}>
@@ -90,7 +90,7 @@ export const LinksPageQuery = graphql`
         title
         subheading
         description
-        image {
+        featuredimage {
           childImageSharp {
             gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
           }

@@ -57,7 +57,7 @@ const StackPage = ({ data }) => {
       <StackPageTemplate
         title={frontmatter.title}
         subheading={frontmatter.subheading}
-        image={frontmatter.image}
+        image={frontmatter.featuredimage}
         stackList={frontmatter.stackList}
         helmet={
           <Helmet titleTemplate={`${page.stack.title} | ${meta.title}`}>
@@ -90,7 +90,7 @@ export const StackPageQuery = graphql`
         title
         subheading
         description
-        image {
+        featuredimage {
           childImageSharp {
             gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
           }
