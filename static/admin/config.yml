@@ -62,7 +62,7 @@ collections:
       guidelines that are specific to a collection.
     folder: "src/pages/notes"
     create: true
-    slug: "{{slug}}"
+    slug: "{{slugUrl}}"
     # slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     view_filters:
       # - label: Posts With Index
@@ -88,13 +88,13 @@ collections:
           default: "note-post",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: Slug (The Page URL), widget: string, name: slug, required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: The post URL (do not include folder or file extension) }
+      - { label: Slug (The Page URL), widget: string, name: slugUrl, required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: The post URL (do not include folder or file extension) }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Last Edited", name: "editDate", widget: "datetime" }
       - { label: "SEO Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: 'Select', name: 'select', widget: 'select', options: ['Seedlings', 'Budding', 'Evergreen'] }
+      - { label: 'Select Stage', name: 'stage', widget: 'select', options: ['Seedlings', 'Budding', 'Evergreen'] }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
 

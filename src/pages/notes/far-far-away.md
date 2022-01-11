@@ -1,7 +1,7 @@
 ---
 templateKey: note-post
 title: Far Far Away
-slug: far-far-away
+slugUrl: far-far-away-test
 date: 2021-12-01T14:10:02.632Z
 editDate: 2022-01-11T03:51:02.664Z
 description: This is a custom description for SEO and Open Graph purposes,
@@ -9,7 +9,7 @@ description: This is a custom description for SEO and Open Graph purposes,
   the frontmatter.
 featuredpost: true
 featuredimage: /img/chemex.jpg
-select: Budding
+stage: Budding
 tags:
   - brewing
   - ngopi
