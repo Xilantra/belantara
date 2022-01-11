@@ -10,6 +10,10 @@ description: This is a custom description for SEO and Open Graph purposes,
 featuredpost: true
 featuredimage: /img/chemex.jpg
 select: Budding
+tags:
+  - brewing
+  - ngopi
+  - far-far
 ---
 Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
