@@ -9,6 +9,9 @@ const Footer = class extends React.Component {
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
           <Logo footBar={true} />
+          © {new Date().getFullYear()}, Built by
+          {` `}
+          <a href="https://www.mindapura.com">MindaPura</a>
         </div>
         <div className="content has-text-centered has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">

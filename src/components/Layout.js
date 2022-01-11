@@ -18,6 +18,7 @@ import { withPrefix } from "gatsby";
 //   textColor: '232129',
 // });
 
+
 const TemplateWrapper = ({ children, title, description }) => {
   const { 
     meta,
@@ -78,6 +79,7 @@ const TemplateWrapper = ({ children, title, description }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={`@${meta.twitterUsername}`} />
         <meta name="twitter:creator" content={`@${meta.twitterUsername}`} />
+        
       </Helmet>
       <Navbar />
       <div>{children}</div>

@@ -25,7 +25,7 @@ export default function SocialLinks() {
     personalLinks
   } = JSONData;
 
-    if (!!socialMedia.custom) {
+    if (!socialMedia.custom) {
         return (
             <React.Fragment>
 
@@ -95,7 +95,7 @@ export default function SocialLinks() {
 
             </React.Fragment>
         );
-    } else if (!socialMedia.custom) {
+    } else if (!!socialMedia.custom) {
         return (
           <React.Fragment>
             {personalLinks.map((data, index) => {

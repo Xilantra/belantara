@@ -8,7 +8,9 @@ const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
     site: {
-      siteMetadata: { title },
+      siteMetadata: {
+        meta: { title }
+      },
     },
   },
 }) => (
@@ -44,7 +46,9 @@ export const tagPageQuery = graphql`
   query TagsQuery {
     site {
       siteMetadata {
-        title
+        meta {
+          title
+        }
       }
     }
     allMarkdownRemark(limit: 1000) {
