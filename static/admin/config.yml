@@ -50,7 +50,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
+      - { label: "Featured Post", name: "featuredpost", widget: "boolean", required: false }
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
@@ -58,8 +58,7 @@ collections:
   - name: "notes"
     label: "Notes"
     description: >
-      The description is a great place for tone setting, high level information, and editing
-      guidelines that are specific to a collection.
+      The Notes is inspired by Andy Matuschak's Evergreen Notes and Maggie Appleton's Digital Garden. We will be using 'tree' stages for this. Seedlings, Budding and Evergreen.
     folder: "src/pages/notes"
     create: true
     slug: "{{slugUrl}}"
@@ -87,14 +86,14 @@ collections:
           widget: "hidden",
           default: "note-post",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: Slug (The Page URL), widget: string, name: slugUrl, required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: The post URL (do not include folder or file extension) }
+      - { label: "Title", name: "title", widget: "string", hint: "A good practice is having a long title" }
+      - { label: Slug (The Post URL), widget: string, name: slugUrl, required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: Keep it short. (do not include folder or file extension) }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Last Edited", name: "editDate", widget: "datetime" }
       - { label: "SEO Description", name: "description", widget: "text" }
-      - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
+      - { label: "Featured Post", name: "featuredpost", widget: "boolean", required: false }
       - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: 'Select Stage', name: 'stage', widget: 'select', options: ['Seedlings', 'Budding', 'Evergreen'] }
+      - { label: 'Select Stage', name: 'stage', widget: 'select', hint: "🌱 Seedlings is for very rough and early Notes. 🌿 Budding is for Notes that you've cleaned up and clarified. 🌳 Evergreen is for Notes that is reasonably complete.", options: ['🌱 Seedlings', '🌿 Budding', '🌳 Evergreen'] }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
 

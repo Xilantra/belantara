@@ -9,7 +9,7 @@ description: This is a custom description for SEO and Open Graph purposes,
   the frontmatter.
 featuredpost: false
 featuredimage: /img/blog-index.jpg
-stage: Seedlings
+stage: 🌱 Seedlings
 tags:
   - ngopi
   - brewing

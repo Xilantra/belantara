@@ -9,7 +9,7 @@ description: This is a custom description for SEO and Open Graph purposes,
   the frontmatter.
 featuredpost: true
 featuredimage: /img/chemex.jpg
-stage: Budding
+stage: 🌿 Budding
 tags:
   - brewing
   - ngopi
