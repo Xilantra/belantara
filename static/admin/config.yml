@@ -54,6 +54,40 @@ collections:
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
+  
+  - name: "createPage"
+    label: "Create Page"
+    description: >
+      The description is a great place for tone setting, high level information, and editing
+      guidelines that are specific to a collection.
+    folder: "src/pages/"
+    create: true
+    slug: "{{slugUrl}}"
+    view_filters:
+      - label: Drafts
+        field: draft
+        pattern: true
+    view_groups:
+      - label: Year
+        field: date
+        pattern: \d{4}
+      - label: Drafts
+        field: draft
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "create-page",
+        }
+      - { label: "Page Title", name: "title", widget: "string" }
+      - { label: Slug (The Page URL), widget: string, name: slugUrl, required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: Keep it short. (do not include folder or file extension) }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Featured Post", name: "featuredpost", widget: "boolean", required: false }
+      - { label: "Featured Image", name: "featuredimage", widget: image }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
 
   - name: "notes"
     label: "Notes"
@@ -86,11 +120,11 @@ collections:
           widget: "hidden",
           default: "note-post",
         }
-      - { label: "Title", name: "title", widget: "string", hint: "A good practice is having a long title" }
+      - { label: "Title", name: "title", widget: "string", hint: "A good practice is having a long title." }
       - { label: Slug (The Post URL), widget: string, name: slugUrl, required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: Keep it short. (do not include folder or file extension) }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Last Edited", name: "editDate", widget: "datetime" }
-      - { label: "SEO Description", name: "description", widget: "text" }
+      - { label: "SEO Description", name: "description", widget: "text", hint: "A good SEO description is between 150 and 160 characters." }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean", required: false }
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: 'Select Stage', name: 'stage', widget: 'select', hint: "🌱 Seedlings is for very rough and early Notes. 🌿 Budding is for Notes that you've cleaned up and clarified. 🌳 Evergreen is for Notes that is reasonably complete.", options: ['🌱 Seedlings', '🌿 Budding', '🌳 Evergreen'] }
@@ -101,8 +135,7 @@ collections:
     label: "Pages"
     delete: false
     description: >
-      The description is a great place for tone setting, high level information, and editing
-      guidelines that are specific to a collection.
+      Settings for the Pages collection. This is where you can create pages that are not posts. You can also create a page called “about” and a page called “contact”. These pages will be available in the footer navigation menu.
     files:
       - file: "src/pages/index.md"
         label: "🏡 Home"
