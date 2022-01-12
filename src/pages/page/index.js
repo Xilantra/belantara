@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql } from 'gatsby'
 import Layout from "../../components/Layout";
-import WorkRoll from "../../components/WorkRoll";
+import CreatePageRoll from "../../components/CreatePageRoll";
 
 export default class CreateIndexPage extends React.Component {
   render() {
@@ -28,7 +28,7 @@ export default class CreateIndexPage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="content">
-              <WorkRoll />
+              <CreatePageRoll />
             </div>
           </div>
         </section>
@@ -47,7 +47,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "create-post" } } }
+      filter: { frontmatter: { templateKey: { eq: "create-page" } } }
     ) {
       edges {
         node {

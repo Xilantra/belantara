@@ -19,11 +19,6 @@ export default function PageList(props) {
         return (
             <React.Fragment>
                 <li className={className}>
-                    <Link className="navbar-item" to="/now">
-                        {page.now.title}
-                    </Link>
-                </li>
-                <li className={className}>
                     <Link className="navbar-item" to="/work">
                         {page.work.title}
                     </Link>
@@ -31,6 +26,11 @@ export default function PageList(props) {
                 <li className={className}>
                     <Link className="navbar-item" to="/notes">
                         {page.notes.title}
+                    </Link>
+                </li>
+                <li className={className}>
+                    <Link className="navbar-item" to="/page">
+                        Page
                     </Link>
                 </li>
             </React.Fragment>
@@ -51,6 +51,11 @@ export default function PageList(props) {
                 <li className={className}>
                     <Link className="navbar-item" to="/notes">
                         {page.notes.title}
+                    </Link>
+                </li>
+                <li className={className}>
+                    <Link className="navbar-item" to="/page">
+                        Page
                     </Link>
                 </li>
                 <li className={className}>
