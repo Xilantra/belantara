@@ -3,6 +3,7 @@ import CMS from 'netlify-cms-app'
 // import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 import NowPagePreview from './preview-templates/NowPagePreview'
+import CreatePagePreview from './preview-templates/CreatePagePreview'
 import AboutPagePreview from './preview-templates/AboutPagePreview'
 import WorkPostPreview from './preview-templates/WorkPostPreview'
 import NotePostPreview from './preview-templates/NotePostPreview'
@@ -15,6 +16,7 @@ import IndexPagePreview from './preview-templates/IndexPagePreview'
 
 CMS.registerPreviewTemplate('index', IndexPagePreview)
 CMS.registerPreviewTemplate('now', NowPagePreview)
+CMS.registerPreviewTemplate('create', CreatePagePreview)
 CMS.registerPreviewTemplate('about', AboutPagePreview)
 CMS.registerPreviewTemplate('stack', StackPagePreview)
 CMS.registerPreviewTemplate('links', LinksPagePreview)
