@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import { kebabCase } from "lodash";
 import { getImage } from "gatsby-plugin-image";
 import FullWidthImage from "../components/FullWidthImage";
+import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
+import Features from "../components/Features";
 import useSiteMetadata from "../components/SiteMetadata";
 
 // eslint-disable-next-line
@@ -15,6 +17,7 @@ export const CreatePageTemplate = ({
   contentComponent,
   description,
   tags,
+  contentType,
   image,
   subheading,
   title,
@@ -33,6 +36,13 @@ export const CreatePageTemplate = ({
             <div className="column is-10 is-offset-1">
               <p>{description}</p>
               <PostContent content={content} />
+              
+              <Features gridItems={contentType} />
+{/* 
+              {contentType.type === "typeOne" ? (
+                   <Features gridItems={contentType} />
+                ) : ( <div>type 2</div> )} */}
+              
               {tags && tags.length ? (
                 <div style={{ marginTop: `4rem` }}>
                   <h4>Tags</h4>
@@ -53,6 +63,7 @@ CreatePageTemplate.propTypes = {
   title: PropTypes.string,
   subheading: PropTypes.string,
   helmet: PropTypes.object,
+  contentType: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.array]),
 };
 
 const CreatePage = ({ data }) => {
@@ -70,6 +81,7 @@ const CreatePage = ({ data }) => {
         image={post.frontmatter.featuredimage}
         subheading={post.frontmatter.subheading}
         description={post.frontmatter.description}
+        contentType={post.frontmatter.contentType}
         helmet={
           <Helmet titleTemplate={`%s | ${meta.title}`}>
             <title>{`${post.frontmatter.title}`}</title>
@@ -110,14 +122,17 @@ export const pageQuery = graphql`
             gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
           }
         }
-        # contentType {
-        #   type
-        #   linkList {
-        #       name
-        #       description
-        #       url
-        #     }
-        # }
+        contentType {
+          type
+          name
+          description
+          url
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 240, quality: 64, placeholder: BLURRED, layout: CONSTRAINED)
+            }
+          }
+        }
       }
     }
   }

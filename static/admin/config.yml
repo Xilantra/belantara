@@ -65,7 +65,7 @@ collections:
   - name: "createPage"
     label: "Create Page"
     description: >
-      This is where you can create pages that are not posts. You can also create a page called "Products" and a page called “Projects”. These pages will be available in the footer navigation menu.
+      This is where you can create pages that are not posts. You can also create a page called "Exhibition" and a page called “Projects”. These pages will be available in the footer navigation menu.
     folder: "src/pages/page/"
     create: true
     slug: "{{slugUrl}}"
@@ -103,15 +103,10 @@ collections:
             widget: 'object'
             hint: Suitable for link or bookmark page.
             fields:
-              - label: "List"
-                name: "linkList"
-                minimize_collapsed: true
-                widget: "list"
-                fields:
-                  - {label: Name, name: name, widget: string, hint: "Can be a person, band, service, website or anything you like to share."}
-                  - {label: Description, name: description, widget: string}
-                  - {label: URL, name: url, widget: string}
-                  - {label: Icon/Image, name: image, widget: image, default: "/img/collection.png" }
+              - {label: Name, name: name, widget: string, hint: "Can be a person, band, service, website or anything you like to share."}
+              - {label: Description, name: description, widget: string}
+              - {label: URL, name: url, widget: string}
+              - {label: Icon/Image, name: image, widget: image, default: "/img/collection.png" }
           - label: 'General Page'
             name: 'typeTwo'
             widget: 'object'
