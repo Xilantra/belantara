@@ -27,7 +27,7 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
   } else if (image) {
     return <img style={{imageStyle}} src={image} alt={alt} />;
   } else {
-    return null
+    return <div className="bg-gray-100 p-4 text-gray-600">Image not defined. Probably don't upload SVG file.</div>
   }
 };
 

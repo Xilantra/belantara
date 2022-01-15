@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
-import Features from "../components/Features";
+import Features from "../components/CreatePageContent";
 import useSiteMetadata from "../components/SiteMetadata";
 
 // eslint-disable-next-line
@@ -37,12 +37,8 @@ export const CreatePageTemplate = ({
               <p>{description}</p>
               <PostContent content={content} />
               
-              <Features gridItems={contentType} />
-{/* 
-              {contentType.type === "typeOne" ? (
-                   <Features gridItems={contentType} />
-                ) : ( <div>type 2</div> )} */}
-              
+              <Features contentType={contentType} />
+
               {tags && tags.length ? (
                 <div style={{ marginTop: `4rem` }}>
                   <h4>Tags</h4>
@@ -132,6 +128,7 @@ export const pageQuery = graphql`
               gatsbyImageData(width: 240, quality: 64, placeholder: BLURRED, layout: CONSTRAINED)
             }
           }
+          body
         }
       }
     }
