@@ -2,6 +2,8 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+// const remark = require(`remark`)
+// const html = require(`remark-html`)
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -85,3 +87,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//   actions.createTypes(`
+//     type MarkdownRemarkFrontmatterHero @infer {
+//       subheading: String
+//       image: File
+//     }
+//   `)
+// }
