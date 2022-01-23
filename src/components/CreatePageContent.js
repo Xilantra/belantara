@@ -1,12 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Features from "../components/Features";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import PostContent from "../components/Content";
 
 import { kebabCase } from "lodash";
 
-const PreviewPageComponent = ({ type, contentType }) => {
+const PreviewPageComponent = ({ contentType }) => {
   const imageStyle = { borderRadius: "5px" };
 
   // const { alt = "", childImageSharp, image } = imageInfo;

@@ -1,22 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import { getImage } from "gatsby-plugin-image";
+import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
-import Features from "../components/Features";
+import NotesRoll from "../components/NotesRoll";
 import HeroSection from "../components/FullWidthImage";
 
 // eslint-disable-next-line
-export const StackPageTemplate = ({
-  hero,
-  stackList,
+export const NotesIndexTemplate = ({
   helmet,
+  hero,
 }) => {
   const heroImage = getImage(hero.image) || hero.image;
 
   return (
-    <div className="content">
+    <div>
       {helmet || ""}
       <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
       <section className="section section--gradient">
@@ -24,7 +23,12 @@ export const StackPageTemplate = ({
           <div className="section">
             <div className="columns">
               <div className="column is-10 is-offset-1">
-                <Features gridItems={stackList} /> 
+                <div className="content">
+                  
+                  <div className="column is-12">
+                    <NotesRoll />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -34,20 +38,18 @@ export const StackPageTemplate = ({
   );
 };
 
-StackPageTemplate.propTypes = {
+NotesIndexTemplate.propTypes = {
   hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  stackList: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.array]),
 };
 
-const StackPage = ({ data }) => {
+const NotesIndex = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   const title = data.site.siteMetadata.meta.title;
 
   return (
     <Layout>
-      <StackPageTemplate
+      <NotesIndexTemplate
         hero={frontmatter.hero}
-        stackList={frontmatter.stackList}
         helmet={
           <Helmet titleTemplate={`%s | ${title}`}>
             <title>{`${frontmatter.seo.title}`}</title>
@@ -62,7 +64,7 @@ const StackPage = ({ data }) => {
   );
 };
 
-StackPage.propTypes = {
+NotesIndex.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -70,10 +72,10 @@ StackPage.propTypes = {
   }),
 };
 
-export default StackPage;
+export default NotesIndex;
 
-export const StackPageQuery = graphql`
-  query StackPage($id: String!) {
+export const pageQuery = graphql`
+  query NotesIndexTemplate {
     site {
       siteMetadata {
         meta {
@@ -81,7 +83,7 @@ export const StackPageQuery = graphql`
         }
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(frontmatter: { templateKey: { eq: "note-page" } }) {
       frontmatter {
         hero {
           title
@@ -103,18 +105,6 @@ export const StackPageQuery = graphql`
             }
           }
         }
-        stackList {
-          name
-          description
-          url
-          image {
-            childImageSharp {
-              gatsbyImageData(width: 240, quality: 64, placeholder: BLURRED, layout: CONSTRAINED)
-            }
-          }
-          
-        }
-
       }
     }
   }

@@ -3,58 +3,60 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
 import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
+import HeroSection from "../components/FullWidthImage";
 
 // eslint-disable-next-line
-export const NowPageTemplate = ({ title, featuredimage, description, content, contentComponent, helmet, }) => {
+export const NowPageTemplate = ({ hero, content, contentComponent, helmet, }) => {
   const PageContent = contentComponent || Content;
+  const heroImage = getImage(hero.image) || hero.image;
 
   return (
-    <section className="section section--gradient">
+    <React.Fragment>
       {helmet || ""}
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
+      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
+      <section className="section section--gradient">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <div className="section">
+                <PageContent className="content" content={content} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   );
 };
 
 NowPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
+  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   content: PropTypes.string,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
   helmet: PropTypes.object,
 };
 
 const NowPage = ({ data }) => {
   const { markdownRemark: post } = data;
+  const title = data.site.siteMetadata.meta.title;
 
   return (
     <Layout>
       <NowPageTemplate
+        hero={post.frontmatter.hero}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
         helmet={
-          <Helmet titleTemplate="%s">
-            <title>{`${post.frontmatter.title}`}</title>
+          <Helmet titleTemplate={`%s | ${title}`}>
+            <title>{`${post.frontmatter.seo.title}`}</title>
             <meta
               name="description"
-              content={`${post.frontmatter.description}`}
+              content={`${post.frontmatter.seo.description}`}
             />
           </Helmet>
         }
-        title={post.frontmatter.title}
         content={post.html}
       />
     </Layout>
@@ -69,11 +71,36 @@ export default NowPage;
 
 export const nowPageQuery = graphql`
   query NowPage($id: String!) {
+    site {
+      siteMetadata {
+        meta {
+          title
+        }
+      }
+    }
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title
-        description
+        hero {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+          size
+          position
+        }
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+        }
       }
     }
   }

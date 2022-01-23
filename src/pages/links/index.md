@@ -1,11 +1,18 @@
 ---
 templateKey: links-page
-path: /links
-title: Links
-subheading: Mainly used in my Instagram page
-description: A collection of my links. Mainly used for Instagram. Something like Linktree.
-image: /img/jumbotron.jpg
-featuredimage: /img/og-image.jpg
+# path: /links-pathhhhh
+postType: page
+slug: links-test
+seo:
+  title: Links
+  description: A collection of my links. Mainly used for Instagram. Something like Linktree. But faster.
+  image: /img/og-image.jpg
+hero:
+  title: Links
+  description: A collection of my links. Mainly used for Instagram. Something like Linktree. But faster.
+  image: /img/og-image.jpg
+  size: Small
+  position: Bottom Center
 linkList:
   - name: MindaPura's Instagram
     url: https://instagram.com/minda.pura

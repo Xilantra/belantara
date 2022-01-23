@@ -1,12 +1,18 @@
 ---
 templateKey: stack-page
-path: /stack
-title: Stack
-subheading: My favourite tools and software
-description: A collection of my Stack. Some of the tools and software I use.
-  This page is inspired by Brian Lovin.
-image: /img/jumbotron.jpg
-featuredimage: /img/products-grid1.jpg
+# path: /stack
+postType: page
+slug: stack-test
+seo:
+  title: Stack
+  description: A collection of my Stack. Some of the tools and software I use. Inspired by Brian Lovin.
+  image: /img/products-grid1.jpg
+hero:
+  title: Stack
+  description: My favourite tools and software
+  image: /img/products-grid1.jpg
+  size: Small
+  position: Bottom Center
 stackList:
   - name: MindaPura
     description: Visual + kata & falsafah. Untuk peningkatan diri (self

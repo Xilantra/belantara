@@ -5,81 +5,86 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
-import useSiteMetadata from "../components/SiteMetadata";
+import HeroSection from "../components/FullWidthImage";
+import { getImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line
 export const WorkPostTemplate = ({
   content,
   contentComponent,
-  description,
+  // description,
   tags,
-  title,
+  // title,
   helmet,
+  hero
 }) => {
   const PostContent = contentComponent || Content;
+  const heroImage = getImage(hero.image) || hero.image;
 
   return (
-    <section className="section">
-      {helmet || ""}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map((tag) => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
+    <React.Fragment>
+      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
+      <section className="section">
+        {helmet || ""}
+        <div className="container content">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              {/* <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+                {hero.title}
+              </h1>
+              <p>{hero.description}</p> */}
+              <PostContent content={content} />
+              {tags && tags.length ? (
+                <div style={{ marginTop: `4rem` }}>
+                  <h4>Tags</h4>
+                  <ul className="taglist">
+                    {tags.map((tag) => (
+                      <li key={tag + `tag`}>
+                        <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   );
 };
 
 WorkPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
+  // description: PropTypes.string,
+  // title: PropTypes.string,
   helmet: PropTypes.object,
+  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 const WorkPost = ({ data }) => {
   const { markdownRemark: post } = data;
+  const title = data.site.siteMetadata.meta.title;
 
-  const {
-    meta
-   } = useSiteMetadata();
-   
   return (
     <Layout>
       <WorkPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        // description={post.frontmatter.description}
+        hero={post.frontmatter.hero}
         helmet={
-          <Helmet titleTemplate={`%s | ${meta.title}`}>
-            <title>{`${post.frontmatter.title}`}</title>
+          <Helmet titleTemplate={`%s | ${title}`}>
+            <title>{`${post.frontmatter.seo.title}`}</title>
             <meta
               name="description"
-              content={`${post.frontmatter.description}`}
+              content={`${post.frontmatter.seo.description}`}
             />
           </Helmet>
         }
         tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
+        // title={post.hero.title}
       />
     </Layout>
   );
@@ -95,14 +100,39 @@ export default WorkPost;
 
 export const pageQuery = graphql`
   query WorkPostByID($id: String!) {
+    site {
+      siteMetadata {
+        meta {
+          title
+        }
+      }
+    }
     markdownRemark(id: { eq: $id }) {
       id
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        title
-        description
         tags
+        hero {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+          size
+          position
+        }
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+        }
       }
     }
   }

@@ -5,81 +5,91 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
-import useSiteMetadata from "../components/SiteMetadata";
+import HeroSection from "../components/FullWidthImage";
+import { getImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line
 export const NotePostTemplate = ({
   content,
   contentComponent,
-  description,
   tags,
-  title,
   helmet,
+  hero,
+  stage,
+  publish,
+  edit
 }) => {
   const PostContent = contentComponent || Content;
+  const heroImage = getImage(hero.image) || hero.image;
 
   return (
-    <section className="section">
-      {helmet || ""}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map((tag) => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
+    <React.Fragment>
+      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
+      <section className="section">
+        {helmet || ""}
+        <div className="container content">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <small>{stage}</small>
+              <br />
+              <small>Planted on: {publish}</small>
+              <br />
+              <small>Tended on: {edit}</small>
+              {tags && tags.length ? (
+                <div style={{ marginTop: `0rem` }}>
+                  <ul className="taglist">
+                    {tags.map((tag) => (
+                      <li key={tag + `tag`}>
+                        <small>
+                          <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                        </small>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              <PostContent content={content} />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   );
 };
 
 NotePostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
   helmet: PropTypes.object,
+  stage: PropTypes.string,
+  publish: PropTypes.string,
+  edit: PropTypes.string,
+  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 const NotePost = ({ data }) => {
   const { markdownRemark: post } = data;
+  const title = data.site.siteMetadata.meta.title;
 
-  const {
-    meta
-   } = useSiteMetadata();
-   
   return (
     <Layout>
       <NotePostTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        hero={post.frontmatter.hero}
         helmet={
-          <Helmet titleTemplate={`%s | ${meta.title}`}>
-            <title>{`${post.frontmatter.title}`}</title>
+          <Helmet titleTemplate={`%s | ${title}`}>
+            <title>{`${post.frontmatter.seo.title}`}</title>
             <meta
               name="description"
-              content={`${post.frontmatter.description}`}
+              content={`${post.frontmatter.seo.description}`}
             />
           </Helmet>
         }
+        stage={post.frontmatter.stage}
+        publish={post.frontmatter.date}
+        edit={post.frontmatter.editDate}
         tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
       />
     </Layout>
   );
@@ -95,14 +105,44 @@ export default NotePost;
 
 export const pageQuery = graphql`
   query NotePostByID($id: String!) {
+    site {
+      siteMetadata {
+        meta {
+          title
+        }
+      }
+    }
     markdownRemark(id: { eq: $id }) {
       id
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        title
-        description
+        editDate(formatString: "MMMM DD, YYYY")
+        stage
+        draft
+        featuredpost
         tags
+        hero {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+          size
+          position
+        }
+        # references
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 80, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+        }
       }
     }
   }

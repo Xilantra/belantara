@@ -1,16 +1,27 @@
 ---
-templateKey: 'work-post'
-title: 'Test Work: small batch of Jamaican Blue Mountain in store next week'
-date: 2017-01-04T15:04:10.000Z
-featuredpost: true
-description: >-
-  Test Work: We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
-  Mountain coffee beans in our store next week.
+templateKey: note-post
+postType: post
+slug: in-store-next-week
+date: 2021-11-16T09:28:57.124Z
+editDate: 2022-01-11T05:27:38.698Z
+stage: 🌱 Seedlings
+draft: false
+featuredpost: false
 tags:
   - jamaica
   - green beans
   - flavor
   - tasting
+seo:
+  title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
+  image: /img/blog-index.jpg
+  description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+hero:
+  title: 'Just in: Small batch of Jamaican Blue Mountain in store next weekkkk'
+  description: The highest mountain in Jamaica and one of the highest peaks in the Caribbean
+  image: /img/blog-index.jpg
+  size: Medium
+  position: Center Center
 ---
 
 We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.

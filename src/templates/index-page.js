@@ -2,25 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-
+import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import NotesRoll from "../components/NotesRoll";
 import WorkRoll from "../components/WorkRoll";
 // import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
-import FullWidthImage from "../components/FullWidthImage";
+import HeroSection from "../components/FullWidthImage";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
-  image,
-  title,
-  subheading,
+  helmet,
+  hero
+  // image,
+  // title,
+  // subheading,
   // mainpitch,
 }) => {
-  const heroImage = getImage(image) || image;
+  const heroImage = getImage(hero.image) || hero.image;
 
   return (
     <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
+      {helmet || ""}
+      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
@@ -74,24 +77,37 @@ export const IndexPageTemplate = ({
 };
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  subheading: PropTypes.string,
+  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  // image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  // seo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  // title: PropTypes.string,
+  // subheading: PropTypes.string,
   // mainpitch: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  description: PropTypes.string,
+  // description: PropTypes.string,
 };
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  // const title = data.site.siteMetadata.meta.title;
 
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        subheading={frontmatter.subheading}
+        hero={frontmatter.hero}
+        helmet={
+          <Helmet titleTemplate={`%s`}>
+            <title>{`${frontmatter.seo.title}`}</title>
+            <meta
+              name="description"
+              content={`${frontmatter.seo.description}`}
+            />
+          </Helmet>
+        }
+        // title={frontmatter.title}
+        // image={frontmatter.image}
+        // subheading={frontmatter.subheading}
         // mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
+        // description={frontmatter.description}
       />
     </Layout>
   );
@@ -109,16 +125,35 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
+    site {
+      siteMetadata {
+        meta {
+          title
+        }
+      }
+    }
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
-        image {
-          childImageSharp {
-            gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
+        hero {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+          size
+          position
+        }
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
           }
         }
-        subheading
-        
       }
     }
   }

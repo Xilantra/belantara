@@ -1,19 +1,26 @@
 ---
 templateKey: note-post
-title: Far Far Away
-slugUrl: far-far-away-test
+postType: post
+slug: far-far-away
 date: 2021-12-01T14:10:02.632Z
 editDate: 2022-01-11T03:51:02.664Z
-description: This is a custom description for SEO and Open Graph purposes,
-  rather than the default generated excerpt. Simply add a description field to
-  the frontmatter.
-featuredpost: true
-featuredimage: /img/chemex.jpg
 stage: 🌿 Budding
+draft: false
+featuredpost: true
 tags:
   - brewing
   - ngopi
   - far-far
+seo:
+  title: Far Far Away
+  image: /img/chemex.jpg
+  description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+hero:
+  title: Far Far Awayyyy
+  description: The highest mountain in Jamaica and one of the highest peaks in the Caribbean
+  image: /img/chemex.jpg
+  size: Medium
+  position: Center Center
 ---
 Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove

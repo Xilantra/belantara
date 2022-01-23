@@ -1,16 +1,27 @@
 ---
-templateKey: 'note-post'
-title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
+templateKey: note-post
+postType: page
+slug: test-notes-page
 date: 2017-01-04T15:04:10.000Z
+editDate: 2022-01-11T05:27:38.698Z
+stage: 🌿 Budding
+draft: false
 featuredpost: true
-description: >-
-  We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
-  Mountain coffee beans in our store next week.
 tags:
-  - jamaica
+  - UI Design
   - green beans
   - flavor
   - tasting
+seo:
+  title: Test Note
+  image: /img/home-jumbotron.jpg
+  description: We’re proud to announce that we’ll be offering a small batch of Jamaica Blue Mountain coffee beans in our store next week.
+hero:
+  title: Test Note
+  description: The highest mountain in Jamaica and one of the highest peaks in the Caribbean
+  image: /img/home-jumbotron.jpg
+  size: Medium
+  position: Center Center
 ---
 
 We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.

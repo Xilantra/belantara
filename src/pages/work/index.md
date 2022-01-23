@@ -1,16 +1,17 @@
 ---
-templateKey: index-page
+templateKey: work-page
 postType: page
 # title: Belantara
+slug: /work
 seo:
-  title: Belantara - Gatsby Digital Gardening with Flexible Component
-  image: /img/home-jumbotron.jpg
-  description: Templat laman web percuma dan laju gila berserta CMS dengan 1 klik sahaja. Menggunakan GatsbyJS, Github, Netlify dan Netlify CMS.
+  title: Work
+  image: /img/blog-index.jpg
+  description: Collection of my work. Some of them is related to web development, some of them is related to coffee.
 hero:
-  title: Instantly Create Website
-  description: So you can focus more on creating your stuff.
-  image: /img/home-jumbotron.jpg
-  size: Medium
+  title: Work
+  description: Collection of my work. Some of them is related to web development, some of them is related to coffee.
+  image: /img/blog-index.jpg
+  size: FullPage
   position: Center Center
 # hero:
 #   title: Work

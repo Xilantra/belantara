@@ -19,7 +19,7 @@ import { withPrefix } from "gatsby";
 // });
 
 
-const TemplateWrapper = ({ children, title, description }) => {
+const TemplateWrapper = ({ title, description, children }) => {
   const { 
     meta,
     theme

@@ -93,6 +93,13 @@ export default function PageList(props) {
                         Login
                     </a>
                 </li>
+                {/* {page.map((item) => (
+                    <li key={item.name} className={className}>
+                        <Link className="navbar-item" to={item.path}>
+                            {item.title}
+                        </Link>
+                    </li>
+                ))} */}
             </React.Fragment>
         );
     } else {

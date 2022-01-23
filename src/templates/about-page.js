@@ -5,35 +5,39 @@ import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
+import HeroSection from "../components/FullWidthImage";
+import { getImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line
-export const AboutPageTemplate = ({ title, description, content, contentComponent, helmet, }) => {
+export const AboutPageTemplate = ({ hero, date, content, contentComponent, helmet, }) => {
   const PageContent = contentComponent || Content;
+  const heroImage = getImage(hero.image) || hero.image;
 
   return (
-    <section className="section section--gradient">
+    <React.Fragment>
       {helmet || ""}
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
+      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
+      <section className="section section--gradient">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <div className="section">
+                <small>Last update: {date}</small>
+                <PageContent className="content" content={content} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   );
 };
 
 AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
+  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  date: PropTypes.string,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
   helmet: PropTypes.object,
 };
 
@@ -44,17 +48,17 @@ const AboutPage = ({ data }) => {
     <Layout>
       <AboutPageTemplate
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s">
-            <title>{`${post.frontmatter.title}`}</title>
+            <title>{`${post.frontmatter.seo.title}`}</title>
             <meta
               name="description"
-              content={`${post.frontmatter.description}`}
+              content={`${post.frontmatter.seo.description}`}
             />
           </Helmet>
         }
-        title={post.frontmatter.title}
+        hero={post.frontmatter.hero}
+        date={post.frontmatter.date}
         content={post.html}
       />
     </Layout>
@@ -72,8 +76,27 @@ export const aboutPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title
-        description
+        date(formatString: "MMMM DD, YYYY")
+        hero {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+          size
+          position
+        }
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+        }
       }
     }
   }

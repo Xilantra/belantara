@@ -1,18 +1,25 @@
 ---
 templateKey: note-post
-title: Jauh jauh
-slugUrl: test-jauh
+postType: post
+slug: test-jauh-two
 date: 2021-11-16T09:28:57.124Z
 editDate: 2022-01-11T05:27:38.698Z
-description: This is a custom description for SEO and Open Graph purposes,
-  rather than the default generated excerpt. Simply add a description field to
-  the frontmatter.
-featuredpost: false
-featuredimage: /img/blog-index.jpg
 stage: 🌱 Seedlings
+draft: false
+featuredpost: false
 tags:
   - ngopi
   - brewing
+seo:
+  title: Jauh jauh
+  image: /img/blog-index.jpg
+  description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+hero:
+  title: Jauh-jauhlah
+  description: The highest mountain in Jamaica and one of the highest peaks in the Caribbean
+  image: /img/blog-index.jpg
+  size: Medium
+  position: Center Center
 ---
 Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove

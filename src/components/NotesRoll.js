@@ -19,17 +19,17 @@ class NotesRollTemplate extends React.Component {
                 }`}
               >
                 <header>
-                  {post.frontmatter.featuredimage ? (
+                  {post.frontmatter.hero.image ? (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${post.frontmatter.title}`,
+                          image: post.frontmatter.hero.image,
+                          alt: `featured image thumbnail for post ${post.frontmatter.hero.title}`,
                           width:
-                            post.frontmatter.featuredimage.childImageSharp
+                            post.frontmatter.hero.image.childImageSharp
                               .gatsbyImageData.width,
                           height:
-                            post.frontmatter.featuredimage.childImageSharp
+                            post.frontmatter.hero.image.childImageSharp
                               .gatsbyImageData.height,
                         }}
                       />
@@ -37,15 +37,15 @@ class NotesRollTemplate extends React.Component {
                   ) : null}
                   <p className="post-meta">
                     <Link
-                      className="title has-text-primary is-size-4"
+                      className="title has-text-primary is-size-4 is-block"
                       to={post.fields.slug}
                     >
-                      {post.frontmatter.title}
+                      {post.frontmatter.hero.title}
                     </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
+                    <small className="is-block">
                       {post.frontmatter.date}
-                    </span>
+                    </small>
+                    <small>{post.frontmatter.stage}</small>
                   </p>
                 </header>
                 <p>
@@ -84,26 +84,28 @@ export default function NotesRoll() {
           ) {
             edges {
               node {
-                excerpt(pruneLength: 400)
+                excerpt(pruneLength: 256)
                 id
                 fields {
                   slug
                 }
                 frontmatter {
-                  title
                   templateKey
                   date(formatString: "MMMM DD, YYYY")
+                  editDate(formatString: "MMMM DD, YYYY")
+                  stage
+                  draft
                   featuredpost
-                  featuredimage {
-                    childImageSharp {
-                      gatsbyImageData(
-                        width: 120
-                        quality: 100
-                        placeholder: BLURRED
-                        layout: CONSTRAINED
-                      )
-
+                  hero {
+                    title
+                    description
+                    image {
+                      childImageSharp {
+                        gatsbyImageData(width: 120, quality: 80, placeholder: BLURRED, layout: FULL_WIDTH)
+                      }
                     }
+                    size
+                    position
                   }
                 }
               }

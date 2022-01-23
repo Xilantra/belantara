@@ -2,16 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import { GatsbyImage } from "gatsby-plugin-image";
 
+
 export default function FullWidthImage(props) {
   const {
-    height = 400,
-    img,
+    // height,
     title,
     subheading,
-    imgPosition = "top left",
+    img,
+    // imgPosition = "top left",
   } = props;
 
+  // Small, Medium, FullPage
+  const heroHeight = props.height === 'Small' ? 200 : "" | props.height === 'Medium' ? 400 : "" | props.height === 'FullPage' ? 700 : "";
+
+  // 'Top Left', 'Top Center', 'Top Right', 'Center Left', 'Center Center', 'Center Right', 'Bottom Left', 'Bottom Center', 'Bottom Right'
+  const imgPosition = props.position === 'Top Left' ? 'top left' : "" | props.position === 'Top Center' ? 'top center' : "" | props.position === 'Top Right' ? 'top right' : "" | props.position === 'Center Left' ? 'center left' : "" | props.position === 'Center Center' ? 'center center' : "" | props.position === 'Center Right' ? 'center right' : "" | props.position === 'Bottom Left' ? 'bottom left' : "" | props.position === 'Bottom Center' ? 'bottom center' : "" | props.position === 'Bottom Right' ? 'bottom right' : "";
+
+  
   return (
+    
     <React.Fragment>
       <div
         className="margin-top-0"
@@ -28,7 +37,7 @@ export default function FullWidthImage(props) {
             style={{
               gridArea: "1/1",
               // You can set a maximum height for the image, if you wish.
-              height: height,
+              height: heroHeight,
               width: "100%",
             }}
             // You can optionally force an aspect ratio for the generated image
@@ -45,7 +54,7 @@ export default function FullWidthImage(props) {
             style={{
               gridArea: "1/1",
               // You can set a maximum height for the image, if you wish.
-              maxHeight: height,
+              maxHeight: heroHeight,
             }}
             layout="fullWidth"
             // You can optionally force an aspect ratio for the generated image
@@ -106,8 +115,9 @@ export default function FullWidthImage(props) {
 }
 
 FullWidthImage.propTypes = {
-  img: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  height: PropTypes.number,
   subheading: PropTypes.string,
+  img: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  height: PropTypes.string,
+  position: PropTypes.string,
 };

@@ -5,23 +5,20 @@ import { Helmet } from "react-helmet";
 import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import LinkList from "../components/Links";
-import FullWidthImage from "../components/FullWidthImage";
-import useSiteMetadata from "../components/SiteMetadata";
+import HeroSection from "../components/FullWidthImage";
 
 // eslint-disable-next-line
 export const LinksPageTemplate = ({
-  image,
-  title,
-  subheading,
+  hero,
   linkList,
   helmet,
 }) => {
-  const heroImage = getImage(image) || image;
+  const heroImage = getImage(hero.image) || hero.image;
 
   return (
     <div className="content">
       {helmet || ""}
-      <FullWidthImage img={heroImage} title={title} subheading={subheading}/>
+      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
@@ -38,33 +35,25 @@ export const LinksPageTemplate = ({
 };
 
 LinksPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  subheading: PropTypes.string,
+  hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   linkList: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.array]),
 };
 
 const LinksPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-
-  const {
-    meta,
-    page
-   } = useSiteMetadata();
+  const title = data.site.siteMetadata.meta.title;
 
   return (
     <Layout>
       <LinksPageTemplate
-        title={frontmatter.title}
-        subheading={frontmatter.subheading}
-        image={frontmatter.featuredimage}
+        hero={frontmatter.hero}
         linkList={frontmatter.linkList}
         helmet={
-          <Helmet titleTemplate={`${page.links.title} | ${meta.title}`}>
-            <title>{`${frontmatter.title}`}</title>
+          <Helmet titleTemplate={`%s | ${title}`}>
+            <title>{`${frontmatter.seo.title}`}</title>
             <meta
               name="description"
-              content={`${frontmatter.description}`}
+              content={`${frontmatter.seo.description}`}
             />
           </Helmet>
         }
@@ -85,14 +74,33 @@ export default LinksPage;
 
 export const LinksPageQuery = graphql`
   query LinksPage($id: String!) {
+    site {
+      siteMetadata {
+        meta {
+          title
+        }
+      }
+    }
     markdownRemark(id: { eq: $id }) {
       frontmatter {
-        title
-        subheading
-        description
-        featuredimage {
-          childImageSharp {
-            gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
+        hero {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
+          }
+          size
+          position
+        }
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
+            }
           }
         }
         linkList {

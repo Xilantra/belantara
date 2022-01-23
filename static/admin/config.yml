@@ -112,7 +112,7 @@ collections:
             widget: 'object'
             fields:
               - { label: "Body", name: "body", widget: "markdown" }
-
+    
   - name: "notes"
     label: "Notes"
     description: >

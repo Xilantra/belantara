@@ -1,13 +1,26 @@
 ---
 templateKey: note-post
-title: A beginners’ guide to brewing with Chemex
+postType: post
+slug: brewing-with-chemex
 date: 2017-01-04T15:04:10.000Z
+editDate: 2022-01-11T05:27:38.698Z
+stage: 🌱 Seedlings
+draft: false
 featuredpost: false
-featuredimage: /img/chemex.jpg
-description: Brewing with a Chemex probably seems like a complicated, time-consuming ordeal, but once you get used to the process, it becomes a soothing ritual that's worth the effort every time.
 tags:
   - brewing
   - chemex
+seo:
+  title: A beginners’ guide to brewing with Chemex
+  image: /img/chemex.jpg
+  description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+hero:
+  title: A beginners’ guide to brewing with Chemexxx
+  description: Brewing with a Chemex probably seems like a complicated, time-consuming ordeal, but once you get used to the process, it becomes a soothing ritual that's worth the effort every time.
+  image: /img/chemex.jpg
+  size: Medium
+  position: Center Center
+
 ---
 ![chemex](/img/chemex.jpg)
 
