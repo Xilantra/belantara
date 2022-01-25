@@ -14,9 +14,7 @@ export default function FullWidthImage(props) {
 
   // Small, Medium, FullPage
   const heroHeight = props.height === 'Small' ? 200 : "" | props.height === 'Medium' ? 400 : "" | props.height === 'FullPage' ? 700 : "";
-
-  // 'Top Left', 'Top Center', 'Top Right', 'Center Left', 'Center Center', 'Center Right', 'Bottom Left', 'Bottom Center', 'Bottom Right'
-  const imgPosition = props.position === 'Top Left' ? 'top left' : "" | props.position === 'Top Center' ? 'top center' : "" | props.position === 'Top Right' ? 'top right' : "" | props.position === 'Center Left' ? 'center left' : "" | props.position === 'Center Center' ? 'center center' : "" | props.position === 'Center Right' ? 'center right' : "" | props.position === 'Bottom Left' ? 'bottom left' : "" | props.position === 'Bottom Center' ? 'bottom center' : "" | props.position === 'Bottom Right' ? 'bottom right' : "";
+  const imgPosition = props.position === 'Top Left' ? 'top left' : "" | props.position === 'Top Center' ? 'top center' : "" | props.position === 'Top Right' ? 'top right' : "" | props.position === 'Center Left' ? 'center left' : "" | props.position === 'Center' ? 'center center' : "" | props.position === 'Center Right' ? 'center right' : "" | props.position === 'Bottom Left' ? 'bottom left' : "" | props.position === 'Bottom Center' ? 'bottom center' : "" | props.position === 'Bottom Right' ? 'bottom right' : "";
 
   
   return (

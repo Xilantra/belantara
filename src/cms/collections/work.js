@@ -1,7 +1,7 @@
 import seo from '../partials/seo'
 import hero from '../sections/hero'
 
-const collection = {
+const work = {
   name: 'work',
   label: 'Work',
   description: 'This is where you put your work. Create New Work for each project you have worked on.',
@@ -46,7 +46,13 @@ const collection = {
       label: 'Post Type',
       name: 'postType',
       widget: 'hidden',
-      default: 'page',
+      default: 'post',
+    },
+    {
+      label: 'Title',
+      name: 'title',
+      widget: 'hidden',
+      default: '{{fields.hero.title}}',
     },
     {
       label: 'Slug (The Post URL)',
@@ -88,4 +94,4 @@ const collection = {
   ],
 }
 
-export default collection
+export default work

@@ -1,7 +1,7 @@
 import seo from '../partials/seo'
 import hero from '../sections/hero'
 
-const collection = {
+const notes = {
   name: 'notes',
   label: 'Notes',
   description: 'The Notes is inspired by Andy Matuschak\'s Evergreen Notes and Maggie Appleton\'s Digital Garden. It is simply a progress category. We will be using \'tree\' stages for this. 🌱 Seedlings, 🌿 Budding and 🌳 Evergreen.',
@@ -47,15 +47,14 @@ const collection = {
       label: 'Post Type',
       name: 'postType',
       widget: 'hidden',
-      default: 'page',
+      default: 'post',
     },
-    // {
-    //   label: 'Title',
-    //   name: 'title',
-    //   widget: 'string',
-    //   default: '',
-    //   hint: 'A good practice is having a long title.'
-    // },
+    {
+      label: 'Title',
+      name: 'title',
+      widget: 'hidden',
+      default: '{{fields.hero.title}}',
+    },
     {
       label: 'Slug (The Post URL)',
       name: 'slug',
@@ -132,4 +131,4 @@ const collection = {
   ],
 }
 
-export default collection
+export default notes
