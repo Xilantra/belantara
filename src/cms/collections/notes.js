@@ -9,6 +9,11 @@ const notes = {
   folder: 'src/pages/notes',
   slug: '{{slug}}',
   create: true,
+  identifier_field: 'seo.title',
+  filter: {
+    field: 'templateKey',
+    value: 'note-post'
+  },
   view_filters: [
     // Disabled because of the popup bug (Tested with Safari)
     // {
@@ -50,12 +55,6 @@ const notes = {
       default: 'post',
     },
     {
-      label: 'Title',
-      name: 'title',
-      widget: 'hidden',
-      default: '{{fields.hero.title}}',
-    },
-    {
       label: 'Slug (The Post URL)',
       name: 'slug',
       widget: 'string',
@@ -82,6 +81,7 @@ const notes = {
       label: 'Select Stage',
       name: 'stage',
       widget: 'select',
+      default: '🌱 Seedlings',
       hint: '🌱 Seedlings is for very rough and early Notes. 🌿 Budding is for Notes that you\'ve cleaned up and clarified. 🌳 Evergreen is for Notes that is reasonably complete.',
       options: ['🌱 Seedlings', '🌿 Budding', '🌳 Evergreen']
     },
@@ -125,7 +125,14 @@ const notes = {
       fields: [
         {label: 'Title', name: 'title', widget: 'string'},
         {label: 'Author', name: 'author', widget: 'string'},
-        {label: 'URL', name: 'url', widget: 'string'}
+        {
+          label: 'URL', 
+          name: 'url', 
+          widget: 'string', 
+          // pattern: ['^https?:\/\/(.*)}', "Missing the https://"], 
+          default: 'https://', 
+          hint: "Don't forget to include the https://"
+        }
       ]
     },
   ],

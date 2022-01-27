@@ -8,6 +8,11 @@ const work = {
   folder: 'src/pages/work',
   slug: '{{slug}}',
   create: true,
+  identifier_field: 'seo.title',
+  filter: {
+    field: 'templateKey',
+    value: 'work-post'
+  },
   view_filters: [
     // Disabled because of the popup bug (Tested with Safari)
     // {
@@ -47,12 +52,6 @@ const work = {
       name: 'postType',
       widget: 'hidden',
       default: 'post',
-    },
-    {
-      label: 'Title',
-      name: 'title',
-      widget: 'hidden',
-      default: '{{fields.hero.title}}',
     },
     {
       label: 'Slug (The Post URL)',

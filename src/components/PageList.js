@@ -108,7 +108,7 @@ export default function PageList(props) {
 }
 
 PageList.propTypes = {
-    navBar: PropTypes.string,
-    footerBar: PropTypes.string,
+    navBar: PropTypes.bool,
+    footerBar: PropTypes.bool,
     className: PropTypes.string
 };

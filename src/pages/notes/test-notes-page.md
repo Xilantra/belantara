@@ -17,11 +17,18 @@ seo:
   image: /img/home-jumbotron.jpg
   description: We’re proud to announce that we’ll be offering a small batch of Jamaica Blue Mountain coffee beans in our store next week.
 hero:
+  layout: Image Center
+  textPlacement: Center
+  image: /img/home-jumbotron.jpg
+  color: "#F6B472"
+  size: Medium
+  position: Center
   title: Test Note
   description: The highest mountain in Jamaica and one of the highest peaks in the Caribbean
-  image: /img/home-jumbotron.jpg
-  size: Medium
-  position: Center Center
+references:
+  - title: Evergreen Notes
+    author: Andy Matuschak
+    url: https://notes.andymatuschak.com
 ---
 
 We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.

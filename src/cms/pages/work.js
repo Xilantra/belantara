@@ -2,7 +2,7 @@ import seo from '../partials/seo'
 import hero from '../sections/hero'
 
 const work = {
-  file: 'src/pages/work/index.json',
+  file: 'src/pages/work/index.md',
   label: '🧑🏻‍🎨 Work',
   name: 'work',
   fields: [

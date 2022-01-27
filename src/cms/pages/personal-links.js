@@ -46,11 +46,12 @@ const personal = {
             },
             { 
               label: 'URL', 
-            name: 'url', 
-            widget: 'string', 
+              name: 'url', 
+              widget: 'string', 
               // pattern: ['^https?:\/\/(.*)}', "Missing the https://"], 
               default: 'https://', 
-              hint: "Don't forget to include the https://" }
+              hint: "Don't forget to include the https://"
+            }
           ]
         }
         
