@@ -111,12 +111,12 @@ const notes = {
       label: 'Tags Relation',
       name: 'tagsRelation',
       widget: 'relation',
-      collection: 'notes',
-      default: '',
-      search_fields: ['tags'],
-      value_field: 'tags',
-      display_fields: ['tags'],
-      hint: 'Add tags to help categorize your notes. Separate tags with commas. Example: "cooking, sambal, food". Keep it under 10 tags per note.'
+      multiple: true,
+      collection: 'settings',
+      file: 'tagList',
+      search_fields: ['{{tags}}'],
+      value_field: '{{tag}}',
+      display_fields: ["{{tags}}"],
     },
     hero,
     {
