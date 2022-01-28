@@ -23,17 +23,12 @@ export const WorkPostTemplate = ({
 
   return (
     <React.Fragment>
+      {helmet || ""}
       <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
       <section className="section">
-        {helmet || ""}
         <div className="container content">
           <div className="columns">
             <div className="column is-10 is-offset-1">
-              {/* <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-                {hero.title}
-              </h1>
-              <p>{hero.description}</p> */}
-              <PostContent content={content} />
               {tags && tags.length ? (
                 <div style={{ marginTop: `4rem` }}>
                   <h4>Tags</h4>
@@ -46,6 +41,7 @@ export const WorkPostTemplate = ({
                   </ul>
                 </div>
               ) : null}
+              <PostContent content={content} />
             </div>
           </div>
         </div>

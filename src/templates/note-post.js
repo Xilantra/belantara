@@ -24,9 +24,9 @@ export const NotePostTemplate = ({
 
   return (
     <React.Fragment>
+      {helmet || ""}
       <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
       <section className="section">
-        {helmet || ""}
         <div className="container content">
           <div className="columns">
             <div className="column is-10 is-offset-1">

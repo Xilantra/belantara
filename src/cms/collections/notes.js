@@ -4,7 +4,7 @@ import hero from '../sections/hero'
 const notes = {
   name: 'notes',
   label: 'Notes',
-  description: 'The Notes is inspired by Andy Matuschak\'s Evergreen Notes and Maggie Appleton\'s Digital Garden. It is simply a progress category. We will be using \'tree\' stages for this. 🌱 Seedlings, 🌿 Budding and 🌳 Evergreen.',
+  description: "The Notes is inspired by Maggie Appleton's Digital Garden and Andy Matuschak's Evergreen Notes. It is simply a progress category. We will be using 'tree' stages for this. 🌱 Seedlings, 🌿 Budding and 🌳 Evergreen.",
   //  Read more about it [here](https://maggieappleton.com/garden-history)
   folder: 'src/pages/notes',
   slug: '{{slug}}',
@@ -86,12 +86,12 @@ const notes = {
       options: ['🌱 Seedlings', '🌿 Budding', '🌳 Evergreen']
     },
     {
-      label: 'Draft?',
+      label: 'Hide it?',
       name: 'draft',
       widget: 'boolean',
       default: false,
       required: false,
-      hint: 'Will be hidden from the site if enabled even if you click the Publish button. But people will still be able to view it in Github.'
+      hint: 'Will be hidden from the site if enabled even if you click the Publish button. But people will still be able to view it in GitHub.'
     },
     {
       label: 'Featured Post?',
@@ -105,6 +105,18 @@ const notes = {
       name: 'tags',
       widget: 'list',
       default: '',
+      hint: 'Add tags to help categorize your notes. Separate tags with commas. Example: "cooking, sambal, food". Keep it under 10 tags per note.'
+    },
+    {
+      label: 'Tags Relation',
+      name: 'tagsRelation',
+      widget: 'relation',
+      collection: 'notes',
+      default: '',
+      search_fields: ['tags'],
+      value_field: 'tags',
+      display_fields: ['tags'],
+      hint: 'Add tags to help categorize your notes. Separate tags with commas. Example: "cooking, sambal, food". Keep it under 10 tags per note.'
     },
     hero,
     {
