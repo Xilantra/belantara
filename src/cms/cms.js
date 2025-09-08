@@ -1,4 +1,4 @@
-import CMS from 'netlify-cms-app'
+const CMS = window.CMS
 import IndexPagePreview from './preview-templates/IndexPagePreview'
 import pages from '../cms/pages'
 import notes from '../cms/collections/notes'
@@ -30,7 +30,7 @@ CMS.init({
   },
 })
 
-// import CMS from 'netlify-cms-app'
+// const CMS = window.CMS
 // import uploadcare from 'netlify-cms-media-library-uploadcare'
 // import cloudinary from 'netlify-cms-media-library-cloudinary'
 
