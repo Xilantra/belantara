@@ -1,86 +1,45 @@
-import React from "react";
-import Logo from "./Logo";
-import PageList from "./PageList";
-import github from "../img/github-icon.svg";
+import React from 'react'
+import { motion } from 'motion/react'
+import PageList from './PageList'
 
- 
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-      navBarActiveClass: "",
-    };
-  }
+const Navbar = () => {
+  const [open, setOpen] = React.useState(false)
 
-  toggleHamburger() {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: "is-active",
-            })
-          : this.setState({
-              navBarActiveClass: "",
-            });
-      }
-    );
-  }
-
-  render() {
-    return (
-      <nav
-        className="navbar is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Logo navBar={true} />
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              role="menuitem"
-              tabIndex={0}
-              onKeyPress={() => this.toggleHamburger()}
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <ul className="navbar-start has-text-centered">
-              <PageList navBar={true} className="navbar-item" />
-            </ul>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
+  return (
+    <motion.nav
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+      className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-darkbg-900/70 border-b border-slate-200/60 dark:border-slate-800/60"
+      role="navigation"
+      aria-label="main-navigation"
+    >
+      <div className="px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between">
+        <a href="/" className="text-[8vw] leading-none font-display tracking-tight md:text-[4vw]">
+          <span className="accent">Belantara</span>
+        </a>
+        <button
+          className="md:hidden rounded-md p-2 hover:bg-slate-100 dark:hover:bg-slate-800"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="navMenu"
+        >
+          <span className="sr-only">Menu</span>
+          <div className="w-6 h-0.5 bg-slate-900 dark:bg-slate-100" />
+        </button>
+        <div id="navMenu" className="hidden md:flex items-center gap-10 text-lg">
+          <PageList navBar={true} className="hover:text-primary" />
+        </div>
+      </div>
+      {open && (
+        <div className="md:hidden border-t border-slate-200 dark:border-slate-800">
+          <div className="px-4 sm:px-6 md:px-8 py-2 flex flex-col gap-2 text-lg">
+            <PageList navBar={true} className="py-2 hover:text-primary" />
           </div>
         </div>
-      </nav>
-    );
-  }
-};
+      )}
+    </motion.nav>
+  )
+}
 
-export default Navbar;
+export default Navbar

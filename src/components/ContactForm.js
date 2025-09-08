@@ -34,9 +34,9 @@ export default class Index extends React.Component {
 
   render() {
     return (
-        <section className="section">
-          <div className="container">
-            <div className="content">
+        <section>
+          <div>
+            <div>
               <form
                 name="contact"
                 method="post"
@@ -44,6 +44,7 @@ export default class Index extends React.Component {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
               >
                 {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                 <input type="hidden" name="form-name" value="contact" />
@@ -53,53 +54,47 @@ export default class Index extends React.Component {
                     <input name="bot-field" onChange={this.handleChange} />
                   </label>
                 </div>
-                <div className="field">
-                  <label className="label" htmlFor={"name"}>
+                <div className="flex flex-col">
+                  <label className="mb-2 text-sm" htmlFor={"name"}>
                     Your name
                   </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={"text"}
-                      name={"name"}
-                      onChange={this.handleChange}
-                      id={"name"}
-                      required={true}
-                    />
-                  </div>
+                  <input
+                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2"
+                    type={"text"}
+                    name={"name"}
+                    onChange={this.handleChange}
+                    id={"name"}
+                    required={true}
+                  />
                 </div>
-                <div className="field">
-                  <label className="label" htmlFor={"email"}>
+                <div className="flex flex-col">
+                  <label className="mb-2 text-sm" htmlFor={"email"}>
                     Email
                   </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={"email"}
-                      name={"email"}
-                      onChange={this.handleChange}
-                      id={"email"}
-                      required={true}
-                    />
-                  </div>
+                  <input
+                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2"
+                    type={"email"}
+                    name={"email"}
+                    onChange={this.handleChange}
+                    id={"email"}
+                    required={true}
+                  />
                 </div>
-                <div className="field">
-                  <label className="label" htmlFor={"message"}>
+                <div className="md:col-span-2 flex flex-col">
+                  <label className="mb-2 text-sm" htmlFor={"message"}>
                     Message
                   </label>
-                  <div className="control">
-                    <textarea
-                      className="textarea"
-                      name={"message"}
-                      onChange={this.handleChange}
-                      id={"message"}
-                      required={true}
-                    />
-                  </div>
+                  <textarea
+                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2 min-h-[160px]"
+                    name={"message"}
+                    onChange={this.handleChange}
+                    id={"message"}
+                    required={true}
+                  />
                 </div>
-                <div className="field">
-                  <button className="button is-link" type="submit">
-                    Send
+                <div className="md:col-span-2">
+                  <button className="inline-flex items-center rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 hover:border-primary/60 hover:text-primary transition" type="submit">
+                    Send →
                   </button>
                 </div>
               </form>

@@ -1,0 +1,35 @@
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base theme tokens */
+@layer base {
+  html { color-scheme: light dark; }
+  body {
+    @apply bg-white text-slate-900 antialiased transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-darkbg-900 text-slate-100;
+  }
+  h1, h2, h3, h4, h5, h6 { @apply font-display; }
+  a { @apply text-slate-900 dark:text-slate-100; }
+}
+
+/* Golden Canon grid helpers */
+@layer utilities {
+  .gc-container { @apply px-4; }
+  .gc-section { @apply py-gc-4 md:py-gc-5; }
+  .gc-lede { @apply text-lg md:text-xl leading-relaxed; }
+  .accent { color: theme('colors.primary'); }
+
+  /* Safe-area utility for notched devices */
+  .safe-x { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+
+  /* Subtle link underline animation */
+  .link-fx { background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 0% 1px; transition: background-size .3s ease; }
+  .link-fx:hover { background-size: 100% 1px; }
+}

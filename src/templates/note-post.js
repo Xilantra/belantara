@@ -5,7 +5,8 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
-import HeroSection from "../components/FullWidthImage";
+import PostHero from "../components/PostHero";
+import { motion } from 'motion/react'
 import { getImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line
@@ -20,38 +21,42 @@ export const NotePostTemplate = ({
   edit
 }) => {
   const PostContent = contentComponent || Content;
-  const heroImage = getImage(hero.image) || hero.image;
+  const heroImage = hero.image || null;
 
   return (
     <React.Fragment>
       {helmet || ""}
-      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
-      <section className="section">
-        <div className="container content">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <small>{stage}</small>
-              <br />
-              <small>Planted on: {publish}</small>
-              <br />
-              <small>Tended on: {edit}</small>
-              {tags && tags.length ? (
-                <div style={{ marginTop: `0rem` }}>
-                  <ul className="taglist">
-                    {tags.map((tag) => (
-                      <li key={tag + `tag`}>
-                        <small>
-                          <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                        </small>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              <PostContent content={content} />
-            </div>
-          </div>
+      <PostHero image={heroImage} title={hero.title} subtitle={hero.description} />
+      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+        <div className="text-sm text-slate-600 dark:text-slate-300 space-x-4">
+          {stage && <span className="uppercase tracking-wide">{stage}</span>}
+          {publish && <span>Planted: {publish}</span>}
+          {edit && <span>Tended: {edit}</span>}
         </div>
+        {tags && tags.length ? (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="mt-3 mb-6 flex flex-wrap gap-3 text-sm text-slate-600 dark:text-slate-300"
+          >
+            {tags.map((tag) => (
+              <Link key={tag} to={`/tags/${kebabCase(tag)}/`} className="uppercase tracking-wide hover:text-primary">
+                {tag}
+              </Link>
+            ))}
+          </motion.div>
+        ) : null}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="prose prose-slate max-w-none dark:prose-invert"
+        >
+          <PostContent content={content} />
+        </motion.div>
       </section>
     </React.Fragment>
   );

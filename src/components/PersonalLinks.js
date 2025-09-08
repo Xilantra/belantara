@@ -7,12 +7,12 @@ import instagram from "../img/social/instagram.svg";
 
 function CommonWeb({ accountName, url, iconName }) {
   return (
-      <li className="navbar-item">
+      <li className="list-none">
           <a title={accountName} href={url} target="_blank" rel="noopener noreferrer">
               <img
                   src={iconName}
                   alt={`${accountName}'s logo`}
-                  style={{ width: "1em", height: "1em" }}
+                  style={{ width: "1.25rem", height: "1.25rem" }}
               />
           </a>
       </li>
@@ -98,11 +98,11 @@ export default function SocialLinks() {
     } else if (!!socialMedia.custom) {
         return (
           <React.Fragment>
-            {personalLinks.map((data, index) => {
-              return <li className="navbar-item" key={`personalLinks_item_${index}`}>
-                          <a title={data.title} href={data.url} target="_blank" rel="noopener noreferrer">{data.title}</a>
-                      </li>
-            })}
+            {personalLinks.map((data, index) => (
+              <li className="list-none" key={`personalLinks_item_${index}`}>
+                <a className="hover:text-primary" title={data.title} href={data.url} target="_blank" rel="noopener noreferrer">{data.title}</a>
+              </li>
+            ))}
         </React.Fragment>
         );
     } else {

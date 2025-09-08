@@ -6,75 +6,61 @@ import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import NotesRoll from "../components/NotesRoll";
 import WorkRoll from "../components/WorkRoll";
-// import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
-import HeroSection from "../components/FullWidthImage";
+import FlashyHero from "../components/FlashyHero";
+import { motion } from 'motion/react'
 
 // eslint-disable-next-line
-export const IndexPageTemplate = ({
-  helmet,
-  hero
-  // image,
-  // title,
-  // subheading,
-  // mainpitch,
-}) => {
-  const heroImage = getImage(hero.image) || hero.image;
+export const IndexPageTemplate = ({ helmet, hero }) => {
+  const heroImage = getImage(hero.image) || hero.image
 
   return (
-    <div>
-      {helmet || ""}
-      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  {/* <div className="content">
-                    <div className="tile">
-                      <h2 className="title">{mainpitch.title}</h2>
-                    </div>
-                    <div className="tile">
-                      <p className="subtitle">{mainpitch.description}</p>
-                    </div>
-                    <div className="tile is-parent">
-                      <article className="tile is-child">
-                        <PreviewCompatibleImage imageInfo={mainpitch.image} />
-                      </article>
-                    </div>
-                  </div> */}
-                  
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                        Work
-                      </h3>
-                    <WorkRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/work">
-                        Read more
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Latest stories
-                    </h3>
-                    <NotesRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/notes">
-                        Read more
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen">
+      {helmet || ''}
+      {/* Full-bleed magazine hero with canon paddings */}
+      <div className="relative">
+        <div className="absolute inset-0 -z-10 opacity-10 dark:opacity-20" aria-hidden />
+        <FlashyHero title={hero.title} subtitle={hero.description} />
+      </div>
+
+      {/* Full-bleed sections with responsive padding */}
+      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+        <div className="flex items-end justify-between">
+          <motion.h2
+            initial={{ y: 10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+            className="font-display text-[6vw] md:text-[3vw]"
+          >
+            <span className="accent">Work</span>
+          </motion.h2>
+          <Link className="text-sm md:text-base hover:text-primary" to="/work">Explore →</Link>
+        </div>
+        <div className="mt-6">
+          <WorkRoll />
+        </div>
+      </section>
+
+      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+        <div className="flex items-end justify-between">
+          <motion.h2
+            initial={{ y: 10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="font-display text-[6vw] md:text-[3vw]"
+          >
+            <span className="accent">Latest stories</span>
+          </motion.h2>
+          <Link className="text-sm md:text-base hover:text-primary" to="/notes">All notes →</Link>
+        </div>
+        <div className="mt-6">
+          <NotesRoll />
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
 IndexPageTemplate.propTypes = {
   hero: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

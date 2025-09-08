@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { kebabCase } from "lodash";
 import { getImage } from "gatsby-plugin-image";
-import FullWidthImage from "../components/FullWidthImage";
+import PostHero from "../components/PostHero";
+import { motion } from 'motion/react'
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
@@ -25,29 +26,24 @@ export const CreatePageTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content;
-  const heroImage = getImage(image) || image;
+  const heroImage = image || null;
 
   return (
-    <div className="content">
+    <div>
       {helmet || ""}
-      <FullWidthImage img={heroImage} title={title} subheading={subheading}/>
-      <section className="section">
-        <div className="container content">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <p>{description}</p>
-              <PostContent content={content} />
-              
-              <Features contentType={contentType} />
-
-              {tags && tags.length ? (
-                <div style={{ marginTop: `4rem` }}>
-                  <h4>Tags</h4>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </div>
+      <PostHero image={heroImage} title={title} subtitle={subheading} />
+      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+        {description && <p className="text-slate-600 dark:text-slate-300 mb-4">{description}</p>}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="prose prose-slate max-w-none dark:prose-invert"
+        >
+          <PostContent content={content} />
+        </motion.div>
+        {contentType && <div className="mt-8"><Features contentType={contentType} /></div>}
       </section>
     </div>
   );

@@ -15,7 +15,8 @@ It follows the [JAMstack architecture](https://jamstack.org) by using Git as a s
 - Create Blog posts from Netlify CMS
 - Tags: Separate page for posts under each tag
 - Basic directory organization
-- Uses Bulma for styling, but size is reduced by `gatsy-plugin-purgecss`
+- Uses Tailwind CSS for styling with a minimalist, radical aesthetic
+- Golden Canon grid helpers and flashy-but-elegant Motion animations
 - Blazing fast loading times thanks to pre-rendered HTML and automatic chunk loading of JS files
 - Uses `gatsby-plugin-image` with Decap CMS preview support
 - Separate components for everything
@@ -26,7 +27,7 @@ It follows the [JAMstack architecture](https://jamstack.org) by using Git as a s
 
 ## Prerequisites
 
-- Minimal Node.js version 14.15.0
+- Node.js >= 18
 - [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
 - [Netlify CLI](https://github.com/netlify/cli)
 
@@ -58,7 +59,12 @@ $ npm run build
 $ netlify dev # or ntl dev
 ```
 
-### Media Libraries (installed, but optional)
+### Design System
+
+- Font: Playfair Display for headings (via `@fontsource/playfair-display`)
+- Primary color: `#F8BF3A` for light and dark
+- Dark mode: `slate-900` background (`.dark` class strategy)
+- Grid: Golden Canon helpers (`gc-container`, `gc-section`, modular spacing)
 
 Media Libraries have been included as a default. If you are not planning to use `Uploadcare` or `Cloudinary` in your project, you can remove them from module import and registration in `src/cms/cms.js`.
 

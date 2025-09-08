@@ -5,11 +5,7 @@ import useSiteMetadata from "./SiteMetadata";
 
 
 export default function PageList(props) {
-  const {
-    navBar,
-    footerBar,
-    className
-  } = props;
+  const { navBar, footerBar, className } = props;
   
   const {
     page
@@ -18,18 +14,18 @@ export default function PageList(props) {
     if (!!navBar) {
         return (
             <React.Fragment>
-                <li className={className}>
-                    <Link className="navbar-item" to="/work">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/work">
                         {page.work.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/notes">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/notes">
                         {page.notes.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/page">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/page">
                         Page
                     </Link>
                 </li>
@@ -38,54 +34,54 @@ export default function PageList(props) {
     } else if (!!footerBar) {
         return (
             <React.Fragment>
-                <li className={className}>
-                    <Link className="navbar-item" to="/now">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/now">
                         {page.now.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/work">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/work">
                         {page.work.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/notes">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/notes">
                         {page.notes.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/page">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/page">
                         Page
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/about">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/about">
                         {page.about.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/stack">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/stack">
                         {page.stack.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/tags">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/tags">
                         Tags
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/links">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/links">
                         {page.links.title}
                     </Link>
                 </li>
-                <li className={className}>
-                    <Link className="navbar-item" to="/contact">
+                <li className={`list-none`}>
+                    <Link className={className || "hover:text-primary"} to="/contact">
                         {page.contact.title}
                     </Link>
                 </li>
-                <li className={className}>
+                <li className={`list-none`}>
                     <a
-                        className="navbar-item"
+                        className={className || "hover:text-primary"}
                         href="/admin/"
                         target="_blank"
                         rel="noopener noreferrer"

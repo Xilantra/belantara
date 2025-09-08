@@ -2,35 +2,23 @@ import * as React from "react";
 import { graphql } from 'gatsby'
 import Layout from "../../components/Layout";
 import CreatePageRoll from "../../components/CreatePageRoll";
+import PostHero from "../../components/PostHero";
+import { motion } from 'motion/react'
 
 export default class CreateIndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <div
-          className="full-width-image-container margin-top-0"
-          style={{
-            backgroundImage: `url('/img/blog-index.jpg')`,
-          }}
-        >
-          <h1
-            className="has-text-weight-bold is-size-1"
-            style={{
-              boxShadow: "0.5rem 0 0 #f40, -0.5rem 0 0 #f40",
-              backgroundColor: "#f40",
-              color: "white",
-              padding: "1rem",
-            }}
+        <PostHero image={{ url: '/img/blog-index.jpg' }} title="Latest Stories" />
+        <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            Latest Stories
-          </h1>
-        </div>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <CreatePageRoll />
-            </div>
-          </div>
+            <CreatePageRoll />
+          </motion.div>
         </section>
       </Layout>
     );

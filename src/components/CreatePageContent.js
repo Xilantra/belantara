@@ -13,37 +13,36 @@ const PreviewPageComponent = ({ contentType }) => {
 
   return (
     <div>
-      <div className="columns is-multiline">
-          {contentType.map((item) => (
-            <div key={item.name} id={`${kebabCase(item.name)}`} className="column is-12">
-              {item.type === "typeOne" ? (
-                <a 
-                  href={item.url} 
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <div
-                      style={{
-                        width: "56px",
-                        display: "inline-block",
-                      }}
-                    >
-                      <PreviewCompatibleImage imageInfo={item} />
-                    </div>
-                    <div>
-                      <p>{item.name}</p>
-                      <p>{item.description}</p>
-                    </div>
+      <ul className="grid grid-cols-1 gap-6 md:gap-8">
+        {contentType.map((item) => (
+          <li key={item.name} id={`${kebabCase(item.name)}`} className="list-none">
+            {item.type === 'typeOne' ? (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 p-4 backdrop-blur hover:border-primary/50 transition"
+              >
+                <div className="w-14 shrink-0 overflow-hidden rounded">
+                  <PreviewCompatibleImage imageInfo={item} />
+                </div>
+                <div>
+                  <p className="font-medium group-hover:text-primary">{item.name}</p>
+                  {item.description && (
+                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{item.description}</p>
+                  )}
+                </div>
+              </a>
+            ) : null}
 
-                </a>
-              ) : ( null )}
-                
-              {item.type === "typeTwo" ? (
+            {item.type === 'typeTwo' ? (
+              <div className="prose prose-slate max-w-none dark:prose-invert">
                 <PostContent content={item.body} />
-              ) : ( null )}
-                
-            </div>
-          ))}
-        </div>
+              </div>
+            ) : null}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

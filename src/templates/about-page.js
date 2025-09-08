@@ -5,29 +5,29 @@ import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
-import HeroSection from "../components/FullWidthImage";
-import { getImage } from "gatsby-plugin-image";
+import PostHero from "../components/PostHero";
+import { motion } from 'motion/react'
 
 // eslint-disable-next-line
 export const AboutPageTemplate = ({ hero, date, content, contentComponent, helmet, }) => {
   const PageContent = contentComponent || Content;
-  const heroImage = getImage(hero.image) || hero.image;
+  const heroImage = hero.image || null;
 
   return (
     <React.Fragment>
       {helmet || ""}
-      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="section">
-                <small>Last update: {date}</small>
-                <PageContent className="content" content={content} />
-              </div>
-            </div>
-          </div>
-        </div>
+      <PostHero image={heroImage} title={hero.title} subtitle={hero.description} />
+      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+        <div className="text-sm text-slate-600 dark:text-slate-300">Last update: {date}</div>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="prose prose-slate max-w-none dark:prose-invert"
+        >
+          <PageContent content={content} />
+        </motion.div>
       </section>
     </React.Fragment>
   );

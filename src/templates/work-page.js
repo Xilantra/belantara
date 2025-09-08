@@ -5,34 +5,29 @@ import { getImage } from "gatsby-plugin-image";
 import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import WorkRoll from "../components/WorkRoll";
-import HeroSection from "../components/FullWidthImage";
+import PostHero from "../components/PostHero";
+import { motion } from 'motion/react'
 
 // eslint-disable-next-line
 export const WorkIndexTemplate = ({
   helmet,
   hero,
 }) => {
-  const heroImage = getImage(hero.image) || hero.image;
+  const heroImage = hero.image || null;
 
   return (
     <div>
       {helmet || ""}
-      <HeroSection img={heroImage} title={hero.title} subheading={hero.description} height={hero.size} position={hero.position} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  
-                  <div className="column is-12">
-                    <WorkRoll />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <PostHero image={heroImage} title={hero.title} subtitle={hero.description} />
+      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <WorkRoll />
+        </motion.div>
       </section>
     </div>
   );

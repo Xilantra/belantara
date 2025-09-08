@@ -9,14 +9,10 @@ export default function AccountList(props) {
   } = props;
 
   return (
-    <li className="column is-12">
-        <a title={userName} href={accountUrl} target="_blank" rel="noopener noreferrer">
-            <img
-                src={iconName}
-                alt={userName}
-                style={{ width: "1em", height: "1em" }}
-            />
-        </a>
+    <li className="list-none">
+      <a className="hover:opacity-80" title={userName} href={accountUrl} target="_blank" rel="noopener noreferrer">
+        <img src={iconName} alt={userName} style={{ width: "1.25rem", height: "1.25rem" }} />
+      </a>
     </li>
   );
 }

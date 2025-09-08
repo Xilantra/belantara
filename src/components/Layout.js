@@ -2,9 +2,11 @@ import * as React from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import "./all.sass";
+import "../styles/tailwind.css";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import { useLocation } from '@reach/router'
+import { AnimatePresence, motion } from 'motion/react'
 // import getShareImage from '@jlengstorf/get-share-image';
 
 // const socialImage = getShareImage({
@@ -24,8 +26,25 @@ const TemplateWrapper = ({ title, description, children }) => {
     meta,
     theme
    } = useSiteMetadata();
+  const [dark, setDark] = React.useState(false)
+  const location = useLocation()
+
+  React.useEffect(() => {
+    const stored = localStorage.getItem('theme')
+    const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isDark = stored ? stored === 'dark' : prefers
+    setDark(isDark)
+    document.documentElement.classList.toggle('dark', isDark)
+  }, [])
+
+  const toggleTheme = () => {
+    const next = !dark
+    setDark(next)
+    document.documentElement.classList.toggle('dark', next)
+    localStorage.setItem('theme', next ? 'dark' : 'light')
+  }
   return (
-    <div>
+    <div className="min-h-screen bg-white dark:bg-darkbg-900">
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -82,7 +101,26 @@ const TemplateWrapper = ({ title, description, children }) => {
         
       </Helmet>
       <Navbar />
-      <div>{children}</div>
+      {/* Dark mode toggle as a floating control for full-bleed layout */}
+      <button
+        type="button"
+        onClick={toggleTheme}
+        className="fixed right-4 top-4 z-50 inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 px-3 py-1 text-sm text-slate-700 dark:text-slate-200 hover:border-primary/60 hover:text-primary transition-colors"
+        aria-label="Toggle dark mode"
+      >
+        {dark ? 'Dark' : 'Light'}
+      </button>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
       <Footer />
     </div>
   );
