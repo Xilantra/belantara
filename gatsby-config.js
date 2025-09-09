@@ -69,6 +69,6 @@ module.exports = {
       },
     },
     // Tailwind handles purging; no purgecss needed
-    "gatsby-plugin-netlify", // make sure to keep it last in the array
+    // Adapter handles Netlify integration in Gatsby v5
   ],
 };
