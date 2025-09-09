@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
 import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import NotesRoll from "../components/NotesRoll";
@@ -11,7 +10,6 @@ import { motion } from 'motion/react'
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({ helmet, hero }) => {
-  const heroImage = getImage(hero.image) || hero.image
 
   return (
     <div className="min-h-screen">

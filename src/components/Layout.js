@@ -28,6 +28,10 @@ const TemplateWrapper = ({ title, description, children }) => {
    } = useSiteMetadata();
   const [dark, setDark] = React.useState(false)
   const location = useLocation()
+  const prevDepthRef = React.useRef(0)
+  const depth = (location.pathname || '/').split('/').filter(Boolean).length
+  const direction = depth >= prevDepthRef.current ? 1 : -1
+  React.useEffect(() => { prevDepthRef.current = depth }, [depth])
 
   React.useEffect(() => {
     const stored = localStorage.getItem('theme')
@@ -113,10 +117,10 @@ const TemplateWrapper = ({ title, description, children }) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
+          initial={{ opacity: 0, x: 24 * direction, y: 8 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: -24 * direction, y: -8 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
         >
           {children}
         </motion.div>

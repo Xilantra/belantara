@@ -6,7 +6,6 @@ import PostContent from "../components/Content";
 import { kebabCase } from "lodash";
 
 const PreviewPageComponent = ({ contentType }) => {
-  const imageStyle = { borderRadius: "5px" };
 
   // const { alt = "", childImageSharp, image } = imageInfo;
   // const { type } = type;

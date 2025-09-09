@@ -88,6 +88,25 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+  const config = getConfig()
+  const ignore = config.ignoreWarnings || []
+  // Suppress known harmless warning from gatsby-plugin-decap-cms dynamic require
+  ignore.push(function (warning) {
+    try {
+      const msg = warning.message || ""
+      const mod = (warning.module && (warning.module.resource || warning.module.userRequest)) || ""
+      return /the request of a dependency is an expression/i.test(msg) && /gatsby-plugin-decap-cms/.test(String(mod))
+    } catch (_) {
+      return false
+    }
+  })
+  actions.replaceWebpackConfig({
+    ...config,
+    ignoreWarnings: ignore,
+  })
+}
+
 // exports.createSchemaCustomization = ({ actions }) => {
 //   actions.createTypes(`
 //     type MarkdownRemarkFrontmatterHero @infer {

@@ -3,8 +3,17 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { motion } from 'motion/react'
 
 const PostHero = ({ image, title, subtitle }) => {
-  const gimg = image && getImage(image)
-  const url = image && image.url ? image.url : null
+  let gimg = null
+  let url = null
+  if (image) {
+    if (typeof image === 'string') {
+      url = image
+    } else if (image.url) {
+      url = image.url
+    } else {
+      gimg = getImage(image)
+    }
+  }
 
   return (
     <section className="relative min-h-screen">

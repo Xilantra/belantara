@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import ContactForm from "../components/ContactForm";
 import PostHero from "../components/PostHero";

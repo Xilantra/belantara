@@ -7,7 +7,6 @@ import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
-import { getImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line
 export const NotePostTemplate = ({

@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { kebabCase } from "lodash";
-import { getImage } from "gatsby-plugin-image";
+//
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
-import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
+//
 import { Helmet } from "react-helmet";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 import Features from "../components/CreatePageContent";
