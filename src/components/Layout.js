@@ -48,7 +48,7 @@ const TemplateWrapper = ({ title, description, children }) => {
     localStorage.setItem('theme', next ? 'dark' : 'light')
   }
   return (
-    <div className="min-h-screen bg-white dark:bg-darkbg-900">
+    <div className="min-h-screen bg-background text-foreground">
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -109,7 +109,7 @@ const TemplateWrapper = ({ title, description, children }) => {
       <button
         type="button"
         onClick={toggleTheme}
-        className="fixed right-4 top-4 z-50 inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 px-3 py-1 text-sm text-slate-700 dark:text-slate-200 hover:border-primary/60 hover:text-primary transition-colors"
+        className="fixed right-4 top-4 z-50 inline-flex items-center gap-2 border border-border bg-muted/80 px-3 py-1 text-sm text-secondary-foreground shadow-sm transition-colors hover:bg-secondary/80 hover:text-foreground"
         aria-label="Toggle dark mode"
       >
         {dark ? 'Dark' : 'Light'}
@@ -122,7 +122,9 @@ const TemplateWrapper = ({ title, description, children }) => {
           exit={{ opacity: 0, x: -24 * direction, y: -8 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
         >
-          {children}
+          <main className="bg-background">
+            {children}
+          </main>
         </motion.div>
       </AnimatePresence>
       <Footer />

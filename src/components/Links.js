@@ -4,19 +4,19 @@ import PropTypes from "prop-types";
 import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
 const LinkList = ({ gridItems }) => (
-  <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+  <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
     {gridItems.map((item) => (
       <li key={item.name} id={`${kebabCase(item.name)}`} className="list-none">
         <a
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 p-4 backdrop-blur hover:border-primary/50 transition"
+          className="group flex items-center gap-5 border border-border bg-background/90 p-5 shadow-sm transition-colors hover:border-accent/70"
         >
-          <div className="w-14 shrink-0 overflow-hidden rounded">
+          <div className="w-16 shrink-0 overflow-hidden border border-border/60 bg-muted">
             <PreviewCompatibleImage imageInfo={item} />
           </div>
-          <div className="font-medium group-hover:text-primary">{item.name}</div>
+          <div className="font-medium text-foreground transition-colors group-hover:text-accent">{item.name}</div>
         </a>
       </li>
     ))}

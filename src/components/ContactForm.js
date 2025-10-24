@@ -44,7 +44,7 @@ export default class Index extends React.Component {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 gap-6 md:grid-cols-2"
               >
                 {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                 <input type="hidden" name="form-name" value="contact" />
@@ -55,11 +55,11 @@ export default class Index extends React.Component {
                   </label>
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-2 text-sm" htmlFor={"name"}>
+                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"name"}>
                     Your name
                   </label>
                   <input
-                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2"
+                    className="border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
                     type={"text"}
                     name={"name"}
                     onChange={this.handleChange}
@@ -68,11 +68,11 @@ export default class Index extends React.Component {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-2 text-sm" htmlFor={"email"}>
+                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"email"}>
                     Email
                   </label>
                   <input
-                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2"
+                    className="border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
                     type={"email"}
                     name={"email"}
                     onChange={this.handleChange}
@@ -81,11 +81,11 @@ export default class Index extends React.Component {
                   />
                 </div>
                 <div className="md:col-span-2 flex flex-col">
-                  <label className="mb-2 text-sm" htmlFor={"message"}>
+                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"message"}>
                     Message
                   </label>
                   <textarea
-                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2 min-h-[160px]"
+                    className="min-h-[160px] border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
                     name={"message"}
                     onChange={this.handleChange}
                     id={"message"}
@@ -93,7 +93,7 @@ export default class Index extends React.Component {
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <button className="inline-flex items-center rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 hover:border-primary/60 hover:text-primary transition" type="submit">
+                  <button className="inline-flex items-center border border-transparent bg-accent px-6 py-3 text-sm font-medium uppercase tracking-[0.2em] text-[#1f1300] transition-transform duration-200 hover:translate-x-1" type="submit">
                     Send →
                   </button>
                 </div>

@@ -1,3 +1,10 @@
+const withOpacityValue = (variable) => ({ opacityValue }) => {
+  if (opacityValue === undefined) {
+    return `hsl(var(${variable}))`
+  }
+  return `hsla(var(${variable}) / ${opacityValue})`
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
@@ -6,17 +13,24 @@ module.exports = {
     './gatsby-*.js',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '1.5rem',
+    },
     extend: {
       colors: {
-        primary: '#F8BF3A',
-        // Prefer slate for dark backgrounds per request
-        darkbg: {
-          900: '#0f172a', // slate-900
-        },
+        accent: '#F8BF3A',
+        background: withOpacityValue('--background'),
+        foreground: withOpacityValue('--foreground'),
+        muted: withOpacityValue('--muted'),
+        'muted-foreground': withOpacityValue('--muted-foreground'),
+        secondary: withOpacityValue('--secondary'),
+        'secondary-foreground': withOpacityValue('--secondary-foreground'),
+        border: withOpacityValue('--border'),
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],
-        sans: ['ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       // Golden Canon Grid helpers
       spacing: {
@@ -33,6 +47,17 @@ module.exports = {
       screens: {
         gc: '1140px', // desktop break tuned to golden canon layout
       },
+    },
+    borderRadius: {
+      none: '0px',
+      sm: '0px',
+      DEFAULT: '0px',
+      md: '0px',
+      lg: '0px',
+      xl: '0px',
+      '2xl': '0px',
+      '3xl': '0px',
+      full: '0px',
     },
   },
   plugins: [require('@tailwindcss/typography')],

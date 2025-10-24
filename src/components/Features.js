@@ -4,22 +4,22 @@ import PropTypes from "prop-types";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
 const FeatureGrid = ({ gridItems }) => (
-  <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+  <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
     {gridItems.map((item) => (
       <li key={item.name} id={`${kebabCase(item.name)}`} className="list-none">
         <a
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-start gap-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 p-4 backdrop-blur hover:border-primary/50 transition"
+          className="group flex items-start gap-5 border border-border bg-background/90 p-5 shadow-sm transition-colors hover:border-accent/70"
         >
-          <div className="w-14 shrink-0 overflow-hidden rounded">
+          <div className="w-16 shrink-0 overflow-hidden border border-border/60 bg-muted">
             <PreviewCompatibleImage imageInfo={item} />
           </div>
           <div>
-            <p className="font-medium group-hover:text-primary">{item.name}</p>
+            <p className="font-medium text-foreground transition-colors group-hover:text-accent">{item.name}</p>
             {item.description && (
-              <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{item.description}</p>
+              <p className="mt-1 text-sm text-secondary-foreground">{item.description}</p>
             )}
           </div>
         </a>

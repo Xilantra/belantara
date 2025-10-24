@@ -12,47 +12,42 @@ import { motion } from 'motion/react'
 export const IndexPageTemplate = ({ helmet, hero }) => {
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen space-y-24">
       {helmet || ''}
-      {/* Full-bleed magazine hero with canon paddings */}
-      <div className="relative">
-        <div className="absolute inset-0 -z-10 opacity-10 dark:opacity-20" aria-hidden />
-        <FlashyHero title={hero.title} subtitle={hero.description} />
-      </div>
+      <FlashyHero hero={hero} />
 
-      {/* Full-bleed sections with responsive padding */}
-      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
-        <div className="flex items-end justify-between">
-          <motion.h2
-            initial={{ y: 10, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
-            className="font-display text-[6vw] md:text-[3vw]"
-          >
-            <span className="accent">Work</span>
-          </motion.h2>
-          <Link className="text-sm md:text-base hover:text-primary" to="/work">Explore →</Link>
-        </div>
-        <div className="mt-6">
+      <section className="bg-muted py-20">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <motion.h2
+              initial={{ y: 10, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="font-display text-3xl font-medium tracking-tight text-foreground md:text-4xl"
+            >
+              Recent work
+            </motion.h2>
+            <Link className="text-sm font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:text-accent" to="/work">Explore portfolio →</Link>
+          </div>
           <WorkRoll />
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
-        <div className="flex items-end justify-between">
-          <motion.h2
-            initial={{ y: 10, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.05 }}
-            className="font-display text-[6vw] md:text-[3vw]"
-          >
-            <span className="accent">Latest stories</span>
-          </motion.h2>
-          <Link className="text-sm md:text-base hover:text-primary" to="/notes">All notes →</Link>
-        </div>
-        <div className="mt-6">
+      <section className="py-20">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <motion.h2
+              initial={{ y: 10, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+              className="font-display text-3xl font-medium tracking-tight text-foreground md:text-4xl"
+            >
+              Latest stories
+            </motion.h2>
+            <Link className="text-sm font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:text-accent" to="/notes">Browse all notes →</Link>
+          </div>
           <NotesRoll />
         </div>
       </section>

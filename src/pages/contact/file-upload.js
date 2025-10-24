@@ -43,10 +43,11 @@ export default class Contact extends React.Component {
   render() {
     return (
       <Layout>
-        <section className="px-4 sm:px-6 md:px-8 py-gc-5">
-          <div>
-            <div>
-              <h1 className="font-display text-3xl mb-4"><span className="accent">File Upload</span></h1>
+        <section className="py-20">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h1 className="font-display text-4xl font-medium text-foreground">File upload</h1>
+              <p className="mt-3 text-secondary-foreground">Attach assets and context so we can respond with the right level of detail.</p>
               <form
                 name="file-upload"
                 method="post"
@@ -54,7 +55,7 @@ export default class Contact extends React.Component {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2"
               >
                 {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                 <input type="hidden" name="form-name" value="file-upload" />
@@ -65,11 +66,11 @@ export default class Contact extends React.Component {
                   </label>
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-2 text-sm" htmlFor={"name"}>
+                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"name"}>
                     Your name
                   </label>
                   <input
-                    className="rounded-md border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 px-3 py-2"
+                    className="border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
                     type={"text"}
                     name={"name"}
                     onChange={this.handleChange}
@@ -78,17 +79,17 @@ export default class Contact extends React.Component {
                   />
                 </div>
                 <div className="md:col-span-2 flex items-center gap-4">
-                  <label htmlFor="attachment" className="text-sm">Attachment</label>
+                  <label htmlFor="attachment" className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Attachment</label>
                   <input
                     id="attachment"
-                    className="block w-full text-sm file:mr-4 file:rounded-md file:border file:border-slate-300 dark:file:border-slate-700 file:bg-white/60 dark:file:bg-slate-900/40 file:px-3 file:py-2 file:hover:border-primary/60 file:transition"
+                    className="block w-full text-sm text-secondary-foreground file:mr-4 file:border file:border-border file:bg-muted file:px-3 file:py-2 file:uppercase file:tracking-[0.2em] file:text-foreground file:transition-colors file:hover:border-accent"
                     type="file"
                     name="attachment"
                     onChange={this.handleAttachment}
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <button className="inline-flex items-center rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 hover:border-primary/60 hover:text-primary transition" type="submit">
+                  <button className="inline-flex items-center border border-transparent bg-accent px-6 py-3 text-sm font-medium uppercase tracking-[0.2em] text-[#1f1300] transition-transform duration-200 hover:translate-x-1" type="submit">
                     Send →
                   </button>
                 </div>

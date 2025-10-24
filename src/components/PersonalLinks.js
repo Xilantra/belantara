@@ -100,7 +100,7 @@ export default function SocialLinks() {
           <React.Fragment>
             {personalLinks.map((data, index) => (
               <li className="list-none" key={`personalLinks_item_${index}`}>
-                <a className="hover:text-primary" title={data.title} href={data.url} target="_blank" rel="noopener noreferrer">{data.title}</a>
+                <a className="transition-colors hover:text-accent" title={data.title} href={data.url} target="_blank" rel="noopener noreferrer">{data.title}</a>
               </li>
             ))}
         </React.Fragment>

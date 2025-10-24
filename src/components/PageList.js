@@ -15,17 +15,17 @@ export default function PageList(props) {
         return (
             <React.Fragment>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/work">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/work">
                         {page.work.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/notes">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/notes">
                         {page.notes.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/page">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/page">
                         Page
                     </Link>
                 </li>
@@ -35,53 +35,53 @@ export default function PageList(props) {
         return (
             <React.Fragment>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/now">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/now">
                         {page.now.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/work">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/work">
                         {page.work.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/notes">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/notes">
                         {page.notes.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/page">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/page">
                         Page
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/about">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/about">
                         {page.about.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/stack">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/stack">
                         {page.stack.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/tags">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/tags">
                         Tags
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/links">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/links">
                         {page.links.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
-                    <Link className={className || "hover:text-primary"} to="/contact">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/contact">
                         {page.contact.title}
                     </Link>
                 </li>
                 <li className={`list-none`}>
                     <a
-                        className={className || "hover:text-primary"}
+                        className={className || "transition-colors hover:text-accent"}
                         href="/admin/"
                         target="_blank"
                         rel="noopener noreferrer"

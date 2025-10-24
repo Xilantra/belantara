@@ -10,7 +10,7 @@ class CreatePageRollTemplate extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
         {posts &&
           posts.map(({ node: post }, idx) => (
             <motion.article
@@ -19,10 +19,10 @@ class CreatePageRollTemplate extends React.Component {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: Math.min(idx * 0.05, 0.2) }}
-              className="group overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 backdrop-blur"
+              className="group flex flex-col border border-border bg-background/90 shadow-sm transition-colors hover:border-accent/80"
             >
               {post.frontmatter.featuredimage && (
-                <div className="overflow-hidden">
+                <div className="overflow-hidden border-b border-border/80">
                   <div className="transition-transform duration-500 ease-out group-hover:scale-[1.03]">
                     <PreviewCompatibleImage
                       imageInfo={{
@@ -37,18 +37,18 @@ class CreatePageRollTemplate extends React.Component {
                   </div>
                 </div>
               )}
-              <div className="p-5 md:p-6">
-                <h3 className="mt-2 font-display text-xl md:text-2xl">
-                  <Link className="hover:text-primary" to={post.fields.slug}>
+              <div className="flex flex-1 flex-col gap-3 p-6">
+                <h3 className="font-display text-2xl font-medium text-foreground">
+                  <Link className="transition-colors hover:text-accent" to={post.fields.slug}>
                     {post.frontmatter.title}
                   </Link>
                 </h3>
-                <p className="mt-3 text-slate-700 dark:text-slate-300">
+                <p className="text-base leading-relaxed text-secondary-foreground">
                   {post.excerpt}
                 </p>
-                <div className="mt-4">
-                  <Link className="hover:text-primary" to={post.fields.slug}>
-                    Keep Reading →
+                <div>
+                  <Link className="link-fx text-sm font-medium uppercase tracking-[0.2em] text-foreground" to={post.fields.slug}>
+                    Keep reading →
                   </Link>
                 </div>
               </div>

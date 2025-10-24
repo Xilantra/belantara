@@ -26,36 +26,38 @@ export const NotePostTemplate = ({
     <React.Fragment>
       {helmet || ""}
       <PostHero image={heroImage} title={hero.title} subtitle={hero.description} />
-      <section className="px-4 sm:px-6 md:px-8 py-gc-5">
-        <div className="text-sm text-slate-600 dark:text-slate-300 space-x-4">
-          {stage && <span className="uppercase tracking-wide">{stage}</span>}
+      <section className="py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="space-x-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+          {stage && <span>{stage}</span>}
           {publish && <span>Planted: {publish}</span>}
           {edit && <span>Tended: {edit}</span>}
-        </div>
+          </div>
         {tags && tags.length ? (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mt-3 mb-6 flex flex-wrap gap-3 text-sm text-slate-600 dark:text-slate-300"
+            className="mt-3 mb-8 flex flex-wrap gap-3 text-sm uppercase tracking-[0.2em] text-muted-foreground"
           >
             {tags.map((tag) => (
-              <Link key={tag} to={`/tags/${kebabCase(tag)}/`} className="uppercase tracking-wide hover:text-primary">
+              <Link key={tag} to={`/tags/${kebabCase(tag)}/`} className="transition-colors hover:text-accent">
                 {tag}
               </Link>
             ))}
           </motion.div>
         ) : null}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="prose prose-slate max-w-none dark:prose-invert"
-        >
-          <PostContent content={content} />
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="prose prose-slate max-w-none prose-headings:font-display prose-headings:font-medium dark:prose-invert"
+          >
+            <PostContent content={content} />
+          </motion.div>
+        </div>
       </section>
     </React.Fragment>
   );

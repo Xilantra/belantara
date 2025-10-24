@@ -16,7 +16,7 @@ class TagRoute extends React.Component {
         transition={{ duration: 0.4, delay: Math.min(idx * 0.03, 0.2) }}
         className="list-none"
       >
-        <Link to={post.node.fields.slug} className="block py-3 hover:text-primary font-display text-xl">
+        <Link to={post.node.fields.slug} className="block py-3 font-display text-xl font-medium text-foreground transition-colors hover:text-accent">
           {post.node.frontmatter.hero.title}
         </Link>
       </motion.li>
@@ -30,11 +30,15 @@ class TagRoute extends React.Component {
 
     return (
       <Layout>
-        <section className="px-4 sm:px-6 md:px-8 py-gc-5">
-          <Helmet title={`${tag} | ${title}`} />
-          <h3 className="font-display text-3xl mb-6"><span className="accent">{tagHeader}</span></h3>
-          <ul>{postLinks}</ul>
-          <p className="mt-8"><Link className="hover:text-primary" to="/tags/">Browse all tags →</Link></p>
+        <section className="bg-muted py-20">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <Helmet title={`${tag} | ${title}`} />
+            <h3 className="mb-8 font-display text-3xl font-medium text-foreground md:text-4xl">{tagHeader}</h3>
+            <ul className="space-y-1">{postLinks}</ul>
+            <p className="mt-10 text-sm font-medium uppercase tracking-[0.2em] text-foreground">
+              <Link className="transition-colors hover:text-accent" to="/tags/">Browse all tags →</Link>
+            </p>
+          </div>
         </section>
       </Layout>
     );
