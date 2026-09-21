@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://belantara.netlify.app/sitemap-index.xml
+Sitemap: https://belantara.afiq.me/sitemap-index.xml

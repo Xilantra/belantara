@@ -37,7 +37,7 @@ const Seo = ({
   noindex = false,
 }) => {
   const { meta } = useSiteMetadata()
-  const siteUrl = (meta?.siteUrl || "https://belantara.netlify.app").replace(/\/$/, "")
+  const siteUrl = (meta?.siteUrl || "https://belantara.afiq.me").replace(/\/$/, "")
   const defaultTitle = meta?.title || "Belantara"
   const metaDescription = description || meta?.description || ""
   const pageTitle = title ? (title === defaultTitle ? defaultTitle : `${title} | ${defaultTitle}`) : defaultTitle
