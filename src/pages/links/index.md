@@ -1,26 +1,34 @@
 ---
 templateKey: links-page
-# path: /links-pathhhhh
 postType: page
-slug: links-test
+slug: links
 seo:
-  title: Links
-  description: A collection of my links. Mainly used for Instagram. Something like Linktree. But faster.
-  image: /img/og-image.jpg
+  title: Pautan Pantas & Direktori (Links)
+  description: Direktori pautan pantas ke profil GitHub, media sosial, karya seni klasik, dan repositori sumber terbuka Belantara.
+  image: /img/blog-forest-sunbeam.jpg
 hero:
-  title: Links
-  description: A collection of my links. Mainly used for Instagram. Something like Linktree. But faster.
-  image: /img/og-image.jpg
-  size: Small
-  position: Bottom Center
+  title: Pautan & Direktori
+  description: Direktori pantas untuk meneroka repositori sumber terbuka, media sosial, dan platform kerja saya.
+  image: /img/blog-forest-sunbeam.jpg
+  size: Medium
+  position: Center Center
 linkList:
-  - name: MindaPura's Instagram
-    url: https://instagram.com/minda.pura
-    image: /img/coffee.png
-  - name: ReggaeNusantara
-    url: https://instagram.com/reggaenusantaradotcom
-    image: /img/coffee-gear.png
-  - name: Test
-    url: https://test.com/
-    image: /img/link.png
+  - name: Repositori Belantara di GitHub
+    url: https://github.com/Xilantra/belantara
+    image: /img/stack-github.png
+  - name: Profil Peribadi Afiq Azmi di GitHub
+    url: https://github.com/Xilantra
+    image: /img/author-avatar.png
+  - name: Papan Kawalan Decap CMS (/admin)
+    url: /admin/
+    image: /img/stack-decap.png
+  - name: Koleksi Seni Halus Klasik (Work)
+    url: /work
+    image: /img/link-art.png
+  - name: Taman Digital & Catatan Harian (Notes)
+    url: /notes
+    image: /img/link-garden.png
+  - name: Akaun X / Twitter (@Xilantra)
+    url: https://twitter.com/Xilantra
+    image: /img/link-x.png
 ---

@@ -88,7 +88,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
   const config = getConfig()
   const ignore = config.ignoreWarnings || []
   // Suppress known harmless warning from gatsby-plugin-decap-cms dynamic require
@@ -101,17 +101,44 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
       return false
     }
   })
+
+  const watchOptions = stage === 'develop' ? {
+    ...config.watchOptions,
+    ignored: [
+      '**/node_modules/**',
+      '**/.cache/**',
+      '**/public/**',
+    ],
+  } : config.watchOptions
+
   actions.replaceWebpackConfig({
     ...config,
     ignoreWarnings: ignore,
+    ...(watchOptions ? { watchOptions } : {}),
   })
 }
 
-// exports.createSchemaCustomization = ({ actions }) => {
-//   actions.createTypes(`
-//     type MarkdownRemarkFrontmatterHero @infer {
-//       subheading: String
-//       image: File
-//     }
-//   `)
-// }
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MarkdownRemark implements Node {
+      frontmatter: MarkdownRemarkFrontmatter
+    }
+    type MarkdownRemarkFrontmatter @infer {
+      hero: MarkdownRemarkFrontmatterHero
+      seo: MarkdownRemarkFrontmatterSeo
+    }
+    type MarkdownRemarkFrontmatterHero @infer {
+      title: String
+      description: String
+      image: File @fileByRelativePath
+      size: String
+      position: String
+    }
+    type MarkdownRemarkFrontmatterSeo @infer {
+      title: String
+      description: String
+      image: File @fileByRelativePath
+    }
+  `);
+};

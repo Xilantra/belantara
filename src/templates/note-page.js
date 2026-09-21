@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import NotesRoll from "../components/NotesRoll";
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
@@ -38,20 +39,21 @@ NotesIndexTemplate.propTypes = {
 
 const NotesIndex = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  const title = data.site.siteMetadata.meta.title;
+  const seoTitle = frontmatter.seo?.title || frontmatter.hero?.title || "Notes";
+  const seoDesc = frontmatter.seo?.description || frontmatter.hero?.description;
+  const seoImage = frontmatter.seo?.image || frontmatter.hero?.image;
 
   return (
     <Layout>
       <NotesIndexTemplate
         hero={frontmatter.hero}
         helmet={
-          <Helmet titleTemplate={`%s | ${title}`}>
-            <title>{`${frontmatter.seo.title}`}</title>
-            <meta
-              name="description"
-              content={`${frontmatter.seo.description}`}
-            />
-          </Helmet>
+          <Seo
+            title={seoTitle}
+            description={seoDesc}
+            image={seoImage}
+            pathname="/notes/"
+          />
         }
       />
     </Layout>
@@ -83,6 +85,7 @@ export const pageQuery = graphql`
           title
           description
           image {
+            publicURL
             childImageSharp {
               gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
             }
@@ -94,6 +97,7 @@ export const pageQuery = graphql`
           title
           description
           image {
+            publicURL
             childImageSharp {
               gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
             }

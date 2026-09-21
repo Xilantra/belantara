@@ -2,18 +2,13 @@
 templateKey: tags-page
 postType: page
 seo:
-  title: Tags
-  image: /img/blog-index.jpg
-  description: Collection of my tags. Some of them is related to web development,
-    some of them is related to coffee.
+  title: Himpunan Topik & Tag
+  image: /img/blog-forest-sunbeam.jpg
+  description: Terokai penulisan dan nota mengikut topik seperti pembangunan web, seni bina Jamstack, digital garden, dan reka bentuk.
 hero:
-  title: Tags
-  description: Collection of my tags. Some of them is related to web development,
-    some of them is related to coffee.
-  image: /img/blog-index.jpg
+  title: Semua Topik
+  description: Terokai penulisan, panduan teknikal, dan catatan minda mengikut kata kunci dan topik pilihan.
+  image: /img/blog-forest-sunbeam.jpg
   size: Medium
-  position: Center
-  layout: Image Center
-  textPlacement: Center
-  color: "#67acd2"
+  position: Center Center
 ---

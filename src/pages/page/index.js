@@ -34,7 +34,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { templateKey: { eq: "create-page" } } }
     ) {
       edges {
@@ -48,12 +48,9 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
-            # featuredpost
             featuredimage {
               childImageSharp {
-                fluid(maxWidth: 120, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(width: 120, quality: 100, placeholder: BLURRED, layout: CONSTRAINED)
               }
             }
           }

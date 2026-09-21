@@ -14,19 +14,29 @@ export default function PageList(props) {
     if (!!navBar) {
         return (
             <React.Fragment>
-                <li className={`list-none`}>
+                <li className="list-none">
                     <Link className={className || "transition-colors hover:text-accent"} to="/work">
-                        {page.work.title}
+                        {page.work?.title || "Work"}
                     </Link>
                 </li>
-                <li className={`list-none`}>
+                <li className="list-none">
                     <Link className={className || "transition-colors hover:text-accent"} to="/notes">
-                        {page.notes.title}
+                        Blog
                     </Link>
                 </li>
-                <li className={`list-none`}>
-                    <Link className={className || "transition-colors hover:text-accent"} to="/page">
-                        Page
+                <li className="list-none">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/stack">
+                        {page.stack?.title || "Stack"}
+                    </Link>
+                </li>
+                <li className="list-none">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/about">
+                        {page.about?.title || "About"}
+                    </Link>
+                </li>
+                <li className="list-none">
+                    <Link className={className || "transition-colors hover:text-accent"} to="/contact">
+                        {page.contact?.title || "Contact"}
                     </Link>
                 </li>
             </React.Fragment>

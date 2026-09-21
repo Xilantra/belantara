@@ -1,9 +1,25 @@
 const settings = require("./src/util/meta.json")
 
 module.exports = {
-  siteMetadata: settings,
+  siteMetadata: {
+    ...settings,
+    siteUrl: settings.meta.siteUrl,
+  },
   plugins: [
     "gatsby-plugin-react-helmet",
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: settings.meta.title || `Belantara`,
+        short_name: `Belantara`,
+        start_url: `/`,
+        background_color: settings.theme.background.light || `#F7F0EB`,
+        theme_color: settings.theme.themeColor.dark || `#1A4555`,
+        display: `standalone`,
+        icon: `static/img/apple-touch-icon.png`,
+      },
+    },
     {
       resolve: "gatsby-plugin-postcss",
       options: {}
@@ -66,6 +82,23 @@ module.exports = {
       options: {
         manualInit: true,
         modulePath: `${__dirname}/src/cms/cms.js`,
+        customizeWebpackConfig: (config, { stage }) => {
+          if (stage === 'develop') {
+            config.plugins.push({
+              apply: (compiler) => {
+                compiler.watch = function (watchOptions, handler) {
+                  compiler.run((err, stats) => {
+                    if (handler) handler(err, stats)
+                  })
+                  return {
+                    close: (cb) => { if (cb) cb() },
+                    invalidate: () => {},
+                  }
+                }
+              },
+            })
+          }
+        },
       },
     },
     // Tailwind handles purging; no purgecss needed

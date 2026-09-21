@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
-
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import Content, { HTMLContent } from "../components/Content";
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
@@ -41,7 +41,9 @@ NowPageTemplate.propTypes = {
 
 const NowPage = ({ data }) => {
   const { markdownRemark: post } = data;
-  const title = data.site.siteMetadata.meta.title;
+  const seoTitle = post.frontmatter.seo?.title || post.frontmatter.hero?.title || "Now";
+  const seoDesc = post.frontmatter.seo?.description || post.frontmatter.hero?.description;
+  const seoImage = post.frontmatter.seo?.image || post.frontmatter.hero?.image;
 
   return (
     <Layout>
@@ -49,13 +51,12 @@ const NowPage = ({ data }) => {
         hero={post.frontmatter.hero}
         contentComponent={HTMLContent}
         helmet={
-          <Helmet titleTemplate={`%s | ${title}`}>
-            <title>{`${post.frontmatter.seo.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.seo.description}`}
-            />
-          </Helmet>
+          <Seo
+            title={seoTitle}
+            description={seoDesc}
+            image={seoImage}
+            pathname="/now/"
+          />
         }
         content={post.html}
       />

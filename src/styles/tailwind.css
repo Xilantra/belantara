@@ -38,7 +38,7 @@
   }
 
   body {
-    @apply min-h-screen font-sans antialiased transition-colors duration-300;
+    @apply min-h-screen font-sans antialiased;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
@@ -87,4 +87,15 @@
   /* Subtle link underline animation */
   .link-fx { background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 0% 1px; transition: background-size .3s ease; }
   .link-fx:hover { background-size: 100% 1px; }
+
+  /* Pill action button matching original design */
+  .btn-pill {
+    @apply inline-flex items-center justify-center rounded-full border border-border/80 bg-background/80 px-6 py-2 text-xs md:text-sm font-medium tracking-wide text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-foreground/40 hover:bg-foreground hover:text-background active:scale-[0.98];
+  }
+
+  /* Frosted glass badge */
+  .glass-card {
+    @apply rounded-xl border border-white/20 bg-white/40 shadow-lg backdrop-blur-md dark:border-white/10 dark:bg-black/40;
+  }
 }
+

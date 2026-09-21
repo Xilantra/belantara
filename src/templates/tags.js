@@ -2,6 +2,7 @@ import * as React from "react";
 import { Helmet } from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import { motion } from 'motion/react'
 
 class TagRoute extends React.Component {
@@ -30,14 +31,28 @@ class TagRoute extends React.Component {
 
     return (
       <Layout>
-        <section className="bg-muted py-20">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-            <Helmet title={`${tag} | ${title}`} />
-            <h3 className="mb-8 font-display text-3xl font-medium text-foreground md:text-4xl">{tagHeader}</h3>
-            <ul className="space-y-1">{postLinks}</ul>
-            <p className="mt-10 text-sm font-medium uppercase tracking-[0.2em] text-foreground">
-              <Link className="transition-colors hover:text-accent" to="/tags/">Browse all tags →</Link>
-            </p>
+        <section className="pt-32 pb-20 px-4 sm:px-6 md:px-8 min-h-[70vh]">
+          <div className="mx-auto w-full max-w-4xl">
+            <Seo
+              title={`Tag: ${tag}`}
+              description={`Semua artikel dan nota dengan topik "${tag}".`}
+              pathname={`/tags/${tag.toLowerCase()}/`}
+            />
+            <div className="mb-8 border-b border-border pb-6">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Topik / Tag</span>
+              <h1 className="mt-2 font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                {tagHeader}
+              </h1>
+            </div>
+            <ul className="divide-y divide-border/60">{postLinks}</ul>
+            <div className="mt-12">
+              <Link
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                to="/tags/"
+              >
+                <span>← Lihat Semua Tag</span>
+              </Link>
+            </div>
           </div>
         </section>
       </Layout>
@@ -58,7 +73,7 @@ export const tagPageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 1000
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount

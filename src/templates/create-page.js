@@ -7,6 +7,7 @@ import { motion } from 'motion/react'
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import Content, { HTMLContent } from "../components/Content";
 import Features from "../components/CreatePageContent";
 import useSiteMetadata from "../components/SiteMetadata";
@@ -75,13 +76,12 @@ const CreatePage = ({ data }) => {
         description={post.frontmatter.description}
         contentType={post.frontmatter.contentType}
         helmet={
-          <Helmet titleTemplate={`%s | ${meta.title}`}>
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-          </Helmet>
+          <Seo
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.frontmatter.subheading}
+            image={post.frontmatter.featuredimage}
+            pathname={post.fields?.slug}
+          />
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
@@ -103,6 +103,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         subheading

@@ -1,9 +1,11 @@
 import * as React from "react";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import { navigate } from "gatsby"
 
 const NotFoundPage = () => (
   <Layout>
+    <Seo title="Page Not Found" description="The requested page could not be found." noindex={true} />
     <section className="py-32">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-6 px-4 sm:px-6 lg:px-8">
         <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Error 404</p>

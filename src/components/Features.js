@@ -11,9 +11,9 @@ const FeatureGrid = ({ gridItems }) => (
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-start gap-5 border border-border bg-background/90 p-5 shadow-sm transition-colors hover:border-accent/70"
+          className="group flex items-start gap-5 rounded-xl border border-border bg-background/90 p-5 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/70 hover:shadow-md"
         >
-          <div className="w-16 shrink-0 overflow-hidden border border-border/60 bg-muted">
+          <div className="w-16 h-16 shrink-0 overflow-hidden rounded-lg border border-border/60 bg-muted flex items-center justify-center">
             <PreviewCompatibleImage imageInfo={item} />
           </div>
           <div>

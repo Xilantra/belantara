@@ -34,73 +34,78 @@ export default class Index extends React.Component {
 
   render() {
     return (
-        <section>
-          <div>
-            <div>
-              <form
-                name="contact"
-                method="post"
-                action="/contact/thanks/"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-                className="grid grid-cols-1 gap-6 md:grid-cols-2"
-              >
-                {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-                <input type="hidden" name="form-name" value="contact" />
-                <div hidden>
-                  <label>
-                    Don’t fill this out:{" "}
-                    <input name="bot-field" onChange={this.handleChange} />
-                  </label>
-                </div>
-                <div className="flex flex-col">
-                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"name"}>
-                    Your name
-                  </label>
-                  <input
-                    className="border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
-                    type={"text"}
-                    name={"name"}
-                    onChange={this.handleChange}
-                    id={"name"}
-                    required={true}
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"email"}>
-                    Email
-                  </label>
-                  <input
-                    className="border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
-                    type={"email"}
-                    name={"email"}
-                    onChange={this.handleChange}
-                    id={"email"}
-                    required={true}
-                  />
-                </div>
-                <div className="md:col-span-2 flex flex-col">
-                  <label className="mb-2 text-sm uppercase tracking-[0.2em] text-muted-foreground" htmlFor={"message"}>
-                    Message
-                  </label>
-                  <textarea
-                    className="min-h-[160px] border border-border bg-muted px-3 py-2 text-foreground focus:border-accent focus:outline-none focus:ring-0"
-                    name={"message"}
-                    onChange={this.handleChange}
-                    id={"message"}
-                    required={true}
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <button className="inline-flex items-center border border-transparent bg-accent px-6 py-3 text-sm font-medium uppercase tracking-[0.2em] text-[#1f1300] transition-transform duration-200 hover:translate-x-1" type="submit">
-                    Send →
-                  </button>
-                </div>
-              </form>
+      <section className="max-w-2xl mx-auto">
+        <div className="rounded-2xl border border-border bg-background/80 p-6 sm:p-8 md:p-10 shadow-xs backdrop-blur-xs">
+          <form
+            name="contact"
+            method="post"
+            action="/contact/thanks/"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={this.handleSubmit}
+            className="grid grid-cols-1 gap-6 md:grid-cols-2"
+          >
+            {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+            <input type="hidden" name="form-name" value="contact" />
+            <div hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="bot-field" onChange={this.handleChange} />
+              </label>
             </div>
-          </div>
-        </section>
+            <div className="flex flex-col">
+              <label className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground" htmlFor={"name"}>
+                Nama Anda
+              </label>
+              <input
+                className="rounded-xl border border-border bg-muted/50 px-4 py-3 text-foreground transition-colors focus:border-accent focus:bg-background focus:outline-none focus:ring-1 focus:ring-accent"
+                type={"text"}
+                name={"name"}
+                placeholder="cth. Ali bin Abu"
+                onChange={this.handleChange}
+                id={"name"}
+                required={true}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground" htmlFor={"email"}>
+                Alamat Emel
+              </label>
+              <input
+                className="rounded-xl border border-border bg-muted/50 px-4 py-3 text-foreground transition-colors focus:border-accent focus:bg-background focus:outline-none focus:ring-1 focus:ring-accent"
+                type={"email"}
+                name={"email"}
+                placeholder="nama@domain.com"
+                onChange={this.handleChange}
+                id={"email"}
+                required={true}
+              />
+            </div>
+            <div className="md:col-span-2 flex flex-col">
+              <label className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground" htmlFor={"message"}>
+                Mesej Anda
+              </label>
+              <textarea
+                className="min-h-[160px] rounded-xl border border-border bg-muted/50 px-4 py-3 text-foreground transition-colors focus:border-accent focus:bg-background focus:outline-none focus:ring-1 focus:ring-accent"
+                name={"message"}
+                placeholder="Kongsi idea, soalan, atau cadangan kolaborasi anda di sini..."
+                onChange={this.handleChange}
+                id={"message"}
+                required={true}
+              />
+            </div>
+            <div className="md:col-span-2 pt-2 flex justify-start">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold tracking-wide text-[#1f1300] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                type="submit"
+              >
+                <span>Hantar Mesej</span>
+                <span>→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
     );
   }
 }

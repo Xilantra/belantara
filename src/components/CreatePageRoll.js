@@ -74,7 +74,7 @@ export default function CreatePageRoll() {
       query={graphql`
         query CreatePageRollQuery {
           allMarkdownRemark(
-            sort: { order: DESC, fields: [frontmatter___date] }
+            sort: { frontmatter: { date: DESC } }
             filter: { frontmatter: { templateKey: { eq: "create-page" } } }
           ) {
             edges {

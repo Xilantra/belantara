@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import LinkList from "../components/Links";
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
@@ -40,7 +41,9 @@ LinksPageTemplate.propTypes = {
 
 const LinksPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  const title = data.site.siteMetadata.meta.title;
+  const seoTitle = frontmatter.seo?.title || frontmatter.hero?.title || "Links";
+  const seoDesc = frontmatter.seo?.description || frontmatter.hero?.description;
+  const seoImage = frontmatter.seo?.image || frontmatter.hero?.image;
 
   return (
     <Layout>
@@ -48,13 +51,12 @@ const LinksPage = ({ data }) => {
         hero={frontmatter.hero}
         linkList={frontmatter.linkList}
         helmet={
-          <Helmet titleTemplate={`%s | ${title}`}>
-            <title>{`${frontmatter.seo.title}`}</title>
-            <meta
-              name="description"
-              content={`${frontmatter.seo.description}`}
-            />
-          </Helmet>
+          <Seo
+            title={seoTitle}
+            description={seoDesc}
+            image={seoImage}
+            pathname="/links/"
+          />
         }
       />
     </Layout>

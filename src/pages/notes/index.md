@@ -1,15 +1,14 @@
 ---
 templateKey: note-page
 postType: page
-# title: Belantara
 seo:
-  title: Notes
-  image: /img/blog-index.jpg
-  description: Collection of my notes. Some of them is related to web development, some of them is related to coffee.
+  title: Catatan & Rujukan (Notes)
+  image: /img/blog-forest-sunbeam.jpg
+  description: Himpunan nota, dokumentasi pembangunan web, seni digital, dan panduan teknikal di Belantara.
 hero:
-  title: Notes
-  description: Collection of my work. Some of them is related to web development, some of them is related to coffee.
-  image: /img/blog-index.jpg
+  title: Catatan
+  description: Himpunan nota, panduan teknikal, dan cebisan buah fikiran tentang web, kod, reka bentuk, dan falsafah keterbukaan.
+  image: /img/blog-forest-sunbeam.jpg
   size: FullPage
   position: Center Center
 ---

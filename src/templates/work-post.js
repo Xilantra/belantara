@@ -4,6 +4,7 @@ import { kebabCase } from "lodash";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import Content, { HTMLContent } from "../components/Content";
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
@@ -68,26 +69,28 @@ WorkPostTemplate.propTypes = {
 
 const WorkPost = ({ data }) => {
   const { markdownRemark: post } = data;
-  const title = data.site.siteMetadata.meta.title;
+  const seoTitle = post.frontmatter.seo?.title || post.frontmatter.hero?.title;
+  const seoDesc = post.frontmatter.seo?.description || post.frontmatter.hero?.description;
+  const seoImage = post.frontmatter.seo?.image || post.frontmatter.hero?.image;
 
   return (
     <Layout>
       <WorkPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        // description={post.frontmatter.description}
         hero={post.frontmatter.hero}
         helmet={
-          <Helmet titleTemplate={`%s | ${title}`}>
-            <title>{`${post.frontmatter.seo.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.seo.description}`}
-            />
-          </Helmet>
+          <Seo
+            title={seoTitle}
+            description={seoDesc}
+            image={seoImage}
+            pathname={post.fields?.slug}
+            article={true}
+            publishedTime={post.frontmatter.date}
+            tags={post.frontmatter.tags || []}
+          />
         }
         tags={post.frontmatter.tags}
-        // title={post.hero.title}
       />
     </Layout>
   );
@@ -113,6 +116,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         tags
@@ -120,6 +126,7 @@ export const pageQuery = graphql`
           title
           description
           image {
+            publicURL
             childImageSharp {
               gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
             }
@@ -131,6 +138,7 @@ export const pageQuery = graphql`
           title
           description
           image {
+            publicURL
             childImageSharp {
               gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
             }

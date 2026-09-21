@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import Content, { HTMLContent } from "../components/Content";
 import PostHero from "../components/PostHero";
 import { motion } from 'motion/react'
@@ -43,19 +44,21 @@ AboutPageTemplate.propTypes = {
 
 const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data;
+  const seoTitle = post.frontmatter.seo?.title || post.frontmatter.hero?.title || "About";
+  const seoDesc = post.frontmatter.seo?.description || post.frontmatter.hero?.description;
+  const seoImage = post.frontmatter.seo?.image || post.frontmatter.hero?.image;
 
   return (
     <Layout>
       <AboutPageTemplate
         contentComponent={HTMLContent}
         helmet={
-          <Helmet titleTemplate="%s">
-            <title>{`${post.frontmatter.seo.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.seo.description}`}
-            />
-          </Helmet>
+          <Seo
+            title={seoTitle}
+            description={seoDesc}
+            image={seoImage}
+            pathname="/about/"
+          />
         }
         hero={post.frontmatter.hero}
         date={post.frontmatter.date}
@@ -81,6 +84,7 @@ export const aboutPageQuery = graphql`
           title
           description
           image {
+            publicURL
             childImageSharp {
               gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
             }
@@ -92,6 +96,7 @@ export const aboutPageQuery = graphql`
           title
           description
           image {
+            publicURL
             childImageSharp {
               gatsbyImageData(quality: 88, placeholder: BLURRED, layout: FULL_WIDTH)
             }
