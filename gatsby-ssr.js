@@ -28,6 +28,14 @@ const MagicScriptTag = () => {
   )
 }
 
-exports.onRenderBody = ({ setPreBodyComponents }) => {
+exports.onRenderBody = ({ setPreBodyComponents, setPostBodyComponents }) => {
   setPreBodyComponents([<MagicScriptTag key="magic-script-tag" />])
+  setPostBodyComponents([
+    <script
+      key="cloudflare-analytics"
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "0772717ef8014846a4df099dca9ab75d"}'
+    />,
+  ])
 }
